@@ -1,0 +1,17 @@
+<script>
+    var product_vendor = "{{product.vendor}}";
+    if (product_vendor == "zestard-easy-donation") {
+        $(document).ready(function () {
+            $("[itemprop=offers]").css("display", "none");
+            var button = $('button[type=submit][name=add]');
+            if (button.length == 0)
+            {
+                button = $('input[type=submit][name=add]');
+            }
+
+            $(button).css("display", "none");
+            $("[itemprop=price]").css("display", "none");
+            $(".quantity").css("display", "none");
+        });
+    }
+</script>

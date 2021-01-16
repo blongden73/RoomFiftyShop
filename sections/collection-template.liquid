@@ -1,0 +1,234 @@
+<!-- /templates/collection.liquid -->
+{% paginate collection.products by 50 %}
+
+{% if collection.title contains 'Edition' %}
+<div class="edition_collection-wrapper">
+  <div class="edition_collection_left">
+    <div class="edition_collection-description">
+      {% assign collectionTitle = collection.title | split: ' | '%}
+      <h1>
+        {% for title in collectionTitle %}
+          <span class="split-headline">{{title}}</span>
+        {% endfor %}
+      </h1>
+      {{ collection.description }}
+    </div>
+  </div>
+  <div class="edition_collection_right">
+    <div class="product-wrapper">
+      {% for product in collection.products %}
+        <div class="product js-collection-products">
+          <a href="{{ product.url }}"></a>
+          <div class="product-title">
+            <img src="{{ product | img_url: '900x' }}" >
+            {% assign productTitle = product.title | split: ' | ' %}
+            {% for title in productTitle %}
+             <h1>{{ title }}</h1>
+            {% endfor %}
+            <h2>from {{ product.price | money}}</h2>
+          </div>
+        </div>
+      {% endfor %}
+     </div>
+  </div>
+</div>
+{% else %}
+<div class="{{ collection.title }}" data-section-id="{{ section.id }}" data-section-type="collection-template" data-sort-enabled="{{ section.settings.collection_sort_enable }}" data-tags-enabled="{{ section.settings.collection_tag_enable }}">
+  <header class="grid">
+    <h1 class="grid__item {% if section.settings.collection_sort_enable or section.settings.collection_tag_enable %}medium-up--one-third{% endif %}">
+      {% if current_tags.size > 0 %}
+        {{ current_tags.first }}
+      {% elsif collection.title contains 'Edition'%}
+        {% assign collectionTitle = collection.title | split: ' | '%}
+        {% for title in collectionTitle %}
+          <span class="split-headline">{{title}}</span>
+        {% endfor %}
+      {% else %}
+      {{ collection.title }}
+      {% endif %}
+    </h1>
+
+    {% if section.settings.collection_sort_enable or section.settings.collection_tag_enable %}
+      <div class="collection-sorting grid__item medium-up--two-thirds medium-up--text-right">
+        {% if section.settings.collection_tag_enable and collection.all_tags.size > 0 %}
+          <div class="collection-sorting__dropdown">
+            <label for="BrowseBy" class="label--hidden">{{ 'collections.general.tags' | t }}</label>
+            <select name="BrowseBy" id="BrowseBy">
+              {% if current_tags %}
+                {% if collection.handle %}
+                  <option value="/collections/{{ collection.handle }}">{{ 'collections.general.all_tags' | t }}</option>
+                {% elsif collection.current_type %}
+                  <option value="{{ collection.current_type | url_for_type }}">{{ 'collections.general.all_tags' | t }}</option>
+                {% elsif collection.current_vendor %}
+                  <option value="{{ collection.current_vendor | url_for_vendor }}">{{ 'collections.general.all_tags' | t }}</option>
+                {% endif %}
+              {% else %}
+                <option value="">{{ 'collections.general.tags' | t }}</option>
+              {% endif %}
+              {% for tag in collection.all_tags %}
+                <option value="/collections/{% if collection.handle != blank %}{{ collection.handle }}{% else %}all{% endif %}/{{ tag | handleize }}"{% if current_tags contains tag %} selected="selected"{% endif %}>{{ tag }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+        {% if section.settings.collection_sort_enable and collection.products.size > 1 %}
+          <div class="collection-sorting__dropdown">
+            <label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>
+            {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+            <select name="sort_by" id="SortBy" aria-describedby="a11y-refresh-page-message">
+              {% for option in collection.sort_options %}
+                <option value="{{ option.value }}"{% if sort_by == option.value %} selected="selected"{% endif %}>{{ option.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+
+    {% if collection.description != blank %}
+      <div class="collection-description grid__item rte">
+        {{ collection.description }}
+      </div>
+    {% endif %}
+  </header>
+
+  <div class="grid grid--uniform" role="list">
+
+    {% for product in collection.products %}
+      {% if collection.products.size == 1 %}
+        {% assign grid_item_width = 'medium-up--one-quarter small--one-whole' %}
+      {% else %}
+        {% assign grid_item_width = 'medium-up--one-quarter small--one-half' %}
+      {% endif %}
+      {% include 'product-grid-item' %}
+    {% else %}
+      {% comment %}
+        Add default products to help with onboarding for collections/all only.
+
+        The onboarding styles and products are only loaded if the
+        store has no products.
+      {% endcomment %}
+      {% if shop.products_count == 0 and collection.handle == 'all' %}
+        {% unless onboardingLoaded %}
+          {% comment %}
+            Only load onboarding styles if they have not already been loaded.
+          {% endcomment %}
+          {% assign onboardingLoaded = true %}
+        {% endunless %}
+        <div class="grid__item">
+          <div class="grid grid--uniform">
+            {% assign collection_index = 1 %}
+            {% for i in (1..6) %}
+              <div class="grid__item small--one-half medium-up--one-quarter ">
+                <a href="/admin/products" class="grid__image">
+                  {% capture current %}{% cycle 1, 2, 3, 4, 5, 6 %}{% endcapture %}
+                  {{ 'product-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+                </a>
+                <div class="product__title"><a href="/admin/products">{{ 'homepage.onboarding.product_title' | t }}</a></div>
+                <div class="product__price">$19.99</div>
+              </div>
+              {% assign collection_index = collection_index | plus: 1 %}
+            {% endfor %}
+          </div>
+        </div>
+      {% else %}
+        {% comment %}
+          If collection exists but is empty, display message
+        {% endcomment %}
+        <div class="grid__item">
+          <p>{{ 'collections.general.no_matches' | t }}</p>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if paginate.pages > 1 %}
+  <div class="custom-previous">
+    {% if paginate.previous.is_link %}
+      <a href="{{ paginate.previous.url }}"><svg width="77" height="78" viewBox="0 0 77 78" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M77 39c0 21.263-17.237 38.5-38.5 38.5S0 60.263 0 39 17.237.5 38.5.5 77 17.737 77 39" fill="#F4CD0C"/><path stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" d="M36 23l11 16-11 16"/></g></svg></a>
+    {% endif %}
+  </div>
+    <div class="pagination ">
+      {{ paginate | default_pagination }}
+    </div>
+    <div class="custom-next">
+      {% if paginate.next.is_link %}
+        <a href="{{ paginate.next.url }}"><svg width="77" height="78" viewBox="0 0 77 78" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M77 39c0 21.263-17.237 38.5-38.5 38.5S0 60.263 0 39 17.237.5 38.5.5 77 17.737 77 39" fill="#F4CD0C"/><path stroke="#1D1D1B" stroke-width="6" stroke-linecap="round" d="M36 23l11 16-11 16"/></g></svg></a>
+      {% endif %}
+    </div>
+  {% endif %}
+ </div>
+ {% endif %}
+
+{% endpaginate %}
+
+
+
+{% schema %}
+{
+  "name": {
+    "de": "Kategorie-Seiten",
+    "en": "Collection pages",
+    "es": "Páginas de colección",
+    "fr": "Pages de collections",
+    "it": "Pagine delle collezioni",
+    "ja": "コレクションページ",
+    "nl": "Collectiepagina's",
+    "pt-BR": "Páginas de Coleções",
+    "zh-CN": "产品系列页面",
+    "zh-TW": "商品系列頁面"
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "vendor_show",
+      "label": {
+        "de": "Produktverkäufer anzeigen",
+        "en": "Show product vendor",
+        "es": "Mostrar proveedor del producto",
+        "fr": "Afficher le distributeur du produit",
+        "it": "Mostra fornitore prodotto",
+        "ja": "商品の販売元を表示する",
+        "nl": "Productleverancier weergeven",
+        "pt-BR": "Exiba o fornecedor do produto",
+        "zh-CN": "显示产品厂商",
+        "zh-TW": "顯示產品廠商"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_sort_enable",
+      "label": {
+        "de": "Kategoriesortierung aktivieren",
+        "en": "Enable collection sorting",
+        "es": "Habilitar la función ordenar colecciones",
+        "fr": "Activer le tri de la collection",
+        "it": "Abilita ordinamento collezione",
+        "ja": "コレクションの並べ替えを有効にする",
+        "nl": "Sorteren op collectie inschakelen",
+        "pt-BR": "Ativar a ordenação de coleções",
+        "zh-CN": "启用产品系列排序",
+        "zh-TW": "啟用商品系列排序功能"
+      },
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "collection_tag_enable",
+      "label": {
+        "de": "Filterung nach Produkt-Tag aktivieren",
+        "en": "Enable filtering by product tag",
+        "es": "Habilitar filtro por etiqueta de producto",
+        "fr": "Activer le filtrage par balise de produit",
+        "it": "Abilita filtri per tag di prodotto",
+        "ja": "商品タグによる絞り込みを有効にする",
+        "nl": "Schakel filteren in per producttag",
+        "pt-BR": "Ativar filtragem por tag de produto",
+        "zh-CN": "启用按产品标记筛选",
+        "zh-TW": "啟用產品標籤篩選功能"
+      },
+      "default": false
+    }
+  ]
+}
+{% endschema %}

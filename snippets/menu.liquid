@@ -1,0 +1,82 @@
+<nav role="navigation">
+  <ul>
+    {%- for link in linklists.main-menu.links -%}
+      <li>
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>
+          {{ link.title }}
+        </a>
+
+        {%- if link.links != blank -%}
+          <ul>
+            {%- for child_link in link.links -%}
+              <li>
+                <a href="{{ child_link.url }}" {% if child_link.active %}aria-current="page"{% endif %}>
+                  {{ child_link.title }}
+                </a>
+
+                {%- if child_link.links != blank -%}
+                  <ul>
+                    {%- for grandchild_link in child_link.links -%}
+                      <li>
+                        <a href="{{ grandchild_link.url }}" {% if grandchild_link.active %}aria-current="page"{% endif %}>
+                          {{ grandchild_link.title }}
+                        </a>
+                      </li>
+                    {%- endfor -%}
+                  </ul>
+                {%- endif -%}
+
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+      </li>
+    {%- endfor -%}
+    <li>
+      {{ 'layout.customer.log_in' | t | customer_login_link }}
+    </a></li>
+    <li><a href="/cart" class="site-header__cart cart">
+      {% include 'icon-cart' %}
+      <span class="small--hide">
+        (<span id="CartCount">{{ cart.item_count }}</span>)
+      </span>
+    </a></li>
+    <li>
+      <div class="top-bar__search">
+        <a href="/search" class="medium-up--hide">
+          {% include 'icon-search' %}
+        </a>
+        <form action="/search" method="get" class="search-bar small--hide" role="search">
+          {% comment %}<input type="hidden" name="type" value="product">{% endcomment %}
+          <button type="submit" class="search-bar__submit">
+            {% include 'icon-search' %}
+            <span class="icon__fallback-text">{{ 'general.search.submit' | t }}</span>
+          </button>
+          <input type="search" name="q" class="search-bar__input" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" aria-label="{{ 'general.search.placeholder' | t }}">
+        </form>
+      </div>
+    </li>
+  </ul>
+  <div class="mobile-cart-nav-wrapper">
+    <div class="mobile-cart">
+      <a href="/cart" class="site-header__cart cart">
+        {% include 'icon-cart' %}
+        <span class="small--hide">
+          (<span id="CartCount">{{ cart.item_count }}</span>)
+        </span>
+      </a>
+    </div>
+    <div class="mobile-menu">
+      <svg width="43px" height="27px" viewBox="0 0 43 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+              <g id="Group-4" fill="#1D1D1B">
+                  <polygon id="Fill-1" points="0 6 43 6 43 0 0 0"></polygon>
+                  <polygon id="Fill-2" points="0 16.5 43 16.5 43 10.501 0 10.501"></polygon>
+                  <polygon id="Fill-3" points="0 27 43 27 43 21 0 21"></polygon>
+              </g>
+          </g>
+      </svg>
+    </div>
+  </div>
+</nav>

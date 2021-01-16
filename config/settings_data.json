@@ -1,0 +1,1443 @@
+{
+  "current": {
+    "color_body_bg": "#ffffff",
+    "color_body_text": "#333333",
+    "color_primary_color": "#0692d1",
+    "color_primary_button_text": "#ffffff",
+    "color_sale_badge": "#eb5d42",
+    "color_borders": "#e8e8e8",
+    "color_form": "#f4f4f4",
+    "color_image_overlay_text": "#333333",
+    "color_image_overlay": "#efefec",
+    "image_overlay_opacity": 36,
+    "type_header_font": "helvetica_n7",
+    "type_header_base_size": "28px",
+    "type_base_font": "helvetica_n4",
+    "type_base_size": "15px",
+    "type_button_base_size": "14px",
+    "type_navigation_base_size": "16px",
+    "cart_enable_ajax": true,
+    "show_breadcrumb_nav": true,
+    "share_image": "shopify:\/\/shop_images\/logo.jpg",
+    "social_facebook_link": "https:\/\/www.facebook.com\/roomfifty\/",
+    "social_twitter_link": "https:\/\/twitter.com\/room_fifty",
+    "social_pinterest_link": "https:\/\/www.pinterest.co.uk\/r5958\/",
+    "social_instagram_link": "https:\/\/www.instagram.com\/roomfifty\/",
+    "social_snapchat_link": "",
+    "social_google_plus_link": "",
+    "social_tumblr_link": "",
+    "social_youtube_link": "",
+    "social_vimeo_link": "",
+    "social_fancy_link": "",
+    "main_blog": "",
+    "share_facebook": true,
+    "share_twitter": true,
+    "share_pinterest": true,
+    "favicon": "shopify:\/\/shop_images\/ms-icon-310x310.png",
+    "checkout_header_image": "",
+    "checkout_logo_image": "shopify:\/\/shop_images\/roomfifty-black.png",
+    "checkout_logo_position": "left",
+    "checkout_logo_size": "large",
+    "checkout_body_background_image": "",
+    "checkout_body_background_color": "#efefec",
+    "checkout_input_background_color_mode": "white",
+    "checkout_sidebar_background_image": "",
+    "checkout_sidebar_background_color": "#fafafa",
+    "checkout_heading_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_body_font": "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'",
+    "checkout_accent_color": "#197bbd",
+    "checkout_button_color": "#197bbd",
+    "checkout_error_color": "#e32c2b",
+    "sections": {
+      "featured-products": {
+        "type": "featured-products",
+        "settings": {
+          "title": "Bestsellers",
+          "home_page_featured_products": "all",
+          "home_featured_products_row_num": 3
+        }
+      },
+      "featured-content": {
+        "type": "featured-content",
+        "settings": {
+          "section_title": "Curated Art for Everybody",
+          "text": "<p>RoomFifty sells affordable, museum-quality prints by 50 of the best illustrators and designers in the world. Prices start at £20.<\/p>",
+          "text_size": "large"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "1564153614210": {
+            "type": "text",
+            "settings": {
+              "title": "Curated, affordable art for everyone",
+              "richtext": "<p><strong>RoomFifty sells affordable art by some of the best artists in the world, curated for everybody<\/strong><\/p>"
+            }
+          },
+          "footer-0": {
+            "type": "menu",
+            "settings": {
+              "title": "",
+              "menu": "footer"
+            }
+          },
+          "1602080661852": {
+            "type": "menu",
+            "settings": {
+              "title": "",
+              "menu": "legal-menu"
+            }
+          },
+          "1564136510237": {
+            "type": "newsletter",
+            "settings": {
+              "subtext": "<p>Promotions, new products and sales. Directly to your inbox.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "1564153614210",
+          "footer-0",
+          "1602080661852",
+          "1564136510237"
+        ],
+        "settings": {
+          "show_payment_icons": true
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo": "shopify:\/\/shop_images\/room_fifty_logo.png",
+          "logo_max_width": "150",
+          "show_announcement": true,
+          "home_page_only": false,
+          "announcement_text": "Check Our Christmas Delivery Dates",
+          "announcement_link": "shopify:\/\/pages\/christmas-delivery",
+          "tagline": "<p>Curated Art for Everybody<\/p>"
+        }
+      },
+      "sidebar": {
+        "type": "sidebar",
+        "settings": {
+          "main_menu_link_list": "main-menu"
+        }
+      },
+      "1564135843653": {
+        "type": "featured-products",
+        "disabled": true,
+        "settings": {
+          "title": "Shop the Limited Edition Kubrick Collection",
+          "home_page_featured_products": "the-kubrick-collection",
+          "home_featured_products_row_num": 2
+        }
+      },
+      "list-collections-template": {
+        "type": "list-collections-template",
+        "blocks": {
+          "1565558381999": {
+            "type": "collection",
+            "settings": {
+              "collection": "aart-jan-venema"
+            }
+          },
+          "108a58ba-7f4a-4f7e-96c4-ac40f58aa3b5": {
+            "type": "collection",
+            "settings": {
+              "collection": "agathe-singer"
+            }
+          },
+          "2d89beaf-1265-4cb0-a252-f51896864c92": {
+            "type": "collection",
+            "settings": {
+              "collection": "alain-pilon"
+            }
+          },
+          "186a212c-5471-4f42-b079-8a661f320197": {
+            "type": "collection",
+            "settings": {
+              "collection": "albert-tercero"
+            }
+          },
+          "dbba7b5b-dead-447d-85cf-1bc52bea7c25": {
+            "type": "collection",
+            "settings": {
+              "collection": "allan-sanders"
+            }
+          },
+          "ed5da497-7390-418e-81cd-4d8416599931": {
+            "type": "collection",
+            "settings": {
+              "collection": "allison-filice"
+            }
+          },
+          "e849b824-6859-45f9-8879-aa79f90d9958": {
+            "type": "collection",
+            "settings": {
+              "collection": "alva-skog"
+            }
+          },
+          "62746c54-a71c-4779-b5f3-da0e4f00769e": {
+            "type": "collection",
+            "settings": {
+              "collection": "anna-haifisch"
+            }
+          },
+          "ca6de937-f0b1-469c-87c6-02c9fb4929e6": {
+            "type": "collection",
+            "settings": {
+              "collection": "asia-pietrzyk"
+            }
+          },
+          "ab933c98-ecc9-44c7-92c0-30fa147aeb41": {
+            "type": "collection",
+            "settings": {
+              "collection": "aysha-tengiz"
+            }
+          },
+          "e8473157-33c5-426a-be0c-986d50488f9d": {
+            "type": "collection",
+            "settings": {
+              "collection": "belle-mellor"
+            }
+          },
+          "467d034f-5ce4-4e44-8384-9b69d4d5bc01": {
+            "type": "collection",
+            "settings": {
+              "collection": "ben-hickey"
+            }
+          },
+          "4c672229-668d-40af-a056-6ca4fb066097": {
+            "type": "collection",
+            "settings": {
+              "collection": "ben-longden"
+            }
+          },
+          "f539557e-9476-4ac2-8418-efa0d22d85de": {
+            "type": "collection",
+            "settings": {
+              "collection": "bene-rohlmann"
+            }
+          },
+          "069ba553-6dec-4acf-a6ef-5f2ce000e88c": {
+            "type": "collection",
+            "settings": {
+              "collection": "amrita-marino"
+            }
+          },
+          "cef718a3-e5f4-45b1-a1a9-b501bfad5bba": {
+            "type": "collection",
+            "settings": {
+              "collection": "benoit-tardif"
+            }
+          },
+          "9ab50106-a26c-403b-b2f2-cd8c88ea3f9c": {
+            "type": "collection",
+            "settings": {
+              "collection": "arnaud-aubry"
+            }
+          },
+          "05c33f6d-29c8-44a2-a208-cfb3af45f50d": {
+            "type": "collection",
+            "settings": {
+              "collection": "bratislav-milenkovic"
+            }
+          },
+          "8aa4bcc1-50aa-4825-9b65-33c9422c3a5c": {
+            "type": "collection",
+            "settings": {
+              "collection": "cathal-duane"
+            }
+          },
+          "ccdf173d-8996-45d2-b49a-a1092171b65a": {
+            "type": "collection",
+            "settings": {
+              "collection": "cecile-gariepy"
+            }
+          },
+          "1e9ee7e6-9f71-46fb-8214-6b38de03f58a": {
+            "type": "collection",
+            "settings": {
+              "collection": "charlotte-ager"
+            }
+          },
+          "1a325611-014c-44da-b128-b034e1f31599": {
+            "type": "collection",
+            "settings": {
+              "collection": "charlotte-dumortier"
+            }
+          },
+          "e9edad86-d0e9-4031-b1e0-8f5e355352da": {
+            "type": "collection",
+            "settings": {
+              "collection": "chris-clarke"
+            }
+          },
+          "aab7148a-d419-4911-aef9-be382cfe63fa": {
+            "type": "collection",
+            "settings": {
+              "collection": "christopher-delorenzo"
+            }
+          },
+          "2bae75cc-fd93-40f8-b389-8d6f2da24299": {
+            "type": "collection",
+            "settings": {
+              "collection": "cloe-bourguignon"
+            }
+          },
+          "68bb4810-75d7-4ea7-b127-619afb551963": {
+            "type": "collection",
+            "settings": {
+              "collection": "cristian-iacob"
+            }
+          },
+          "af33238f-39d7-4db9-8f29-e72ef9e853f0": {
+            "type": "collection",
+            "settings": {
+              "collection": "cesar-pelizer"
+            }
+          },
+          "fa733b20-1442-48a2-84f1-364eea367b29": {
+            "type": "collection",
+            "settings": {
+              "collection": "daniel-zender"
+            }
+          },
+          "1d0d50b1-56c5-4f8b-a3ce-dada810983d5": {
+            "type": "collection",
+            "settings": {
+              "collection": "david-j-mcmillan"
+            }
+          },
+          "46ac8a75-573d-4b9e-8af9-a11552be9c81": {
+            "type": "collection",
+            "settings": {
+              "collection": "diana-ejaita"
+            }
+          },
+          "ccfe0955-e2ec-470b-9e7f-a6805f94aae3": {
+            "type": "collection",
+            "settings": {
+              "collection": "egle-plytnikaite"
+            }
+          },
+          "3c6a1792-8a1f-4fb7-8465-a1f2bdad6c58": {
+            "type": "collection",
+            "settings": {
+              "collection": "eleanor-shakespeare"
+            }
+          },
+          "17428e78-781f-4e6e-bf52-71f6591ab23a": {
+            "type": "collection",
+            "settings": {
+              "collection": "eleni-kalorkoti"
+            }
+          },
+          "52e8bbd9-e820-4e92-9e15-d1d6b258e76b": {
+            "type": "collection",
+            "settings": {
+              "collection": "emilie-sarnel"
+            }
+          },
+          "31686c32-a95e-4182-bf76-27d3b9d451ab": {
+            "type": "collection",
+            "settings": {
+              "collection": "eleonora-marton"
+            }
+          },
+          "3283efdc-50fe-40fa-84f5-7d27bf6282dd": {
+            "type": "collection",
+            "settings": {
+              "collection": "eli-michiel"
+            }
+          },
+          "e1f7d84a-f31c-45ad-be24-242f19a7dfb7": {
+            "type": "collection",
+            "settings": {
+              "collection": "faye-moorhouse"
+            }
+          },
+          "45c1c480-c511-468b-b975-b40170613809": {
+            "type": "collection",
+            "settings": {
+              "collection": "fernando-cobelo"
+            }
+          },
+          "68140f9e-d633-4b35-9232-28f5224543a0": {
+            "type": "collection",
+            "settings": {
+              "collection": "fran-caballero"
+            }
+          },
+          "154de6e1-a2fa-43ec-92d0-048a3a7f6b2f": {
+            "type": "collection",
+            "settings": {
+              "collection": "francesco-ciccolella"
+            }
+          },
+          "68019c50-dc04-49a1-967d-dc8cc18595ad": {
+            "type": "collection",
+            "settings": {
+              "collection": "fuchsia-macaree"
+            }
+          },
+          "7e5b640b-498c-4545-8c57-77f909ec3511": {
+            "type": "collection",
+            "settings": {
+              "collection": "genis-carreras"
+            }
+          },
+          "c58dd048-8613-4ed4-8804-795b8f5b5d7e": {
+            "type": "collection",
+            "settings": {
+              "collection": "giulia-sagramola"
+            }
+          },
+          "6339e840-577d-49d8-bf7b-d12536a364f8": {
+            "type": "collection",
+            "settings": {
+              "collection": "gizem-vural"
+            }
+          },
+          "2d0f3d07-d73c-49c4-abee-1b7421302f35": {
+            "type": "collection",
+            "settings": {
+              "collection": "greg-clarke"
+            }
+          },
+          "eae833d7-dc90-4f3a-ba6d-e23e445b3a6f": {
+            "type": "collection",
+            "settings": {
+              "collection": "hannah-michelle-bayley"
+            }
+          },
+          "cf47f2e3-75e3-401b-9938-b780d3b5ae0e": {
+            "type": "collection",
+            "settings": {
+              "collection": "harry-tennant"
+            }
+          },
+          "33c66972-5f72-4948-90e5-bb532a1cef9b": {
+            "type": "collection",
+            "settings": {
+              "collection": "hattie-newman"
+            }
+          },
+          "e1e2083f-c831-4fb9-bb1f-dcdd2740155f": {
+            "type": "collection",
+            "settings": {
+              "collection": "helena-covell"
+            }
+          },
+          "62ad17cd-6f78-4862-9628-1c7d2dd1c9ed": {
+            "type": "collection",
+            "settings": {
+              "collection": "holly-st-clair"
+            }
+          },
+          "de7b09ec-049c-4d17-9adb-1ce2fa086e4d": {
+            "type": "collection",
+            "settings": {
+              "collection": "ilaria-falorsi"
+            }
+          },
+          "17f4f449-fa58-4ee8-9c67-8f32dd4104ff": {
+            "type": "collection",
+            "settings": {
+              "collection": "jack-hudson"
+            }
+          },
+          "f7b64643-a87e-42ec-a870-d3d6143600be": {
+            "type": "collection",
+            "settings": {
+              "collection": "jack-teagle"
+            }
+          },
+          "770cbdc6-65ce-4aa7-a076-bb5a505b1ff1": {
+            "type": "collection",
+            "settings": {
+              "collection": "james-daw"
+            }
+          },
+          "ac46bb0d-3c0d-42d8-8c48-f6ed8c4651e3": {
+            "type": "collection",
+            "settings": {
+              "collection": "jan-buchczik"
+            }
+          },
+          "b2cbb64d-2ea5-47b8-a28c-ad82cbc4cb55": {
+            "type": "collection",
+            "settings": {
+              "collection": "jango-jim"
+            }
+          },
+          "fa5f7091-1fd8-4804-aa1d-a840ee400967": {
+            "type": "collection",
+            "settings": {
+              "collection": "janne-iivonen"
+            }
+          },
+          "0de538dd-91bb-4045-b81c-534f93f22af9": {
+            "type": "collection",
+            "settings": {
+              "collection": "jasper-van-gestel"
+            }
+          },
+          "8ee675da-88f3-401c-b59e-542483abe8f4": {
+            "type": "collection",
+            "settings": {
+              "collection": "jay-cover"
+            }
+          },
+          "3c035ac3-6435-42e1-a316-97beee8ed149": {
+            "type": "collection",
+            "settings": {
+              "collection": "ji-hyun-yu"
+            }
+          },
+          "a89764fd-faf0-4c11-b553-be31efa84db4": {
+            "type": "collection",
+            "settings": {
+              "collection": "jing-wei"
+            }
+          },
+          "8152953b-93e2-491c-becf-14c000b14e28": {
+            "type": "collection",
+            "settings": {
+              "collection": "joe-gamble"
+            }
+          },
+          "f6c3541f-8076-4ee1-b466-909877dd1b0d": {
+            "type": "collection",
+            "settings": {
+              "collection": "joel-burden"
+            }
+          },
+          "527843dd-46b3-4533-90ff-e58efd0a1a0c": {
+            "type": "collection",
+            "settings": {
+              "collection": "john-bond"
+            }
+          },
+          "4c86618a-3622-4c35-b499-8d928c117880": {
+            "type": "collection",
+            "settings": {
+              "collection": "jordan-robertson"
+            }
+          },
+          "453654f2-bcf2-47ac-ba08-2bab94a72b65": {
+            "type": "collection",
+            "settings": {
+              "collection": "joren-joshua"
+            }
+          },
+          "22f54e92-aff4-4cda-932f-ec14b9152b9b": {
+            "type": "collection",
+            "settings": {
+              "collection": "josh-cochran"
+            }
+          },
+          "7fcf8486-f06d-4fcd-8103-2838288758a3": {
+            "type": "collection",
+            "settings": {
+              "collection": "julia-dufosse"
+            }
+          },
+          "93f1b792-7e80-4d45-ad07-6331b3ff7dcc": {
+            "type": "collection",
+            "settings": {
+              "collection": "julianna-brion"
+            }
+          },
+          "2ddf74b4-8b1f-4961-bf4c-f4c6e5d9cc42": {
+            "type": "collection",
+            "settings": {
+              "collection": "katharina-bourjau"
+            }
+          },
+          "bff59067-a57b-4e86-9784-8af926cd86d5": {
+            "type": "collection",
+            "settings": {
+              "collection": "katherina-manolessou"
+            }
+          },
+          "38b9bcc7-90ff-4d66-bf20-aadac31805f7": {
+            "type": "collection",
+            "settings": {
+              "collection": "kati-szilagyi"
+            }
+          },
+          "7e69caa3-e7c0-4567-b06a-702025ac0a4e": {
+            "type": "collection",
+            "settings": {
+              "collection": "keith-negley"
+            }
+          },
+          "300f7544-3ec9-4daa-97b5-aeff9c337c99": {
+            "type": "collection",
+            "settings": {
+              "collection": "kelly-anna"
+            }
+          },
+          "1c1f0dee-32c2-4ba2-bdeb-cf888711763c": {
+            "type": "collection",
+            "settings": {
+              "collection": "kyle-bean"
+            }
+          },
+          "3e36254b-6a42-49a9-aa50-72df82b572cf": {
+            "type": "collection",
+            "settings": {
+              "collection": "lauren-humphrey"
+            }
+          },
+          "76258421-1902-4100-a62c-c17e19f78750": {
+            "type": "collection",
+            "settings": {
+              "collection": "leandro-assis"
+            }
+          },
+          "95fa501a-1571-452d-9a82-4bd995849489": {
+            "type": "collection",
+            "settings": {
+              "collection": "leon-edler"
+            }
+          },
+          "0dc3d4a8-a327-48ce-9b16-c7e84e487323": {
+            "type": "collection",
+            "settings": {
+              "collection": "levi-jacobs"
+            }
+          },
+          "2fbf16ed-1cfe-4873-acb5-14ad5ed9e56c": {
+            "type": "collection",
+            "settings": {
+              "collection": "linzie-hunter"
+            }
+          },
+          "cd3aa3e5-aab7-4fe0-aabe-2919f3d03606": {
+            "type": "collection",
+            "settings": {
+              "collection": "lisa-congdon"
+            }
+          },
+          "6d00314c-e8a7-4880-aa87-aaa18e25020f": {
+            "type": "collection",
+            "settings": {
+              "collection": "lorenzo-gritti"
+            }
+          },
+          "1a1b8fd8-4885-493e-b73e-565e3c872218": {
+            "type": "collection",
+            "settings": {
+              "collection": "louise-rosenkrands"
+            }
+          },
+          "8106a0a6-c621-4560-93ac-58b8a09bd33c": {
+            "type": "collection",
+            "settings": {
+              "collection": "lucy-sherston"
+            }
+          },
+          "1d4918a0-5d74-47ff-bdc8-48197c6465ea": {
+            "type": "collection",
+            "settings": {
+              "collection": "luisa-salas-hola-lou"
+            }
+          },
+          "fb96906c-9880-48b1-a842-3f17a61a923c": {
+            "type": "collection",
+            "settings": {
+              "collection": "lukasz-goledzinowski"
+            }
+          },
+          "f55fe329-e256-41f5-af02-7e23ca32aaed": {
+            "type": "collection",
+            "settings": {
+              "collection": "lydia-ortiz"
+            }
+          },
+          "3f95bf40-55a9-488f-86b7-a9f5a4b435ce": {
+            "type": "collection",
+            "settings": {
+              "collection": "maaike-canne"
+            }
+          },
+          "0c40c8d2-2642-426c-a611-833187c208b7": {
+            "type": "collection",
+            "settings": {
+              "collection": "manny-hernandez"
+            }
+          },
+          "a4641c29-9896-42a3-8ce8-f162ae8a9971": {
+            "type": "collection",
+            "settings": {
+              "collection": "marcello-velho"
+            }
+          },
+          "b154aaa4-ec63-4af3-b1b3-fbd79dafe8cd": {
+            "type": "collection",
+            "settings": {
+              "collection": "marcellus-hall"
+            }
+          },
+          "312ebe00-22dd-47ea-9218-4c1082183e82": {
+            "type": "collection",
+            "settings": {
+              "collection": "marcus-oakley"
+            }
+          },
+          "4d386ee4-71bc-4c4b-9e86-95039b4483c2": {
+            "type": "collection",
+            "settings": {
+              "collection": "martcellia-liunic"
+            }
+          },
+          "b4c59e7e-3b0b-4ee2-9e8a-a003cead4cd5": {
+            "type": "collection",
+            "settings": {
+              "collection": "melanie-johnsson"
+            }
+          },
+          "04a751d7-9cff-418a-ae38-9fe1c4f0ea00": {
+            "type": "collection",
+            "settings": {
+              "collection": "merijn-hos"
+            }
+          },
+          "e12c4549-b252-4bef-ac40-8e338148171d": {
+            "type": "collection",
+            "settings": {
+              "collection": "mister-phil"
+            }
+          },
+          "01f9753c-5439-4dfc-b07f-4ff85cd10b95": {
+            "type": "collection",
+            "settings": {
+              "collection": "molly-fairhurst"
+            }
+          },
+          "8f0b750b-e2e1-426b-9bb4-870f55c0c80d": {
+            "type": "collection",
+            "settings": {
+              "collection": "myriam-van-neste"
+            }
+          },
+          "a31c5fa3-9d1b-4f04-af71-69045f4bb709": {
+            "type": "collection",
+            "settings": {
+              "collection": "nadine-redlich"
+            }
+          },
+          "42280398-cbb6-49bf-be07-7ed1d83a87f9": {
+            "type": "collection",
+            "settings": {
+              "collection": "nicole-rifkin"
+            }
+          },
+          "06be07f2-7e23-4c9f-9384-f533e1fd29d6": {
+            "type": "collection",
+            "settings": {
+              "collection": "ohara-hale"
+            }
+          },
+          "389b14c2-ab55-4e40-ac58-950cb74d2828": {
+            "type": "collection",
+            "settings": {
+              "collection": "olivia-waller"
+            }
+          },
+          "53133fe7-0b89-4768-a8f4-efb4f4e01522": {
+            "type": "collection",
+            "settings": {
+              "collection": "pat-bradbury"
+            }
+          },
+          "41a71d29-1402-4c72-8627-c067a6fb866a": {
+            "type": "collection",
+            "settings": {
+              "collection": "paula-bosco"
+            }
+          },
+          "d76509fa-8f97-444f-afdf-b12f0a2fcccc": {
+            "type": "collection",
+            "settings": {
+              "collection": "pete-gamlen"
+            }
+          },
+          "af71131b-4c82-41de-8edb-633cad0c8f16": {
+            "type": "collection",
+            "settings": {
+              "collection": "pavel-popov"
+            }
+          },
+          "50f2cde1-42a0-4201-be8d-40731546c500": {
+            "type": "collection",
+            "settings": {
+              "collection": "peter-greenwood"
+            }
+          },
+          "ce74248b-d075-4755-8d7b-dab54c0016da": {
+            "type": "collection",
+            "settings": {
+              "collection": "quentin-monge"
+            }
+          },
+          "9fa83432-00e3-4e4b-a5a7-40e3f81b4d70": {
+            "type": "collection",
+            "settings": {
+              "collection": "rachel-joy-price"
+            }
+          },
+          "d474f12d-f119-452c-8133-eb64e46184ee": {
+            "type": "collection",
+            "settings": {
+              "collection": "rebecca-cottrell"
+            }
+          },
+          "8db48363-4c45-4943-9c6c-610583c84871": {
+            "type": "collection",
+            "settings": {
+              "collection": "roberto-blefari"
+            }
+          },
+          "9cbaeea7-c56d-4f69-8558-427d92045b03": {
+            "type": "collection",
+            "settings": {
+              "collection": "roman-muradov"
+            }
+          },
+          "9fbf3f75-7451-4c9a-82ec-91a7cf7b7446": {
+            "type": "collection",
+            "settings": {
+              "collection": "rozalina-burkova"
+            }
+          },
+          "78bf85e2-f1aa-44a5-801f-5d1dc8913322": {
+            "type": "collection",
+            "settings": {
+              "collection": "ryan-carl"
+            }
+          },
+          "64f059b7-738a-4ca5-8575-1a126b4c7513": {
+            "type": "collection",
+            "settings": {
+              "collection": "ryan-gillett"
+            }
+          },
+          "e51524ad-5985-49b3-877d-80fa9eb11c82": {
+            "type": "collection",
+            "settings": {
+              "collection": "sarah-mazzetti"
+            }
+          },
+          "5fbae377-91e5-4ae1-921f-5cfad12cd47d": {
+            "type": "collection",
+            "settings": {
+              "collection": "sarah-boris"
+            }
+          },
+          "44ebd1db-0909-4251-89d2-66d8285fb069": {
+            "type": "collection",
+            "settings": {
+              "collection": "seb-agresti"
+            }
+          },
+          "a82489d9-200c-4847-90ea-cfc186efb82a": {
+            "type": "collection",
+            "settings": {
+              "collection": "sergiy-maidukov"
+            }
+          },
+          "aad56355-d411-4703-9b05-44fb904e61bb": {
+            "type": "collection",
+            "settings": {
+              "collection": "seiko-kato"
+            }
+          },
+          "4655a983-7972-4986-980d-c427c2bdcd98": {
+            "type": "collection",
+            "settings": {
+              "collection": "simone-massoni"
+            }
+          },
+          "aa58230e-0a3b-48cd-adbf-a9bde210adb0": {
+            "type": "collection",
+            "settings": {
+              "collection": "stephen-maurice-graham"
+            }
+          },
+          "3ad96723-0ff1-45ac-a6a4-1cbcd581edea": {
+            "type": "collection",
+            "settings": {
+              "collection": "sue-doeksen"
+            }
+          },
+          "2d4903ac-7c31-4628-8d59-8d78855611e8": {
+            "type": "collection",
+            "settings": {
+              "collection": "suzanna-hubbard"
+            }
+          },
+          "792488be-b77c-4079-8034-83745e2a9054": {
+            "type": "collection",
+            "settings": {
+              "collection": "teresa-sdralevich"
+            }
+          },
+          "a315a936-7ea8-450f-994b-8252f8413f28": {
+            "type": "collection",
+            "settings": {
+              "collection": "tess-smith-roberts"
+            }
+          },
+          "02ece800-d31d-4536-8516-1ed55d2c38e6": {
+            "type": "collection",
+            "settings": {
+              "collection": "timba-smits"
+            }
+          },
+          "31bffabc-c03f-4b1d-a3a8-f9bb62e527da": {
+            "type": "collection",
+            "settings": {
+              "collection": "timo-kuilder"
+            }
+          },
+          "f7d94172-e799-40b0-877e-ddd21e3ccd8c": {
+            "type": "collection",
+            "settings": {
+              "collection": "tomekah-george"
+            }
+          },
+          "af6479d5-7cf3-41d4-8541-8fd0e7b6d412": {
+            "type": "collection",
+            "settings": {
+              "collection": "waldemar-stepien"
+            }
+          },
+          "a1afaf8f-bbc2-47be-8bcb-2754094d4e33": {
+            "type": "collection",
+            "settings": {
+              "collection": "wei-hsuan"
+            }
+          },
+          "72a0c4e1-06cb-4062-8dfb-0d8199dfa02b": {
+            "type": "collection",
+            "settings": {
+              "collection": "wijtze-valkema"
+            }
+          },
+          "a91fc425-8127-453c-ae60-399b715a9768": {
+            "type": "collection",
+            "settings": {
+              "collection": "william-luz"
+            }
+          },
+          "3637e1ad-a47d-4517-8c5b-b4c5969d413a": {
+            "type": "collection",
+            "settings": {
+              "collection": "zhang-liang"
+            }
+          }
+        },
+        "block_order": [
+          "1565558381999",
+          "108a58ba-7f4a-4f7e-96c4-ac40f58aa3b5",
+          "2d89beaf-1265-4cb0-a252-f51896864c92",
+          "186a212c-5471-4f42-b079-8a661f320197",
+          "dbba7b5b-dead-447d-85cf-1bc52bea7c25",
+          "ed5da497-7390-418e-81cd-4d8416599931",
+          "e849b824-6859-45f9-8879-aa79f90d9958",
+          "62746c54-a71c-4779-b5f3-da0e4f00769e",
+          "ca6de937-f0b1-469c-87c6-02c9fb4929e6",
+          "ab933c98-ecc9-44c7-92c0-30fa147aeb41",
+          "e8473157-33c5-426a-be0c-986d50488f9d",
+          "467d034f-5ce4-4e44-8384-9b69d4d5bc01",
+          "4c672229-668d-40af-a056-6ca4fb066097",
+          "f539557e-9476-4ac2-8418-efa0d22d85de",
+          "069ba553-6dec-4acf-a6ef-5f2ce000e88c",
+          "cef718a3-e5f4-45b1-a1a9-b501bfad5bba",
+          "9ab50106-a26c-403b-b2f2-cd8c88ea3f9c",
+          "05c33f6d-29c8-44a2-a208-cfb3af45f50d",
+          "8aa4bcc1-50aa-4825-9b65-33c9422c3a5c",
+          "ccdf173d-8996-45d2-b49a-a1092171b65a",
+          "1e9ee7e6-9f71-46fb-8214-6b38de03f58a",
+          "1a325611-014c-44da-b128-b034e1f31599",
+          "e9edad86-d0e9-4031-b1e0-8f5e355352da",
+          "aab7148a-d419-4911-aef9-be382cfe63fa",
+          "2bae75cc-fd93-40f8-b389-8d6f2da24299",
+          "68bb4810-75d7-4ea7-b127-619afb551963",
+          "af33238f-39d7-4db9-8f29-e72ef9e853f0",
+          "fa733b20-1442-48a2-84f1-364eea367b29",
+          "1d0d50b1-56c5-4f8b-a3ce-dada810983d5",
+          "46ac8a75-573d-4b9e-8af9-a11552be9c81",
+          "ccfe0955-e2ec-470b-9e7f-a6805f94aae3",
+          "3c6a1792-8a1f-4fb7-8465-a1f2bdad6c58",
+          "17428e78-781f-4e6e-bf52-71f6591ab23a",
+          "52e8bbd9-e820-4e92-9e15-d1d6b258e76b",
+          "31686c32-a95e-4182-bf76-27d3b9d451ab",
+          "3283efdc-50fe-40fa-84f5-7d27bf6282dd",
+          "e1f7d84a-f31c-45ad-be24-242f19a7dfb7",
+          "45c1c480-c511-468b-b975-b40170613809",
+          "68140f9e-d633-4b35-9232-28f5224543a0",
+          "154de6e1-a2fa-43ec-92d0-048a3a7f6b2f",
+          "68019c50-dc04-49a1-967d-dc8cc18595ad",
+          "7e5b640b-498c-4545-8c57-77f909ec3511",
+          "c58dd048-8613-4ed4-8804-795b8f5b5d7e",
+          "6339e840-577d-49d8-bf7b-d12536a364f8",
+          "2d0f3d07-d73c-49c4-abee-1b7421302f35",
+          "eae833d7-dc90-4f3a-ba6d-e23e445b3a6f",
+          "cf47f2e3-75e3-401b-9938-b780d3b5ae0e",
+          "33c66972-5f72-4948-90e5-bb532a1cef9b",
+          "e1e2083f-c831-4fb9-bb1f-dcdd2740155f",
+          "62ad17cd-6f78-4862-9628-1c7d2dd1c9ed",
+          "de7b09ec-049c-4d17-9adb-1ce2fa086e4d",
+          "17f4f449-fa58-4ee8-9c67-8f32dd4104ff",
+          "f7b64643-a87e-42ec-a870-d3d6143600be",
+          "770cbdc6-65ce-4aa7-a076-bb5a505b1ff1",
+          "ac46bb0d-3c0d-42d8-8c48-f6ed8c4651e3",
+          "b2cbb64d-2ea5-47b8-a28c-ad82cbc4cb55",
+          "fa5f7091-1fd8-4804-aa1d-a840ee400967",
+          "0de538dd-91bb-4045-b81c-534f93f22af9",
+          "8ee675da-88f3-401c-b59e-542483abe8f4",
+          "3c035ac3-6435-42e1-a316-97beee8ed149",
+          "a89764fd-faf0-4c11-b553-be31efa84db4",
+          "8152953b-93e2-491c-becf-14c000b14e28",
+          "f6c3541f-8076-4ee1-b466-909877dd1b0d",
+          "527843dd-46b3-4533-90ff-e58efd0a1a0c",
+          "4c86618a-3622-4c35-b499-8d928c117880",
+          "453654f2-bcf2-47ac-ba08-2bab94a72b65",
+          "22f54e92-aff4-4cda-932f-ec14b9152b9b",
+          "7fcf8486-f06d-4fcd-8103-2838288758a3",
+          "93f1b792-7e80-4d45-ad07-6331b3ff7dcc",
+          "2ddf74b4-8b1f-4961-bf4c-f4c6e5d9cc42",
+          "bff59067-a57b-4e86-9784-8af926cd86d5",
+          "38b9bcc7-90ff-4d66-bf20-aadac31805f7",
+          "7e69caa3-e7c0-4567-b06a-702025ac0a4e",
+          "300f7544-3ec9-4daa-97b5-aeff9c337c99",
+          "1c1f0dee-32c2-4ba2-bdeb-cf888711763c",
+          "3e36254b-6a42-49a9-aa50-72df82b572cf",
+          "76258421-1902-4100-a62c-c17e19f78750",
+          "95fa501a-1571-452d-9a82-4bd995849489",
+          "0dc3d4a8-a327-48ce-9b16-c7e84e487323",
+          "2fbf16ed-1cfe-4873-acb5-14ad5ed9e56c",
+          "cd3aa3e5-aab7-4fe0-aabe-2919f3d03606",
+          "6d00314c-e8a7-4880-aa87-aaa18e25020f",
+          "1a1b8fd8-4885-493e-b73e-565e3c872218",
+          "8106a0a6-c621-4560-93ac-58b8a09bd33c",
+          "1d4918a0-5d74-47ff-bdc8-48197c6465ea",
+          "fb96906c-9880-48b1-a842-3f17a61a923c",
+          "f55fe329-e256-41f5-af02-7e23ca32aaed",
+          "3f95bf40-55a9-488f-86b7-a9f5a4b435ce",
+          "0c40c8d2-2642-426c-a611-833187c208b7",
+          "a4641c29-9896-42a3-8ce8-f162ae8a9971",
+          "b154aaa4-ec63-4af3-b1b3-fbd79dafe8cd",
+          "312ebe00-22dd-47ea-9218-4c1082183e82",
+          "4d386ee4-71bc-4c4b-9e86-95039b4483c2",
+          "b4c59e7e-3b0b-4ee2-9e8a-a003cead4cd5",
+          "04a751d7-9cff-418a-ae38-9fe1c4f0ea00",
+          "e12c4549-b252-4bef-ac40-8e338148171d",
+          "01f9753c-5439-4dfc-b07f-4ff85cd10b95",
+          "8f0b750b-e2e1-426b-9bb4-870f55c0c80d",
+          "a31c5fa3-9d1b-4f04-af71-69045f4bb709",
+          "42280398-cbb6-49bf-be07-7ed1d83a87f9",
+          "06be07f2-7e23-4c9f-9384-f533e1fd29d6",
+          "389b14c2-ab55-4e40-ac58-950cb74d2828",
+          "53133fe7-0b89-4768-a8f4-efb4f4e01522",
+          "41a71d29-1402-4c72-8627-c067a6fb866a",
+          "d76509fa-8f97-444f-afdf-b12f0a2fcccc",
+          "af71131b-4c82-41de-8edb-633cad0c8f16",
+          "50f2cde1-42a0-4201-be8d-40731546c500",
+          "ce74248b-d075-4755-8d7b-dab54c0016da",
+          "9fa83432-00e3-4e4b-a5a7-40e3f81b4d70",
+          "d474f12d-f119-452c-8133-eb64e46184ee",
+          "8db48363-4c45-4943-9c6c-610583c84871",
+          "9cbaeea7-c56d-4f69-8558-427d92045b03",
+          "9fbf3f75-7451-4c9a-82ec-91a7cf7b7446",
+          "78bf85e2-f1aa-44a5-801f-5d1dc8913322",
+          "64f059b7-738a-4ca5-8575-1a126b4c7513",
+          "e51524ad-5985-49b3-877d-80fa9eb11c82",
+          "5fbae377-91e5-4ae1-921f-5cfad12cd47d",
+          "44ebd1db-0909-4251-89d2-66d8285fb069",
+          "a82489d9-200c-4847-90ea-cfc186efb82a",
+          "aad56355-d411-4703-9b05-44fb904e61bb",
+          "4655a983-7972-4986-980d-c427c2bdcd98",
+          "aa58230e-0a3b-48cd-adbf-a9bde210adb0",
+          "3ad96723-0ff1-45ac-a6a4-1cbcd581edea",
+          "2d4903ac-7c31-4628-8d59-8d78855611e8",
+          "792488be-b77c-4079-8034-83745e2a9054",
+          "a315a936-7ea8-450f-994b-8252f8413f28",
+          "02ece800-d31d-4536-8516-1ed55d2c38e6",
+          "31bffabc-c03f-4b1d-a3a8-f9bb62e527da",
+          "f7d94172-e799-40b0-877e-ddd21e3ccd8c",
+          "af6479d5-7cf3-41d4-8541-8fd0e7b6d412",
+          "a1afaf8f-bbc2-47be-8bcb-2754094d4e33",
+          "72a0c4e1-06cb-4062-8dfb-0d8199dfa02b",
+          "a91fc425-8127-453c-ae60-399b715a9768",
+          "3637e1ad-a47d-4517-8c5b-b4c5969d413a"
+        ],
+        "settings": {
+          "display_type": "selected",
+          "sort": "alphabetical",
+          "grid": 5
+        }
+      },
+      "product-template": {
+        "type": "product-template",
+        "settings": {
+          "product_quantity_enable": false,
+          "vendor_show": false,
+          "social_sharing_products": true,
+          "product_description_position": "right",
+          "show_extra_tab": false,
+          "extra_tab_content": "framing",
+          "product_image_zoom_type": "lightbox",
+          "enable_payment_button": true,
+          "add_to_cart_width": "regular"
+        }
+      },
+      "product-recommendations": {
+        "type": "product-recommendations",
+        "settings": {
+          "show_product_recommendations": true,
+          "heading": "You may also like",
+          "vendor_show": false
+        }
+      },
+      "1564138757180": {
+        "type": "slideshow",
+        "blocks": {
+          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/RF_Site_S8_Banner_2.jpg",
+              "alignment": "center center",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "The new season is here!",
+              "button_label": "Shop exclusive season 8 prints",
+              "button_link": "shopify:\/\/collections\/season-8"
+            }
+          }
+        },
+        "block_order": [
+          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c"
+        ],
+        "settings": {
+          "slider_height": "large",
+          "slider_home_auto": true,
+          "slider_home_rate": 7,
+          "slider_home_transition": "slide",
+          "text_size": "large"
+        }
+      },
+      "article-template": {
+        "type": "article-template",
+        "settings": {
+          "social_sharing_blog": true
+        }
+      },
+      "1564140336829": {
+        "type": "advanced-content",
+        "disabled": true,
+        "blocks": {
+          "1564140336829-0": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"rf-new-product-promotion\">\n  <div class=\"product-promotion-image\">\n    <img src=\"\/\/cdn.shopify.com\/s\/files\/1\/2567\/2510\/t\/5\/assets\/mazetti-1_600x.jpg?1994%0A\">\n  <\/div>\n  <div class=\"rf-wrapper\">\n    <div class=\"product-promotion-header\">\n      <h1>The Kubrick collection<\/h1>\n      <h2>Limited editions<\/h2>\n      <p>To celebrate the Kubrick Exhibition at the Design Museum London, RoomFifty has commissioned six artists to reimagine the iconic posters that accompanied the Director’s films. Originally featuring the work of amazing designers and illustrators, such as Saul Bass and Tomi Ungerer, RoomFifty wanted to celebrate the life and work of these groundbreaking artists.<\/p>\n      <div class=\"rf-button\">\n        <a href=\"collections\/the-kubrick-collection\">Explore collection<\/a>\n      <\/div>\n      <div class=\"product-overview-logo\">\n        <div class=\"product-promotion-logos\">\n        <\/div>\n      <\/div>\n    <\/div>\n  <\/div>\n<\/div>",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
+          }
+        },
+        "block_order": [
+          "1564140336829-0"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "collection-template": {
+        "type": "collection-template",
+        "settings": {
+          "vendor_show": false,
+          "collection_sort_enable": true,
+          "collection_tag_enable": true
+        }
+      },
+      "1564505903027": {
+        "type": "featured-content",
+        "settings": {
+          "section_title": "What people say",
+          "text": "<p>RoomFifty finally offers something that is completely different and unique when it comes to art. I love their concept of less artists and more originality! - <a href=\"http:\/\/lisadawsonstyling.com\/\">Lisa Dawson<\/a><\/p><p>Room Fifty is my first (and last!) stop when it comes to picking up prints for my home or as a gift. The site has a fantastic range of artists and high quality prints at affordable prices. - Josh N<\/p>",
+          "text_size": "large"
+        }
+      },
+      "1564762470087": {
+        "type": "featured-products",
+        "disabled": true,
+        "settings": {
+          "title": "Popular Prints",
+          "home_page_featured_products": "prints",
+          "home_featured_products_row_num": 1
+        }
+      },
+      "1565174826191": {
+        "type": "advanced-content",
+        "blocks": {
+          "1565174826191-0": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"rf-columns-container values\">\n  <div class=\"rf-wrapper\">\n      <div class=\"rf-columns\">\n            <div class=\"rf-col\">\n                <h1>Our prints are<\/h1>\n            <\/div>\n            <div class=\"rf-col\">\n                <div class=\"values-icon\"><svg width=\"91\" height=\"92\" viewbox=\"0 0 91 92\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\" xmlns:xlink=\"http:\/\/www.w3.org\/1999\/xlink\"><defs><path id=\"a\" d=\"M0 0h90.68v45.34H0z\"><\/path><\/defs><g fill=\"none\" fill-rule=\"evenodd\"><path d=\"M2.239 46.09c0-23.804 19.297-43.101 43.101-43.101 23.803 0 43.1 19.297 43.1 43.1\" fill=\"#F4CD0C\"><\/path><g transform=\"translate(0 .75)\"><mask id=\"b\" fill=\"#fff\"><use xlink:href=\"#a\"><\/use><\/mask><path d=\"M86.201 45.34c0-22.531-18.33-40.862-40.862-40.862-22.53 0-40.862 18.33-40.862 40.862M0 45.34C0 20.339 20.34 0 45.34 0c25 0 45.34 20.339 45.34 45.34\" fill=\"#000\" mask=\"url(#b)\"><\/path><\/g><path d=\"M88.44 46.65c0 2.03-.14 4.028-.412 5.984\" stroke=\"#000\" stroke-width=\"4\" stroke-linecap=\"round\"><\/path><path d=\"M85.056 63.42C78.514 78.893 63.195 89.75 45.34 89.75c-19.827 0-36.528-13.388-41.555-31.618\" stroke=\"#000\" stroke-width=\"4\" stroke-linecap=\"round\" stroke-dasharray=\"11.215,11.215\"><\/path><path d=\"M2.651 52.635a43.593 43.593 0 0 1-.412-5.985\" stroke=\"#000\" stroke-width=\"4\" stroke-linecap=\"round\"><\/path><\/g><\/svg><\/div>\n                <h2>Affordable<\/h2>\n                <p>Museum-standard prints starting at just £20.<\/p>\n            <\/div>\n            <div class=\"rf-col\">\n                <div class=\"values-icon\"><svg width=\"114\" height=\"101\" viewbox=\"0 0 114 101\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#FFF\" d=\"M46.777 54.75l-45.845 14 71.094 30 41.194-15z\"><\/path><path d=\"M6.593 69.062L72.05 96.683l35.998-13.108L46.72 56.808 6.593 69.062zm65.744 31.632l-.671-.018-71.094-30 .095-3.886 45.845-14 .635.039 66.443 29-.058 3.865-41.195 15z\" fill=\"#000\"><\/path><path fill=\"#FFF\" d=\"M46.777 37.416l-45.845 14 71.094 30 41.194-15z\"><\/path><path d=\"M6.593 51.728L72.05 79.35l35.998-13.108L46.72 39.476 6.593 51.729zM72.337 83.36l-.671-.017-71.094-30 .095-3.886 45.845-14 .635.039 66.443 29-.058 3.865-41.195 15z\" fill=\"#000\"><\/path><path fill=\"#F4CD0C\" d=\"M46.777 20.084l-45.845 14 71.094 30 41.194-15z\"><\/path><path d=\"M6.593 34.395L72.05 62.016l35.998-13.108L46.72 22.141 6.593 34.397zm65.744 31.632l-.671-.017-71.094-30 .095-3.886 45.845-14 .635.039 66.443 29-.058 3.865-41.195 15z\" fill=\"#000\"><\/path><path fill=\"#FFF\" d=\"M46.777 2.75l-45.845 14 71.094 30 41.194-15z\"><\/path><path d=\"M6.593 17.062L72.05 44.683l35.998-13.108L46.72 4.808 6.593 17.062zm65.744 31.632l-.671-.018-71.094-30 .095-3.886 45.845-14 .635.039 66.443 29-.058 3.865-41.195 15z\" fill=\"#000\"><\/path><\/g><\/svg><\/div>\n                <h2>Unique<\/h2>\n                <p>Our prints are all exclusive to RoomFifty and created by 50 of the most exciting artists working today.<\/p>\n            <\/div>\n            <div class=\"rf-col\">\n                <div class=\"values-icon\"><svg width=\"76\" height=\"114\" viewbox=\"0 0 76 114\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g fill=\"none\" fill-rule=\"evenodd\"><path fill=\"#FFF\" d=\"M2.663 99.319h70.674V2.513H2.663z\"><\/path><path d=\"M2.663 1L1 2.512V99.32l1.663 1.513h70.673L75 99.32V2.512L73.336 1H2.663zm1.662 96.807h67.348V4.025H4.325v93.782z\" stroke=\"#000\" stroke-width=\".5\" fill=\"#000\"><\/path><path fill=\"#FFF\" d=\"M57.723 87.87v24.184l-7.007-6.78.904.226-7.006 6.78V88.096\"><\/path><path fill=\"#000\" d=\"M56.21 87.87v20.615l-4.09-3.958-.133-.495-.904-.226-.402.724-.113-.117-4.442 4.298V88.097h-3.024v24.183l2.564 1.087 5.618-5.438 5.388 5.212 2.563-1.087V87.87z\"><\/path><path d=\"M61.504 78.899c0 5.848-4.74 10.588-10.588 10.588-5.848 0-10.588-4.74-10.588-10.588 0-5.848 4.74-10.588 10.588-10.588 5.848 0 10.588 4.74 10.588 10.588\" fill=\"#F4CD0C\"><\/path><path d=\"M50.916 69.823c-5.004 0-9.075 4.072-9.075 9.076 0 5.004 4.07 9.075 9.075 9.075 5.005 0 9.076-4.07 9.076-9.075 0-5.004-4.071-9.076-9.076-9.076m0 21.177c-6.672 0-12.101-5.429-12.101-12.1 0-6.674 5.429-12.102 12.1-12.102 6.673 0 12.102 5.428 12.102 12.101 0 6.672-5.43 12.101-12.101 12.101\" fill=\"#000\"><\/path><\/g><\/svg><\/div>\n                <h2>High-quality<\/h2>\n                <p>Printed on premium, heavyweight art paper, we use professional, fade-resistant inks to create beautiful prints with incredibly fine detail.<\/p>\n            <\/div>\n            <div class=\"rf-col\">\n                <div class=\"values-icon\"><svg width=\"82\" height=\"108\" viewbox=\"0 0 82 108\" xmlns=\"http:\/\/www.w3.org\/2000\/svg\"><g fill=\"none\" fill-rule=\"evenodd\"><path d=\"M79.84 54c0 21.263-17.237 38.5-38.5 38.5S2.84 75.263 2.84 54s17.237-38.5 38.5-38.5 38.5 17.237 38.5 38.5\" fill=\"#F4CD0C\"><\/path><path d=\"M41.34 17.5c-20.126 0-36.5 16.374-36.5 36.5s16.374 36.5 36.5 36.5 36.5-16.374 36.5-36.5-16.374-36.5-36.5-36.5m0 77C19.008 94.5.84 76.332.84 54s18.168-40.5 40.5-40.5 40.5 18.168 40.5 40.5-18.168 40.5-40.5 40.5M41.34 10a2 2 0 0 1-2-2V2a2 2 0 0 1 4 0v6a2 2 0 0 1-2 2\" fill=\"#000\"><\/path><path d=\"M41.34 36.286a2 2 0 0 1-2-2V21.143a2 2 0 0 1 4 0v13.143a2 2 0 0 1-2 2m0 26.286a2 2 0 0 1-2-2V47.43a2 2 0 0 1 4 0v13.143a2 2 0 0 1-2 2m0 26.285a2 2 0 0 1-2-2V73.714a2 2 0 0 1 4 0v13.143a2 2 0 0 1-2 2M41.34 108a2 2 0 0 1-2-2v-6a2 2 0 0 1 4 0v6a2 2 0 0 1-2 2\" fill=\"#000\"><\/path><\/g><\/svg><\/div>\n                <h2>Ethical<\/h2>\n                <p>As well as 50% of profit going directly to the artist, we ensure that we have a diverse and fair roster of artists.<\/p>\n            <\/div>\n        <\/div>\n      <\/div>\n<\/div>",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
+          }
+        },
+        "block_order": [
+          "1565174826191-0"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "values": {
+        "type": "values",
+        "settings": {}
+      },
+      "mobileNav": {
+        "type": "mobileNav",
+        "settings": {}
+      },
+      "1565433542862": {
+        "type": "featured-content",
+        "settings": {
+          "section_title": "What people say",
+          "text": "<p>The quality of the prints and frame were absolutely impeccable – colours and paper wise.   - Giuditta G<\/p><p>Bright, thoughtful, and relevant art to bring a splash of colour to any home. - Justin S<\/p>",
+          "text_size": "large"
+        }
+      },
+      "1580908854425": {
+        "type": "featured-row",
+        "disabled": true,
+        "settings": {
+          "image": "shopify:\/\/shop_images\/sarah_mazzetti_updated.gif",
+          "layout": "left",
+          "title": "Featured Artist Sara Mazzetti",
+          "text": "<p><strong>Sarah Mazzetti<\/strong> is an award-winning illustrator and comic author living and working between Milan and Bologna. Her client list include The New York Times, The New Yorker, Die Zeit, Mondadori, Feltrinelli, Adobe and many others. She also teaches Illustration at IED (Milan) and co-curates Teiera independent publishing house.<\/p>",
+          "button_label": "View Prints",
+          "button_link": "shopify:\/\/collections\/sarah-mazzetti"
+        }
+      },
+      "1589364306473": {
+        "type": "collection-list",
+        "blocks": {
+          "1589364306473-0": {
+            "type": "collection",
+            "settings": {
+              "collection": "animals"
+            }
+          },
+          "1589364306473-2": {
+            "type": "collection",
+            "settings": {
+              "collection": "muted"
+            }
+          },
+          "1589364415063": {
+            "type": "collection",
+            "settings": {
+              "collection": "monochrome"
+            }
+          },
+          "1589364306473-1": {
+            "type": "collection",
+            "settings": {
+              "collection": "typographical"
+            }
+          },
+          "1589364409013": {
+            "type": "collection",
+            "settings": {
+              "collection": "bold"
+            }
+          },
+          "1589364613922": {
+            "type": "collection",
+            "settings": {
+              "collection": "music"
+            }
+          }
+        },
+        "block_order": [
+          "1589364306473-0",
+          "1589364306473-2",
+          "1589364415063",
+          "1589364306473-1",
+          "1589364409013",
+          "1589364613922"
+        ],
+        "settings": {
+          "title": "Shop by theme",
+          "grid": 3
+        }
+      },
+      "filters": {
+        "type": "filters",
+        "settings": {}
+      },
+      "1604006995af9f27ae": {
+        "type": "advanced-content",
+        "blocks": {
+          "1604006995af9f27ae-0": {
+            "type": "html",
+            "settings": {
+              "code": "<div class=\"rf-logos rf-columns-container values\">\n      <div class=\"rf-wrapper\">\n        <div class=\"rf-columns\">\n          <div class=\"rf-col\">\n            <h1>As Featured in<\/h1>\n          <\/div>\n          <div class=\"rf-col\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2567\/2510\/files\/theg.png?v=1604006457\">\n          <\/div>\n          <div class=\"rf-col\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2567\/2510\/files\/int.png?v=1604006457\">\n          <\/div>\n          <div class=\"rf-col\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2567\/2510\/files\/elle.png?v=1604006457\">\n          <\/div>\n          <div class=\"rf-col\">\n            <img src=\"https:\/\/cdn.shopify.com\/s\/files\/1\/2567\/2510\/files\/sundaytimes.png?v=1604006457\">\n          <\/div>\n        <\/div>\n      <\/div>\n    <\/div>",
+              "width": "100%",
+              "alignment": "top-middle"
+            }
+          }
+        },
+        "block_order": [
+          "1604006995af9f27ae-0"
+        ],
+        "settings": {
+          "title": ""
+        }
+      },
+      "1607335746e882f637": {
+        "type": "featured-products",
+        "settings": {
+          "title": "Shop Season 8",
+          "home_page_featured_products": "season-8",
+          "home_featured_products_row_num": 3
+        }
+      }
+    },
+    "content_for_index": [
+      "1564138757180",
+      "featured-content",
+      "1604006995af9f27ae",
+      "1589364306473",
+      "1565174826191",
+      "featured-products",
+      "1580908854425",
+      "1564762470087",
+      "1565433542862",
+      "1564140336829",
+      "1607335746e882f637",
+      "1564135843653",
+      "1564505903027"
+    ]
+  },
+  "presets": {
+    "Light": {
+      "color_body_bg": "#ffffff",
+      "color_body_text": "#333333",
+      "color_primary_color": "#333333",
+      "color_primary_button_text": "#ffffff",
+      "color_sale_badge": "#c8493f",
+      "color_borders": "#e8e8e8",
+      "color_form": "#f4f4f4",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#333333",
+      "image_overlay_opacity": "25",
+      "type_header_font": "times_new_roman_n4",
+      "type_header_base_size": "28px",
+      "type_base_font": "helvetica_n4",
+      "type_base_size": "15px",
+      "type_button_base_size": "14px",
+      "type_navigation_base_size": "16px",
+      "show_breadcrumb_nav": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_page_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "featured-products",
+        "featured-content"
+      ]
+    },
+    "Beauty": {
+      "color_body_bg": "#f7f7f7",
+      "color_body_text": "#3c4049",
+      "color_primary_color": "#d97c76",
+      "color_primary_button_text": "#ffffff",
+      "color_sale_badge": "#d97c76",
+      "color_borders": "#d7d8d2",
+      "color_form": "#ffffff",
+      "color_image_overlay_text": "#fff",
+      "color_image_overlay": "#3c4049",
+      "image_overlay_opacity": "25",
+      "type_header_font": "pt_serif_n7",
+      "type_header_base_size": "28px",
+      "type_base_font": "pt_serif_n4",
+      "type_base_size": "16px",
+      "type_button_base_size": "12px",
+      "type_navigation_base_size": "16px",
+      "show_breadcrumb_nav": true,
+      "share_facebook": true,
+      "share_twitter": true,
+      "share_pinterest": true,
+      "sections": {
+        "featured-products": {
+          "type": "featured-products",
+          "settings": {
+            "home_page_featured_products": "frontpage"
+          }
+        },
+        "featured-content": {
+          "type": "featured-content",
+          "settings": {}
+        },
+        "footer": {
+          "type": "footer",
+          "blocks": {
+            "footer-0": {
+              "type": "menu",
+              "settings": {
+                "menu": "footer"
+              }
+            }
+          },
+          "block_order": [
+            "footer-0"
+          ],
+          "settings": {}
+        }
+      },
+      "content_for_index": [
+        "featured-products",
+        "featured-content"
+      ]
+    }
+  }
+}

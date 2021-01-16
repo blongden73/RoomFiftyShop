@@ -1,0 +1,20 @@
+<!-- /templates/curate.page.liquid -->
+<div class="curated-wrapper">
+  {% for collection in collections reversed %}
+    {% if collection.title contains 'Edition' %}
+      <div class="curated-content-wrapper">
+        <a href="{{ collection.url }}"></a>
+        <img src="{{site.url}}/{{ collection.image | img_url: '1800x' }}">
+        <div class="rf-wrapper">
+          {% assign collectionTitle = collection.title | split: ' | '%}
+          {% for title in collectionTitle %}
+            <h1>{{title}}</h2>
+          {% endfor %}
+          <div class="collection-description">
+            <p>{{collection.description}}</p>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>

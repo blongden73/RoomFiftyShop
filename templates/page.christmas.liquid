@@ -1,0 +1,64 @@
+<div class="rf-christmas-wrapper">
+  <div class="christmas-frame-wrapper">
+    <div class="christmas-frame__inner">
+      <h1>Merry Christmas from Roomfifty</h1>
+      <p>Open the card to see whats inside</p>
+      <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/mabel.png?v=1607355874">
+    </div>
+    <div class="christmas-frame__inner__background">
+      <div class="christmas__copy">
+        <h1>Today's offer</h1>
+        <h2 class="replace-html"></h2>
+        <p>Use offer code <span class="replace-code"></span> at checkout to get <span class="replace-description"></span></p>
+        <div class="rf-button left">
+          <a href="/collections/all">Shop now</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="christmas-frame-text">
+  <h1>Countdown to Christmas</h1>
+  <h2>Last order for delivery 17th December</h2>
+  <p class="code-placeholder"></p>
+  <div class="rf-button open-cal">
+    Open today's offer
+  </div>
+</div>
+<script>
+var discounts = [
+    { "name":"ChristmasDay10", "description":"10% off all products, when you spend £50 or more", "date":"9-12-2020" },
+    { "name":"ChristmasBOGO", "description":"1 print at 20% off when you buy 1 print", "date":"10-12-2020" },
+    { "name":"Christmas5050", "description":"1 print at 50% off when you buy 2 prints", "date":"11-12-2020" },
+    { "name":"ChristmasGift", "description":"£25 gift card when you spend £125 or more", "date":"12-12-2020" },
+    { "name":"ChristmasFree", "description":"1 free print when you but 4 prints", "date":"13-12-2020" },
+    { "name":"ChristmasGallery", "description":"20% off all products", "date":"14-12-2020" },
+    { "name":"Christmas2020", "description":"£20.00 off all products when you spend £100", "date":"15-12-2020" }
+]
+console.log(discounts);
+var frame = document.querySelector('.christmas-frame__inner');
+var open = document.querySelector('.open-cal');
+var replace = document.querySelector('.replace-html');
+var replaceDescription = document.querySelector('.replace-description');
+var replaceCode = document.querySelector('.replace-code');
+const o_date_en = new Intl.DateTimeFormat('en');
+const a_date_en = o_date_en.formatToParts();
+const date = a_date_en[2].value +'-'+a_date_en[0].value+'-'+a_date_en[4].value;
+console.log(date);
+
+for(i=0; i < discounts.length; i++) {
+  if(discounts[i].date == date){
+    replace.innerHTML = discounts[i].name;
+    replaceDescription.innerHTML = discounts[i].description;
+    replaceCode.innerHTML = discounts[i].name;
+  }
+}
+
+frame.addEventListener('click', function(){
+  this.classList.toggle('open');
+});
+open.addEventListener('click', function(){
+  frame.classList.toggle('open');
+});
+</script>

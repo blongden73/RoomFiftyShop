@@ -1,0 +1,321 @@
+{% if section.settings.show_announcement and section.settings.home_page_only == false or template.name == 'index' %}
+  <style>
+    .announcement-bar--link:hover {
+      {% assign brightness = settings.color_primary_color | color_brightness %}
+
+      {% if brightness <= 224 %}
+        background-color: {{ settings.color_primary_color | color_lighten: 4 }};
+      {% else %}
+        background-color: {{ settings.color_primary_color | color_darken: 8 }};
+      {% endif %}
+    }
+  </style>
+
+  {% if section.settings.announcement_link == blank %}
+    <div class="announcement-bar">
+  {% else %}
+    <a href="{{ section.settings.announcement_link }}" class="announcement-bar announcement-bar--link">
+  {% endif %}
+
+    <p class="announcement-bar__message site-wrapper">{{ section.settings.announcement_text | escape }}</p>
+
+  {% if section.settings.announcement_link == blank %}
+    </div>
+  {% else %}
+    </a>
+  {% endif %}
+{% else %}
+
+{% endif %}
+
+{% unless section.settings.logo == blank %}
+  {%- assign logo_max_height = section.settings.logo_max_width | divided_by: section.settings.logo.aspect_ratio -%}
+  {% if logo_max_height > 600 %}
+    {%- assign logo_max_width = 600 | times: section.settings.logo.aspect_ratio -%}
+  {% else %}
+    {%- assign logo_max_width = section.settings.logo_max_width -%}
+  {% endif %}
+
+  <style>
+    .site-header__logo {
+      width: {{ logo_max_width | escape | default: '150' | remove: 'px' | append: 'px'}};
+    }
+    #HeaderLogoWrapper {
+      max-width: {{ logo_max_width | escape | default: '150' | remove: 'px' | append: 'px'}} !important;
+    }
+  </style>
+{% endunless %}
+
+<header class="site-header grid medium-up--grid--table" role="banner">
+  <div class="rf-wrapper">
+  <div class="grid__item small--text-center">
+    <div itemscope itemtype="http://schema.org/Organization">
+      {% comment %}
+      Use the uploaded logo from theme settings if enabled.
+      Site name uses `h1` tag on homepage, div on other pages.
+      {% endcomment %}
+      {%- assign img_url = section.settings.logo | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+      {% assign width = section.settings.logo_max_width | times: 1 %}
+      {% include 'image-style' with image: section.settings.logo, width: width, height: 600, small_style: false, wrapper_id: 'HeaderLogoWrapper', img_id: 'HeaderLogo' %}
+
+      {% if section.settings.logo %}
+      <div id="HeaderLogoWrapper" class="supports-js">
+        <a href="/" itemprop="url" style="padding-top:{{ 1 | divided_by: section.settings.logo.aspect_ratio | times: 100}}%; display: block;">
+          <img id="HeaderLogo"
+               class="lazyload"
+               src="{{ section.settings.logo | img_url: '150x150' }}"
+               data-src="{{ img_url }}"
+               data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+               data-aspectratio="{{ product.featured_image.aspect_ratio }}"
+               data-sizes="auto"
+               alt="{{ section.settings.logo.alt | default: shop.name }}"
+               itemprop="logo">
+        </a>
+      </div>
+      <noscript>
+        {% capture image_size %}{{ section.settings.logo_max_width | escape }}x{% endcapture %}
+        <a href="/" itemprop="url">
+          <img class="site-header__logo" src="{{ section.settings.logo | img_url: image_size }}"
+               srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
+               alt="{{ section.settings.logo.alt | default: shop.name }}"
+               itemprop="logo">
+        </a>
+      </noscript>
+      {% if template.name == 'index' %}
+      <h1 class="visually-hidden">{{ shop.name }}</h1>
+      {% endif %}
+      {% else %}
+      {% if template.name == 'index' %}
+      <h1 class="site-header__site-name">
+        <a href="/" itemprop="url">{{ shop.name }}</a>
+      </h1>
+      {% else %}
+      <a href="/" class="site-header__site-name h1" itemprop="url">
+        {{ shop.name }}
+      </a>
+      {% if template.name == 'index' %}
+      <h1 class="visually-hidden">{{ shop.name }}</h1>
+      {% endif %}
+      {% endif %}
+      {% endif %}
+    </div>
+    {% include "menu" %}
+  </div>
+  </div>
+</header>
+
+
+
+{% schema %}
+{
+  "name": {
+    "de": "Titel",
+    "en": "Header",
+    "es": "Encabezado",
+    "fr": "En-tête",
+    "it": "Header",
+    "ja": "ヘッダー",
+    "nl": "Koptekst",
+    "pt-BR": "Cabeçalho",
+    "zh-CN": "标头",
+    "zh-TW": "標頭"
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": {
+        "de": "Logo",
+        "en": "Logo",
+        "es": "Logotipo",
+        "fr": "Logo",
+        "it": "Logo",
+        "ja": "ロゴ",
+        "nl": "Logo",
+        "pt-BR": "Logotipo",
+        "zh-CN": "logo",
+        "zh-TW": "商標"
+      }
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": {
+        "de": "Logo-Foto",
+        "en": "Logo image",
+        "es": "Imagen del logotipo",
+        "fr": "Image du logo",
+        "it": "Immagine del logo",
+        "ja": "ロゴ画像",
+        "nl": "Afbeelding van logo",
+        "pt-BR": "Imagem do logotipo",
+        "zh-CN": "logo 图片",
+        "zh-TW": "標誌圖片"
+      }
+    },
+    {
+      "type": "text",
+      "id": "logo_max_width",
+      "label": {
+        "de": "Benutzerdefinierte Logobreite (Pixel)",
+        "en": "Custom logo width (in pixels)",
+        "es": "Ancho del logotipo personalizado (en píxeles)",
+        "fr": "Largeur personnalisée du logo (en pixels)",
+        "it": "Larghezza logo personalizzato (in pixel)",
+        "ja": "ロゴの幅をカスタムする（ピクセルで）",
+        "nl": "Aangepaste logobreedte (in pixels)",
+        "pt-BR": "Largura do logotipo personalizado (em pixels)",
+        "zh-CN": "自定义 logo 宽度（像素）",
+        "zh-TW": "自訂標誌寬度 (單位為像素)"
+      },
+      "default": {
+        "de": "150",
+        "en": "150",
+        "es": "150",
+        "fr": "150",
+        "it": "150",
+        "ja": "150",
+        "nl": "150",
+        "pt-BR": "150",
+        "zh-CN": "150",
+        "zh-TW": "150"
+      }
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Ankündigungsleiste",
+        "en": "Announcement bar",
+        "es": "Barra de anuncios",
+        "fr": "Barre d'annonces",
+        "it": "Barra degli annunci",
+        "ja": "告知バー",
+        "nl": "Aankondigingsbalk",
+        "pt-BR": "Barra de anúncio",
+        "zh-CN": "公告栏",
+        "zh-TW": "公告列"
+      }
+    },
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": {
+        "de": "Ankündigung anzeigen",
+        "en": "Show announcement",
+        "es": "Mostrar anuncio",
+        "fr": "Afficher l'annonce",
+        "it": "Mostra annuncio",
+        "ja": "告知を表示する",
+        "nl": "Aankondiging weergeven",
+        "pt-BR": "Exibir anúncio",
+        "zh-CN": "显示公告",
+        "zh-TW": "顯示公告"
+      },
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "home_page_only",
+      "label": {
+        "de": "Nur Startseite",
+        "en": "Home page only",
+        "es": "Solo página de inicio",
+        "fr": "Page d'accueil uniquement",
+        "it": "Solo home page",
+        "ja": "ホームページのみ",
+        "nl": "Alleen startpagina",
+        "pt-BR": "Apenas página inicial",
+        "zh-CN": "仅主页",
+        "zh-TW": "僅限首頁"
+      },
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "announcement_text",
+      "label": {
+        "de": "Ankündigungstext",
+        "en": "Announcement text",
+        "es": "Texto del anuncio",
+        "fr": "Texte d'annonce",
+        "it": "Testo annuncio",
+        "ja": "告知テキスト",
+        "nl": "Aankondigingstekst",
+        "pt-BR": "Texto do anúncio",
+        "zh-CN": "公告文本",
+        "zh-TW": "公告文字"
+      },
+      "default": {
+        "de": "Hier etwas ankündigen",
+        "en": "Announce something here",
+        "es": "Anuncia algo aquí",
+        "fr": "Annoncez quelque chose ici",
+        "it": "Annuncia qualcosa qui",
+        "ja": "ここで告知してください",
+        "nl": "Kondig hier iets aan",
+        "pt-BR": "Anuncie algo aqui",
+        "zh-CN": "在此处进行公告",
+        "zh-TW": "在此公告資訊"
+      }
+    },
+    {
+      "type": "url",
+      "id": "announcement_link",
+      "label": {
+        "de": "Ankündigungslink",
+        "en": "Announcement link",
+        "es": "Enlace de anuncio",
+        "fr": "Lien d'annonce",
+        "it": "Link annuncio",
+        "ja": "告知リンク",
+        "nl": "Aankondigingslink",
+        "pt-BR": "Link de anúncio",
+        "zh-CN": "公告链接",
+        "zh-TW": "公告連結"
+      },
+      "info": {
+        "de": "Optional",
+        "en": "Optional",
+        "es": "Opcional",
+        "fr": "Facultatif",
+        "it": "Facoltativo",
+        "ja": "選択させる",
+        "nl": "Optioneel",
+        "pt-BR": "Opcional",
+        "zh-CN": "可选",
+        "zh-TW": "(選填)"
+      }
+    },
+    {
+      "type": "header",
+      "content": {
+        "de": "Tagline",
+        "en": "Tagline",
+        "es": "Eslogan",
+        "fr": "Slogan",
+        "it": "Tagline",
+        "ja": "タグライン",
+        "nl": "Tagline",
+        "pt-BR": "Tagline",
+        "zh-CN": "标语",
+        "zh-TW": "標語"
+      }
+    },
+    {
+      "type": "richtext",
+      "id": "tagline",
+      "label": {
+        "de": "Text",
+        "en": "Text",
+        "es": "Texto",
+        "fr": "Texte",
+        "it": "Testo",
+        "ja": "テキスト",
+        "nl": "Tekst",
+        "pt-BR": "Texto",
+        "zh-CN": "文本",
+        "zh-TW": "文字"
+      }
+    }
+  ]
+}
+{% endschema %}

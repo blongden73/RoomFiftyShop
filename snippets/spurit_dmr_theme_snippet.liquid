@@ -1,0 +1,37 @@
+<script>
+  if(typeof(Spurit) === 'undefined'){
+    var Spurit = {};
+  }
+  if(!Spurit.Discountmanager){
+    Spurit.Discountmanager = {};
+  }
+  if(!Spurit.Discountmanager.snippet){
+    Spurit.Discountmanager.snippet = {};
+  }
+
+  if (!Spurit.Discountmanager.snippet.products) {
+    Spurit.Discountmanager.snippet.products = {};
+  }
+
+  Spurit.Discountmanager.snippet.shopHash = 'e783c0d8c3214dc34aed00346fc358e9';
+
+  Spurit.Discountmanager.snippet.appDataFile = '{{"dmr.js" | asset_url }}';
+
+  {% if collection %}
+      {% paginate collection.products %}
+          {% for product in collection.products %}
+              Spurit.Discountmanager.snippet.products['{{product.handle}}'] = {{product.id}};
+          {% endfor %}
+      {% endpaginate %}
+  {% endif %}
+  {% if product %}
+      Spurit.Discountmanager.snippet.product = {{product.id}};
+  {% endif %}
+</script>
+{% assign commonLoad = true %}
+{% if request.page_type == 'collection' or request.page_type == 'search' or request.page_type == 'product' %}
+  {% if commonLoad %}
+          <script src="https://amaicdn.com/discountmanager/common.js"></script>
+      <link href="https://amaicdn.com/discountmanager/common.css" rel="stylesheet" type="text/css" media="all">
+      {% endif %}
+{% endif %}

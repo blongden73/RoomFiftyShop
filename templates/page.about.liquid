@@ -1,0 +1,57 @@
+<!-- /templates/about.page.liquid -->
+{% assign image = page.metafields.topImage %}
+{% assign name = page.metafields.names %}
+{% assign description = page.metafields.descriptions %}
+{% assign info = page.metafields.info %}
+
+
+
+<h1 class="small--text-center about-title">{{ page.title }}</h1>
+
+
+<div class="rte about-rte">
+  <div class="rf-wrapper products-wrapper">
+    <div class="inner-content-wrapper">
+      {{ page.content }}
+    </div>
+  </div>
+</div>
+<div class="rf-wrapper products-wrapper">
+  <main class="main-content" id="MainContent" role="main">
+    <div class="rf-columns about-columns">
+      <div class="rf-col">
+        <img src="{{image.leon}}">
+        <h2>{{name.leon}}</h2>
+        <p>{{description.leon}}</p>
+      </div>
+      <div class="rf-col">
+        <img src="{{image.Chris}}">
+        <h2>{{name.chris}}</h2>
+        <p>{{description.Chris}}</p>
+      </div>
+      <div class="rf-col">
+        <img src="{{image.Ben}}">
+        <h2>{{name.Ben}}</h2>
+        <p>{{description.ben}}</p>
+      </div>
+      <div class="rf-col">
+        <img src="{{image.ellie}}">
+        <h2>{{name.ellie}}</h2>
+        <p>{{description.ellie}}</p>
+      </div>
+      <div class="rf-col">
+        <img src="{{image.mabel}}">
+        <h2>{{name.Mabel}}</h2>
+        <p>{{description.Mabel}}</p>
+      </div>
+    </div>
+
+    <div class="about-extra">
+      <div class="inner-content-wrapper">
+        {{info.extra}}
+      </div>
+    </div>
+  </main>
+</div>
+
+{% section 'values' %}

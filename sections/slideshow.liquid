@@ -1,0 +1,843 @@
+{%- case section.settings.slider_height -%}
+  {%- when 'small' -%}
+    {%- assign slider_desktop_height = '400px' -%}
+    {%- assign slider_mobile_height = '250px' -%}
+  {%- when 'medium' -%}
+    {%- assign slider_desktop_height = '500px' -%}
+    {%- assign slider_mobile_height = '300px' -%}
+  {%- when 'large' -%}
+    {%- assign slider_desktop_height = '600px' -%}
+    {%- assign slider_mobile_height = '400px' -%}
+  {%- when 'adapt' -%}
+    {%- assign min_aspect_ratio = section.blocks[0].settings.image.aspect_ratio | default: 2.0 -%}
+{%- endcase -%}
+
+{%- unless section.settings.slider_height == 'adapt' -%}
+  {%- style -%}
+    #flexslider--{{ section.id }} .slides__slide,
+    #flexslider--{{ section.id }} .slides__image,
+    #flexslider--{{ section.id }} .slides svg {
+      height: {{ slider_desktop_height }};
+    }
+
+    @media screen and (max-width: 768px) {
+      #flexslider--{{ section.id }} .slides__slide,
+      #flexslider--{{ section.id }} .slides__image,
+      #flexslider--{{ section.id }} .slides svg {
+        height: {{ slider_mobile_height }};
+      }
+    }
+  {%- endstyle -%}
+{%- endunless -%}
+
+{%- if section.blocks.size > 0 -%}
+  {%- assign arrow_offset = section.blocks.size | times: 10 | plus: 60 -%}
+  {%- style -%}
+    .slider__controls-button--prev {
+      left: calc(50% - {{ arrow_offset }}px);
+    }
+    .slider__controls-button--next {
+      right: calc(50% - {{ arrow_offset }}px);
+    }
+    {%- if section.settings.slider_height == 'adapt' -%}
+      {%- if section.settings.slider_home_transition == 'fade' -%}
+        #flexslider--{{ section.id }} .slides {
+          padding-top: {{ 100.0 | divided_by: min_aspect_ratio }}%;
+        }
+      {%- else -%}
+        #flexslider--{{ section.id }} .flex-viewport {
+          padding-top: {{ 100.0 | divided_by: min_aspect_ratio }}%;
+        }
+      {%- endif -%}
+    {%- endif -%}
+  {%- endstyle -%}
+  <div class="index-section slideshow-container"
+       role="region"
+       tabindex="-1"
+       aria-label="slideshow"
+       aria-describedby="slideshow-info">
+    <div class="flexslider flexslider--{{ section.settings.slider_home_transition }}{% if section.settings.slider_height ==  'adapt' %} flexslider--adapt{% endif %}"
+         id="flexslider--{{ section.id }}"
+         data-section-id="{{ section.id }}"
+         data-section-type="slideshow-section"
+         data-transition="{{ section.settings.slider_home_transition }}"
+         data-autoplay="{{ section.settings.slider_home_auto }}"
+         data-speed="{{ section.settings.slider_home_rate | times: 1000 }}"
+         data-slide-nav-a11y="{{ 'homepage.slideshow.load_slide' | t: slide_number: '[slide_number]' }}"
+         data-slide-nav-active-a11y="{{ 'homepage.slideshow.active_slide' | t: slide_number: '[slide_number]' }}">
+      <ul class="slides supports-js">
+        {%- for block in section.blocks -%}
+          {%- assign img_url = block.settings.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+          {%- if block.settings.image.width < max_width -%}
+            {%- assign slide_width = block.settings.image.width -%}
+          {%- endif -%}
+
+          {%- style -%}
+            #slide--{{ block.id }} .slides__title,
+            #slide--{{ block.id }}_clone .slides__title {
+              color: {{ block.settings.color_text }};
+            }
+            #slide--{{ block.id }}:not(.slide-hide)::before, #slide--{{ block.id }}_clone:not(.slide-hide)::before {
+              opacity: {{ block.settings.overlay_opacity | divided_by: 100.00 }};
+            }
+          {%- endstyle -%}
+            <li id="slide--{{ block.id }}"
+              class="slides__slide slide-hide"
+              data-slider-item
+              data-flexslider-index="{{ forloop.index0 }}"
+              {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img class="slides__image lazyload{% unless forloop.first == true %} lazypreload{% endunless %}"
+                    src="{{ block.settings.image | img_url: '300x300' }}"
+                    data-src="{{ img_url }}"
+                    data-widths="[180, 360, 470, 600, 770, 970, 1060, 1280, 1512, 1728, 2048]"
+                    data-aspectratio="{{ block.settings.image.aspect_ratio }}"
+                    data-sizes="auto"
+                    style="{%- if slide_width <= max_width -%}
+                             {%- assign min_width = slide_width | times: 100 | divided_by: max_width -%}
+                             min-width: {{ min_width }}%;
+                           {%- endif -%}
+                           object-position: {{ block.settings.alignment }};"
+                    alt="{{ block.settings.image.alt | escape }}">
+            {%- else -%}
+              <span>
+                {% capture current %}{% cycle 1, 2 %}{% endcapture %}
+                {{ 'lifestyle-' | append: current | placeholder_svg_tag: 'placeholder-svg' }}
+              </span>
+            {%- endif -%}
+
+            {%- assign show_link_button = false -%}
+            {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+              {%- assign show_link_button = true -%}
+            {%- endif -%}
+            {%- unless block.settings.slide_heading == blank and show_link_button == false -%}
+              <div class="rf-wrapper slideshow-container">
+                <div class="slides__text-content text-{{ block.settings.text_alignment }}">
+                  <div class="slides-text-content-wrapper-{{ block.settings.text_alignment }}">
+                    {%- unless block.settings.slide_heading == blank -%}
+                      <h2 class="slides__title slides__title--{{ section.settings.text_size }} h1">
+                        {{ block.settings.slide_heading | escape }}
+                      </h2>
+                    {%- endunless -%}
+                    {%- if show_link_button -%}
+                      <a href="{{ block.settings.button_link }}" class="slides__btn btn">
+                        {{ block.settings.button_label | escape }}
+                      </a>
+                    {%- endif -%}
+                  </div>
+                </div>
+              </div>
+            {%- endunless -%}
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <noscript>
+        {{ section.blocks[0].settings.image | img_url: '970x', scale: 2 | img_tag: block.settings.image.alt }}
+      </noscript>
+    </div>
+    <div class="slideshow__mobile-text-container">
+      {%- for block in section.blocks -%}
+        {%- assign show_link_button = false -%}
+        {%- if block.settings.button_label != blank and block.settings.button_link != blank -%}
+          {%- assign show_link_button = true -%}
+        {%- endif -%}
+        {%- unless block.settings.slide_heading == blank and show_link_button == false -%}
+          <div class="slides__text-content slides__text-content--mobile text-center" data-mobile-slide-text="{{ forloop.index0 }}" data-text-mobile>
+            {%- unless block.settings.slide_heading == blank -%}
+              <h2 class="slides__title slides__title--mobile slides__title--{{ section.settings.text_size }} h1">
+                {{ block.settings.slide_heading | escape }}
+              </h2>
+            {%- endunless -%}
+            {%- if show_link_button -%}
+              <a href="{{ block.settings.button_link }}" class="slides__btn slides__btn--mobile btn">
+                {{ block.settings.button_label | escape }}
+              </a>
+            {%- endif -%}
+          </div>
+        {%- endunless -%}
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}
+
+
+
+{% schema %}
+{
+  "name": {
+    "de": "Slideshow",
+    "en": "Slideshow",
+    "es": "Diapositivas",
+    "fr": "Diaporama",
+    "it": "Presentazione",
+    "ja": "スライドショー",
+    "nl": "Diavoorstelling",
+    "pt-BR": "Apresentação de slides",
+    "zh-CN": "幻灯片",
+    "zh-TW": "投影片輪播"
+  },
+  "class": "shopify-slideshow-section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "select",
+      "id": "slider_height",
+      "label": {
+        "de": "Diahöhe",
+        "en": "Slide height",
+        "es": "Altura de diapositiva",
+        "fr": "Hauteur de la diapositive",
+        "it": "Altezza slide",
+        "ja": "スライドの高さ",
+        "nl": "Diahoogte",
+        "pt-BR": "Altura do slide",
+        "zh-CN": "幻灯片高度",
+        "zh-TW": "投影片高度"
+      },
+      "info": {
+        "de": "Mehr über [Slideshow-Richtlinien](https://help.shopify.com/de/manual/using-themes/themes-by-shopify/simple)",
+        "en": "Learn more about [slideshow guidelines](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "es": "Más información sobre [pautas de presentación de diapositivas](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "fr": "En savoir plus sur les [instructions de diaporama](https://help.shopify.com/fr/manual/using-themes/themes-by-shopify/simple)",
+        "it": "Maggiori informazioni sulle [linee guida per le presentazioni](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "ja": "[スライドショーのガイドライン](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)に関する詳細情報はこちら",
+        "nl": "Meer informatie over [slideshow guidelines](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "pt-BR": "Saiba mais sobre [orientações de apresentação de slides](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "zh-CN": "详细了解[幻灯片指南](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)",
+        "zh-TW": "深入瞭解 [投影片輪播準則](https://help.shopify.com/en/manual/using-themes/themes-by-shopify/simple)"
+      },
+      "options": [
+        {
+          "value": "small",
+          "label": {
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeño",
+            "fr": "Petite",
+            "it": "Small",
+            "ja": "小",
+            "nl": "Klein",
+            "pt-BR": "Pequeno",
+            "zh-CN": "小",
+            "zh-TW": "小型"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "de": "Mitte",
+            "en": "Medium",
+            "es": "Mediano",
+            "fr": "Moyenne",
+            "it": "Medium",
+            "ja": "中",
+            "nl": "Gemiddeld",
+            "pt-BR": "Médio",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Large",
+            "ja": "大",
+            "nl": "Groot",
+            "pt-BR": "Grande",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          }
+        },
+        {
+          "value": "adapt",
+          "label": {
+            "de": "An erste Folie anpassen",
+            "en": "Adapt to first slide",
+            "es": "Adaptar a la primera diapositiva",
+            "fr": "Adapter à la première diapositive",
+            "it": "Adatta alla prima slide",
+            "ja": "最初のスライドに適応する",
+            "nl": "Aanpassen aan eerste dia",
+            "pt-BR": "Adaptar ao primeiro slide",
+            "zh-CN": "适应第一张幻灯片",
+            "zh-TW": "配合第一張投影片"
+          }
+        }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_home_auto",
+      "label": {
+        "de": "Auto-rotieren der Slides",
+        "en": "Auto-rotate slides",
+        "es": "Rotar las diapositivas automáticamente",
+        "fr": "Rotation automatique des diapositives",
+        "it": "Ruota slide automaticamente",
+        "ja": "スライドの自動切り替え",
+        "nl": "Dia's automatisch draaien",
+        "pt-BR": "Rodar automaticamente os slides",
+        "zh-CN": "自动旋转幻灯片",
+        "zh-TW": "自動旋轉投影片"
+      }
+    },
+    {
+      "type": "range",
+      "id": "slider_home_rate",
+      "label": {
+        "de": "Slides überall ändern",
+        "en": "Change slides every",
+        "es": "Cambiar diapositivas cada",
+        "fr": "Changer de diapositive toutes les",
+        "it": "Cambia slide ogni",
+        "ja": "スライドを変更する間隔",
+        "nl": "Wijzig dia's elke",
+        "pt-BR": "Mude os slides a cada",
+        "zh-CN": "幻灯片更改时间间隔",
+        "zh-TW": "每過以下時間即變更投影片"
+      },
+      "min": 3,
+      "max": 9,
+      "step": 2,
+      "unit": {
+        "de": " s",
+        "en": " s",
+        "es": " s",
+        "fr": " s",
+        "it": " s",
+        "ja": " s",
+        "nl": " s",
+        "pt-BR": " s",
+        "zh-CN": " s",
+        "zh-TW": " s"
+      },
+      "default": 7
+    },
+    {
+      "type": "select",
+      "id": "slider_home_transition",
+      "label": {
+        "de": "Übergangseffekt",
+        "en": "Transition effect",
+        "es": "Efecto de transición",
+        "fr": "Effet de transition",
+        "it": "Effetto di transizione",
+        "ja": "トランジション効果",
+        "nl": "Overgangseffect",
+        "pt-BR": "Efeito de transição",
+        "zh-CN": "过渡效果",
+        "zh-TW": "轉場效果"
+      },
+      "options": [
+        {
+          "value": "fade",
+          "label": {
+            "de": "Ausblenden",
+            "en": "Fade",
+            "es": "Desvanecer",
+            "fr": "Fondu",
+            "it": "Dissolvenza",
+            "ja": "フェード",
+            "nl": "Vervagen",
+            "pt-BR": "Apagamento",
+            "zh-CN": "淡化",
+            "zh-TW": "淡出"
+          }
+        },
+        {
+          "value": "slide",
+          "label": {
+            "de": "Folie",
+            "en": "Slide",
+            "es": "Deslizar",
+            "fr": "Diapositive",
+            "it": "Slide",
+            "ja": "スライド",
+            "nl": "Dia",
+            "pt-BR": "Slide",
+            "zh-CN": "幻灯片",
+            "zh-TW": "投影片"
+          }
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "text_size",
+      "label": {
+        "de": "Textgröße",
+        "en": "Text size",
+        "es": "Tamaño del texto",
+        "fr": "Taille du texte",
+        "it": "Dimensione testo",
+        "ja": "文字サイズ",
+        "nl": "Tekengrootte",
+        "pt-BR": "Tamanho do texto",
+        "zh-CN": "文本大小",
+        "zh-TW": "文字尺寸"
+      },
+      "default": "medium",
+      "options": [
+        {
+          "value": "small",
+          "label": {
+            "de": "Klein",
+            "en": "Small",
+            "es": "Pequeño",
+            "fr": "Petite",
+            "it": "Small",
+            "ja": "小",
+            "nl": "Klein",
+            "pt-BR": "Pequeno",
+            "zh-CN": "小",
+            "zh-TW": "小型"
+          }
+        },
+        {
+          "value": "medium",
+          "label": {
+            "de": "Mitte",
+            "en": "Medium",
+            "es": "Mediano",
+            "fr": "Moyenne",
+            "it": "Medium",
+            "ja": "中",
+            "nl": "Gemiddeld",
+            "pt-BR": "Médio",
+            "zh-CN": "中等",
+            "zh-TW": "中等"
+          }
+        },
+        {
+          "value": "large",
+          "label": {
+            "de": "Groß",
+            "en": "Large",
+            "es": "Grande",
+            "fr": "Grande",
+            "it": "Large",
+            "ja": "大",
+            "nl": "Groot",
+            "pt-BR": "Grande",
+            "zh-CN": "大",
+            "zh-TW": "大型"
+          }
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image",
+      "name": {
+        "de": "Folie",
+        "en": "Slide",
+        "es": "Diapositiva",
+        "fr": "Diapositive",
+        "it": "Slide",
+        "ja": "スライド",
+        "nl": "Dia",
+        "pt-BR": "Slide",
+        "zh-CN": "幻灯片",
+        "zh-TW": "投影片"
+      },
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": {
+            "de": "Foto",
+            "en": "Image",
+            "es": "Imagen",
+            "fr": "Image",
+            "it": "Immagine",
+            "ja": "画像",
+            "nl": "Afbeelding",
+            "pt-BR": "Imagem",
+            "zh-CN": "图片",
+            "zh-TW": "圖片"
+          }
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": {
+            "de": "Foto-Position",
+            "en": "Image position",
+            "es": "Posición de la imagen",
+            "fr": "Position de l'image",
+            "it": "Posizione Immagine",
+            "ja": "画像の位置",
+            "nl": "Afbeeldingspositie",
+            "pt-BR": "Posição da imagem",
+            "zh-CN": "图片位置",
+            "zh-TW": "圖片位置"
+          },
+          "default": "center center",
+          "options": [
+            {
+              "label": {
+                "de": "Oben links",
+                "en": "Top left",
+                "es": "Superior izquierda",
+                "fr": "En haut à gauche",
+                "it": "In alto a sinistra",
+                "ja": "左上",
+                "nl": "Linksboven",
+                "pt-BR": "Superior esquerdo",
+                "zh-CN": "左上方",
+                "zh-TW": "左上角"
+              },
+              "value": "left top"
+            },
+            {
+              "label": {
+                "de": "Oben Mitte",
+                "en": "Top center",
+                "es": "Superior centrada",
+                "fr": "En haut au centre",
+                "it": "In alto al centro",
+                "ja": "中央上",
+                "nl": "Midden boven",
+                "pt-BR": "Superior centro",
+                "zh-CN": "顶部居中",
+                "zh-TW": "中央上方"
+              },
+              "value": "center top"
+            },
+            {
+              "label": {
+                "de": "Oben rechts",
+                "en": "Top right",
+                "es": "Superior derecha",
+                "fr": "En haut à droite",
+                "it": "In alto a destra",
+                "ja": "右上",
+                "nl": "Rechtsboven",
+                "pt-BR": "Superior direito",
+                "zh-CN": "右上方",
+                "zh-TW": "右上角"
+              },
+              "value": "right top"
+            },
+            {
+              "label": {
+                "de": "Mitte links",
+                "en": "Middle left",
+                "es": "Al medio a la izquierda",
+                "fr": "Au milieu à gauche",
+                "it": "Nel mezzo a sinistra",
+                "ja": "中央左",
+                "nl": "Midden links",
+                "pt-BR": "Meio esquerdo",
+                "zh-CN": "中间居左",
+                "zh-TW": "中央左方"
+              },
+              "value": "left center"
+            },
+            {
+              "label": {
+                "de": "Mitte mittig",
+                "en": "Middle center",
+                "es": "Al medio centrada",
+                "fr": "Centrée au milieu",
+                "it": "In mezzo",
+                "ja": "中央中",
+                "nl": "Midden centrum",
+                "pt-BR": "Meio centro",
+                "zh-CN": "中间居中",
+                "zh-TW": "正中央"
+              },
+              "value": "center center"
+            },
+            {
+              "label": {
+                "de": "Mitte rechts",
+                "en": "Middle right",
+                "es": "Al medio a la derecha",
+                "fr": "Au milieu à droite",
+                "it": "Nel mezzo a destra",
+                "ja": "中央右",
+                "nl": "Midden rechts",
+                "pt-BR": "Meio direito",
+                "zh-CN": "中间居右",
+                "zh-TW": "中央右方"
+              },
+              "value": "right center"
+            },
+            {
+              "label": {
+                "de": "Unten links",
+                "en": "Bottom left",
+                "es": "Inferior izquierda",
+                "fr": "En bas à gauche",
+                "it": "In basso a sinistra",
+                "ja": "左下",
+                "nl": "Linksonder",
+                "pt-BR": "Inferior esquerdo",
+                "zh-CN": "左下方",
+                "zh-TW": "左下角"
+              },
+              "value": "left bottom"
+            },
+            {
+              "label": {
+                "de": "Unten mittig",
+                "en": "Bottom center",
+                "es": "Inferior centrada",
+                "fr": "En bas au centre",
+                "it": "In basso al centro",
+                "ja": "中央下",
+                "nl": "Midden onder",
+                "pt-BR": "Inferior centro",
+                "zh-CN": "底部居中",
+                "zh-TW": "中央下方"
+              },
+              "value": "center bottom"
+            },
+            {
+              "label": {
+                "de": "Unten rechts",
+                "en": "Bottom right",
+                "es": "Inferior derecha",
+                "fr": "En bas à droite",
+                "it": "In basso a destra",
+                "ja": "右下",
+                "nl": "Rechtsonder",
+                "pt-BR": "Inferior direito",
+                "zh-CN": "右下方",
+                "zh-TW": "右下角"
+              },
+              "value": "right bottom"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "overlay_opacity",
+          "label": {
+            "de": "Überlagerungsdeckkraft",
+            "en": "Overlay opacity",
+            "es": "Opacidad superpuesta",
+            "fr": "Opacité de la superposition",
+            "it": "Opacità della sovrapposizione",
+            "ja": "オーバーレイ不透明率",
+            "nl": "Ondoorschijnendheid van overlay",
+            "pt-BR": "Opacidade de sobreposição",
+            "zh-CN": "叠加不透明度",
+            "zh-TW": "疊加不透明度"
+          },
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": {
+            "de": "%",
+            "en": "%",
+            "es": "%",
+            "fr": "%",
+            "it": "%",
+            "ja": "%",
+            "nl": "%",
+            "pt-BR": "%",
+            "zh-CN": "%",
+            "zh-TW": "%"
+          },
+          "default": 30
+        },
+        {
+          "type": "header",
+          "content": {
+            "de": "Textfarbe",
+            "en": "Text",
+            "es": "texto",
+            "fr": "Couleur du texte",
+            "it": "Testo",
+            "ja": "テキスト",
+            "nl": "Tekst",
+            "pt-BR": "Texto",
+            "zh-CN": "文本",
+            "zh-TW": "文字"
+          }
+        },
+        {
+          "type": "color",
+          "id": "color_text",
+          "label": {
+            "de": "Textfarbe",
+            "en": "Text color",
+            "es": "Color de texto",
+            "fr": "Couleur du texte",
+            "it": "Colore testo",
+            "ja": "文字の色",
+            "nl": "Tekstkleur",
+            "pt-BR": "Cor do texto",
+            "zh-CN": "文本颜色",
+            "zh-TW": "文字顏色"
+          },
+          "default": "#ffffff"
+        },
+        {
+          "type": "select",
+          "id": "text_alignment",
+          "label": {
+            "de": "Textausrichtung",
+            "en": "Text alignment",
+            "es": "Alineación de texto",
+            "fr": "Alignement du texte",
+            "it": "Allineamento del testo",
+            "ja": "テキストアラインメント",
+            "nl": "Tekstuitlijning",
+            "pt-BR": "Alinhamento de texto",
+            "zh-CN": "文本对齐方式",
+            "zh-TW": "文字對齊"
+          },
+          "default": "center",
+          "options": [
+            {
+              "label": {
+                "de": "Links",
+                "en": "Left",
+                "es": "Izquierda",
+                "fr": "Gauche",
+                "it": "Sinistra",
+                "ja": "左",
+                "nl": "Links",
+                "pt-BR": "Esquerda",
+                "zh-CN": "左侧",
+                "zh-TW": "左方"
+              },
+              "value": "left"
+            },
+            {
+              "label": {
+                "de": "Mitte",
+                "en": "Center",
+                "es": "Centrar",
+                "fr": "Centre",
+                "it": "Al centro",
+                "ja": "中央",
+                "nl": "Midden",
+                "pt-BR": "Centro",
+                "zh-CN": "居中",
+                "zh-TW": "置中"
+              },
+              "value": "center"
+            },
+            {
+              "label": {
+                "de": "Rechts",
+                "en": "Right",
+                "es": "Derecha",
+                "fr": "Droite",
+                "it": "Destra",
+                "ja": "右",
+                "nl": "Rechts",
+                "pt-BR": "Direita",
+                "zh-CN": "右侧",
+                "zh-TW": "右方"
+              },
+              "value": "right"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "slide_heading",
+          "default": "Image slide",
+          "label": {
+            "de": "Überschrift",
+            "en": "Heading",
+            "es": "Título",
+            "fr": "En-tête",
+            "it": "Heading",
+            "ja": "見出し",
+            "nl": "Kop",
+            "pt-BR": "Título",
+            "zh-CN": "标题",
+            "zh-TW": "標題"
+          }
+        },
+        {
+          "type": "text",
+          "id": "button_label",
+          "label": {
+            "de": "Schaltflächenbezeichnung",
+            "en": "Button label",
+            "es": "Etiqueta de botón",
+            "fr": "Texte du bouton",
+            "it": "Etichetta pulsante",
+            "ja": "ボタンラベル",
+            "nl": "Knoplabel",
+            "pt-BR": "Etiqueta do botão",
+            "zh-CN": "按钮标签",
+            "zh-TW": "按鈕標籤"
+          }
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": {
+            "de": "Schaltflächenlink",
+            "en": "Button link",
+            "es": "Enlace de botón",
+            "fr": "Lien du bouton",
+            "it": "Link pulsante",
+            "ja": "ボタンリンク",
+            "nl": "Knoplink",
+            "pt-BR": "Link do botão",
+            "zh-CN": "按钮链接",
+            "zh-TW": "按鈕連結"
+          }
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": {
+        "de": "Slideshow",
+        "en": "Slideshow",
+        "es": "Diapositivas",
+        "fr": "Diaporama",
+        "it": "Presentazione",
+        "ja": "スライドショー",
+        "nl": "Diavoorstelling",
+        "pt-BR": "Apresentação de slides",
+        "zh-CN": "幻灯片",
+        "zh-TW": "投影片輪播"
+      },
+      "category": {
+        "de": "Foto",
+        "en": "Image",
+        "es": "Imagen",
+        "fr": "Image",
+        "it": "Immagine",
+        "ja": "画像",
+        "nl": "Afbeelding",
+        "pt-BR": "Imagem",
+        "zh-CN": "图片",
+        "zh-TW": "圖片"
+      },
+      "settings": {
+        "slider_home_auto": false,
+        "slider_home_rate": 7,
+        "slider_home_transition": "slide"
+      },
+      "blocks": [
+        {
+          "type": "image"
+        },
+        {
+          "type": "image"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
