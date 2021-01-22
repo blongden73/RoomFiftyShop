@@ -74,9 +74,11 @@
           <hr class="hr--border-top small--hide">
         {% endunless %}
         {% if settings.show_breadcrumb_nav and template.name != 'index' %}
-              <div class="rf-wrapper breadcrumb-wrapper">
-              {% include 'breadcrumb-nav' %}
-              </div>
+              {% unless page.template_suffix == 'yuk' %}
+                <div class="rf-wrapper breadcrumb-wrapper">
+                {% include 'breadcrumb-nav' %}
+                </div>
+              {% endunless %}
         {% endif %}
         {% unless page_title == "About" or page.template_suffix == 'yuk' %}
         {{ content_for_layout }}
