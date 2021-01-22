@@ -92,10 +92,6 @@
 
   {% unless template.name == 'index' %}</div>{% endunless %}
 
-  {% if page.template_suffix == 'yuk' %}
-    {{ content_for_layout }}
-  {% endif %}
-
   {% if page_title == "About" %}
     {{ content_for_layout }}
   {% endif %}
