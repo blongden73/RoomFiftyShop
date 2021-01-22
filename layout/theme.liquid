@@ -65,7 +65,7 @@
     {% endcomment %}
 
 
-  {% unless template.name == 'index' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
+  {% unless template.name == 'index' && page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
 
     <div class="grid">
 
@@ -91,6 +91,10 @@
     {%- endif -%}
 
   {% unless template.name == 'index' %}</div>{% endunless %}
+
+  {% if page.template_suffix == 'yuk' %}
+    {{ content_for_layout }}
+  {% endif %}
 
   {% if page_title == "About" %}
     {{ content_for_layout }}
