@@ -70,7 +70,7 @@
     <div class="grid">
 
       <main class="main-content grid__item" id="MainContent" role="main">
-        {% unless template.name == 'index' %}
+        {% unless template.name == 'index' or page.template_suffix == 'yuk' %}
           <hr class="hr--border-top small--hide">
         {% endunless %}
         {% if settings.show_breadcrumb_nav and template.name != 'index' %}
@@ -78,7 +78,7 @@
               {% include 'breadcrumb-nav' %}
               </div>
         {% endif %}
-        {% unless page_title == "About" %}
+        {% unless page_title == "About" or page.template_suffix == 'yuk' %}
         {{ content_for_layout }}
         {% endunless %}
       </main>
@@ -90,7 +90,7 @@
       </p>
     {%- endif -%}
 
-  {% unless template.name == 'index' %}</div>{% endunless %}
+  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}</div>{% endunless %}
 
   {% if page_title == "About" %}
     {{ content_for_layout }}
