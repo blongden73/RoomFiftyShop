@@ -65,7 +65,7 @@
     {% endcomment %}
 
 
-  {% unless template.name == 'index' or unless page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
+  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
 
     <div class="grid">
 
