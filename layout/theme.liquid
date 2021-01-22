@@ -96,6 +96,10 @@
     {{ content_for_layout }}
   {% endif %}
 
+  {% if page.template_suffix == 'yuk' %}
+    {{ content_for_layout }}
+  {% endif %}
+
   {%- if template.name == 'collection' -%}
     {% section 'filters' %}
   {%- endif -%}
