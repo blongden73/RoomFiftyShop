@@ -2791,6 +2791,22 @@ $redyuk: #f97372;
   h1 {
     font-size: 45px;
   }
+
+  ol {
+    margin-left: 0;
+    font-size: 30px;
+    counter-reset: my-awesome-counter;
+
+    li {
+      counter-increment: my-awesome-counter;
+    }
+  }
+
+  ol li::before {
+    content: counter(my-awesome-counter) ". ";
+    color: $beige;
+    font-weight: bold;
+  }
 }
 
 .yuk-red {
