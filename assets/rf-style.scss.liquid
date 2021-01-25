@@ -2794,16 +2794,18 @@ $redyuk: #f97372;
 
   ol {
     margin-left: 0;
+    padding-left: 0;
     font-size: 30px;
     counter-reset: my-awesome-counter;
 
     li {
       counter-increment: my-awesome-counter;
+      color: $beige;
     }
   }
 
   ol li::before {
-    content: counter(my-awesome-counter) ". ";
+    content: counter(my-awesome-counter) " ";
     color: $beige;
     font-weight: bold;
   }
