@@ -2776,7 +2776,7 @@ $redyuk: #f97372;
 .intro-yuk {
   padding-top: 20px;
   padding-bottom: 20px;
-  
+
   &:before {
     position: absolute;
     top: 0;
@@ -2787,10 +2787,20 @@ $redyuk: #f97372;
     display: block;
     content: '';
   }
+
+  h1 {
+    font-size: 45px;
+  }
 }
 
 .yuk-red {
   background-color: $redyuk;
+
+  & > * {
+    h1, p {
+      color: $beige;
+    }
+  }
 }
 
 .yuk-beige {
