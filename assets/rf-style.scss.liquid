@@ -2779,10 +2779,15 @@ $redyuk: #f97372;
   }
 
   h1 {
-    font-size: 10vw;
+    font-size: 60px;
     line-height: 0.9 !important;
     color: $redyuk;
     margin-bottom: 0 !important;
+
+    @include media-query($widescreen){
+      font-size: 13vw;
+    }
+
   }
 }
 
