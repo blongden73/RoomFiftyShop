@@ -2892,6 +2892,11 @@ $redyuk: #f97372;
 
 .intro-yuk.rules {
   display: flex;
+  flex-direction: column;
+
+  @include media-query($widescreen){
+    flex-direction: row;
+  }
 
   img {
     height: 470px;
