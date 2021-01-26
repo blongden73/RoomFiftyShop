@@ -2795,6 +2795,10 @@ $redyuk: #f97372;
     color: $redyuk;
     margin-bottom: 0 !important;
 
+    @include media-query($medium-up){
+      font-size: 14vw;
+    }
+
     @include media-query($widescreen){
       font-size: 13vw;
     }
@@ -2813,8 +2817,12 @@ $redyuk: #f97372;
     left: -10px;
     width: 1px;
     background-color: #ececec;
-    display: block;
+    display: none;
     content: '';
+
+    @include media-query($widescreen){
+      display: block;
+    }
   }
 
   h1 {
@@ -2824,8 +2832,13 @@ $redyuk: #f97372;
   ol {
     margin-left: 0;
     padding-left: 0;
-    font-size: 30px;
     counter-reset: my-awesome-counter;
+    font-size: 22px;
+    line-height: 1.2;
+
+    @include media-query($medium-up){
+      font-size: 30px;
+    }
 
     li {
       counter-increment: my-awesome-counter;
@@ -2857,7 +2870,12 @@ $redyuk: #f97372;
 .intro-yuk {
   position: relative;
   p {
-    font-size: 30px;
+    font-size: 22px;
+    line-height: 1.2;
+
+    @include media-query($medium-up){
+      font-size: 30px;
+    }
   }
 }
 
@@ -2882,7 +2900,11 @@ $redyuk: #f97372;
   img {
     height: 390px;
     float: left;
-    margin-right: 30px;
+    margin-right: 0px;
+
+    @include media-query($widescreen){
+      margin-right: 30px;
+    }
   }
 
   .rf-button {
@@ -2904,6 +2926,10 @@ $redyuk: #f97372;
 
   img {
     height: 470px;
-    margin-left: 30px;
+    margin-right: 0px;
+
+    @include media-query($widescreen){
+      margin-right: 30px;
+    }
   }
 }
