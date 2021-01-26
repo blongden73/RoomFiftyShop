@@ -2886,7 +2886,11 @@ $redyuk: #f97372;
   }
 
   .rf-button {
-    margin-left: 270px;
+    margin-left: 0;
+
+    @include media-query($widescreen){
+      margin-left: 270px;
+    }
   }
 }
 
