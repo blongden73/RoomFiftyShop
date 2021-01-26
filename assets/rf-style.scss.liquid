@@ -2784,6 +2784,15 @@ $redyuk: #f97372;
   transform-origin: bottom;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(360deg);
+  }
+}
+
 .yuc-header {
   background-color: $beige;
   padding-top: 20px;
@@ -2804,6 +2813,14 @@ $redyuk: #f97372;
       right: 60px;
       width: 580px;
       height: 380px;
+    }
+
+    .head{
+      animation-name: spin;
+      animation-duration: 2s;
+      animation-fill-mode: forwards;
+      animation-iteration-count:infinite;
+      transform-origin: center;
     }
 
     .text {
