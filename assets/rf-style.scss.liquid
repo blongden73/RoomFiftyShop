@@ -2988,13 +2988,16 @@ $redyuk: #f97372;
   }
 
   img {
-    height: 470px;
+    height: 100%;
+    max-width: 300px
     width: auto;
     margin-right: 0px;
     flex: 1;
 
     @include media-query($widescreen){
       margin-right: 30px;
+      max-width: unset;
+      height: 470px;
     }
   }
 }
