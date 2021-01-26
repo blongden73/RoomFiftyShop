@@ -2790,7 +2790,7 @@ $redyuk: #f97372;
   }
 
   h1 {
-    font-size: 90px;
+    font-size: 73px;
     line-height: 0.9 !important;
     color: $redyuk;
     margin-bottom: 0 !important;
@@ -2799,7 +2799,13 @@ $redyuk: #f97372;
 
     span.italic {
       font-style: italic;
+      letter-spacing: -6px;
     }
+
+    span.black {
+      color: #333;
+    }
+
 
     @include media-query($medium-up){
       font-size: 14vw;
@@ -2855,7 +2861,8 @@ $redyuk: #f97372;
     margin-bottom: 10px;
 
     @include media-query($widescreen){
-      font-size: 110px;
+      letter-spacing: -3px;
+    }
     }
   }
 
