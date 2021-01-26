@@ -2797,7 +2797,7 @@ $redyuk: #f97372;
     font-family: 'Libre Caslon Text', serif !important;
     font-weight: 200;
 
-    &.italic {
+    span.italic {
       font-style: italic;
     }
 
@@ -2829,6 +2829,15 @@ $redyuk: #f97372;
 
     @include media-query($widescreen){
       display: block;
+    }
+  }
+
+  h1 {
+    font-size: 70px;
+    margin-bottom: 10px;
+
+    @include media-query($widescreen){
+      font-size: 110px;
     }
   }
 
@@ -2911,6 +2920,10 @@ $redyuk: #f97372;
   margin-top: 20px;
   margin-bottom: 20px;
 
+  a {
+    color: $beige;
+  }
+
   &:hover {
     color: $redyuk;
     background-color: $beige;
@@ -2919,12 +2932,14 @@ $redyuk: #f97372;
 
 .intro-yuk.enter {
   img {
-    height: 390px;
+    height: 300px;
+    width: auto;
     float: left;
     margin-right: 0px;
 
     @include media-query($widescreen){
       margin-right: 30px;
+      height: 460px;
     }
   }
 
