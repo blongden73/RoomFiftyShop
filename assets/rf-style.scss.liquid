@@ -2781,6 +2781,7 @@ $redyuk: #f97372;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-fill-mode: forwards;
+  transform-origin: bottom;
 }
 
 .yuc-header {
@@ -2791,26 +2792,17 @@ $redyuk: #f97372;
   position: relative;
   padding-bottom: 8vw;
 
-  img {
+  .spinning-head {
     position: absolute;
-    top: auto;
-    z-index: 1;
-    bottom: 0;
-    object-fit: contain;
-    height: auto;
-    width: 63%;
+    top: 0;
     right: 0;
-    transform-origin: bottom;
+    width: 200px;
+  }
 
+
+  img {
     @include media-query($widescreen){
-      position: absolute;
-      top: 0;
-      z-index: 1;
-      bottom: 0;
-      object-fit: contain;
-      height: 100%;
-      width: auto;
-      right: 0;
+
     }
   }
 
