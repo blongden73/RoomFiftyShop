@@ -2799,17 +2799,23 @@ $redyuk: #f97372;
     width: 300px;
     height: 300px;
 
+    @include media-query($medium-up){
+      top: -60px;
+      right: 60px;
+      width: 580px;
+      height: 380px;
+    }
+
+    .text {
+      img {
+        top: 50px;
+      }
+    }
+
     img {
       position: absolute;
       top: 0;
       bottom: 0;
-    }
-  }
-
-
-  img {
-    @include media-query($widescreen){
-
     }
   }
 
