@@ -2775,6 +2775,14 @@ nav {
 $beige: #f1eedf;
 $redyuk: #f97372;
 
+.wobble {
+  animation-name: wobble;
+  animation-duration: 4s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}
+
 .yuc-header {
   background-color: $beige;
   padding-top: 20px;
@@ -2793,11 +2801,6 @@ $redyuk: #f97372;
     width: 63%;
     right: 0;
     transform-origin: bottom;
-    animation-name: wobble;
-    animation-duration: 4s;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-fill-mode: forwards;
 
     @include media-query($widescreen){
       position: absolute;
