@@ -2757,6 +2757,21 @@ nav {
 
 //YUK
 
+@keyframes wobble {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(3deg);
+  }
+  50% {
+    transform: rotate(-3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 $beige: #f1eedf;
 $redyuk: #f97372;
 
@@ -2776,6 +2791,12 @@ $redyuk: #f97372;
     height: auto;
     width: 63%;
     right: 0;
+    transform-origin: bottom;
+    animation-name: wobble;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
 
     @include media-query($widescreen){
       position: absolute;
