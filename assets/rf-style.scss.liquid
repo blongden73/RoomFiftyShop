@@ -2795,6 +2795,7 @@ $redyuk: #f97372;
     color: $redyuk;
     margin-bottom: 0 !important;
     font-family: 'Libre Caslon Text', serif !important;
+    font-weight: 200;
 
     @include media-query($medium-up){
       font-size: 14vw;
@@ -2827,9 +2828,18 @@ $redyuk: #f97372;
     }
   }
 
-  h1 {
+  h1, h2 {
     font-size: 45px;
     font-family: 'Libre Caslon Text', serif !important;
+    font-weight: 200;
+
+    &.red {
+      color: $redyuk;
+    }
+
+    &.red {
+      font-style: italic;
+    }
   }
 
   ol {
