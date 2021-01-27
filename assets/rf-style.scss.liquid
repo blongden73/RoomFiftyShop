@@ -2796,16 +2796,21 @@ $redyuk: #f97372;
   background-color: $beige;
   padding-top: 20px;
   padding-bottom: 20px;
-  min-height: 50vh;
+  min-height: 32vh;
   position: relative;
   padding-bottom: 8vw;
+  overflow: hidden;
+
+  @include media-query($medium-up){
+    min-height: 50vh;
+  }
 
   .spinning-head {
     position: absolute;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 300px;
+    top: 12px;
+    right: -11px;
+    width: 163px;
+    height: 160px;
 
     @include media-query($medium-up){
       top: -60px;
@@ -2825,7 +2830,11 @@ $redyuk: #f97372;
 
     .text {
       img {
-        top: 50px;
+        top: 20px;
+
+        @include media-query($medium-up){
+          top: 50px;
+        }
       }
     }
 
