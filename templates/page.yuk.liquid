@@ -80,11 +80,11 @@
   <div class="winners-products flex">
     {% assign winnersProducts = collections.young-upstart-competition %}
     {{winnersProducts}}
-    {% for product in winnersProducts %}
+    {% for products in winnersProducts %}
       <div class="winner-product">
-        <img src="{{ product | img_url: '1024x' }}">
-        <h2>{{product.title}}</h2>
-        <p>{{product.price}}</p>
+        <img src="{{ products | img_url: '1024x' }}">
+        <h2>{{products.title}}</h2>
+        <p>{{products.price}}</p>
       </div>
     {% endfor %}
   </div>
