@@ -78,12 +78,14 @@
 <div class="rf-wrapper intro-yuk products-wrapper winners">
   <h1>The Winners</h1>
   <div class="winners-products flex">
-    <div class="winner-product">
-
-    </div>
-    <div class="winner-product">
-
-    </div>
+    {% assign winnersProducts = collections.young-upstart-competition %}
+    {% for product in winnersProducts %}
+      <div class="winner-product">
+        <img src="{{ product | img_url: '1024x' }}">
+        <h2>{{product.title}}</h2>
+        <p>{{product.price}}</p>
+      </div>
+    {% endfor %}
   </div>
 </div>
 <!-- <div class="rf-wrapper gallery products-wrapper intro-yuk">
