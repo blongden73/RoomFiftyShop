@@ -3044,3 +3044,24 @@ $redyuk: #f97372;
     }
   }
 }
+
+.products-wrapper.winners {
+  display: none;
+}
+
+.winners-products.flex {
+  display: flex;
+  flex-direction: row;
+
+  @include media-query($medium-up){
+    flex-direction: column;
+  }
+
+  .winner-product {
+
+    p {
+      color: $redyuk
+      font-style italic;
+    }
+  }
+}
