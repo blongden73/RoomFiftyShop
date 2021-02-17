@@ -3051,15 +3051,28 @@ $redyuk: #f97372;
 
 .winners-products.flex {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   @include media-query($medium-up){
-    flex-direction: column;
+    flex-direction: row;
   }
 
   .winner-product {
+    @include media-query($medium-up){
+      width: 33%;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    h2 {
+      font-size: 30px;
+    }
+
     p {
       color: $redyuk;
+      font-size: 18px;
     }
   }
 }

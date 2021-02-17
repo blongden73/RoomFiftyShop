@@ -83,7 +83,11 @@
       <div class="winner-product">
         <img src="{{ products | img_url: '1024x' }}">
         <h2>{{products.title}}</h2>
-        <p>{{products.price}}</p>
+        <p>{{products.price | money }}</p>
+
+        <div class="rf-button">
+          <a href="{{ product.url }}">Buy now</a>
+        </div>
       </div>
     {% endfor %}
   </div>
