@@ -16,11 +16,8 @@
     {% for products in winnersProducts %}
       <div class="winner-product">
         <img src="{{ products | img_url: '1024x' }}">
-        {% assign title = product.title | split: '|' %}
         <h2>
-        {% for turtle in title %}
-          <span>{{turtle}}</span>
-        {% endfor %}
+          {{product.title}}
         </h2>
         <p>{{products.price | money }}</p>
 
