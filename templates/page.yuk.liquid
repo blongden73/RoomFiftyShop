@@ -16,7 +16,10 @@
     {% for products in winnersProducts %}
       <div class="winner-product">
         <img src="{{ products | img_url: '1024x' }}">
-        <h2>{{products.title}}</h2>
+        {% assign title = product.title | split '|' %}
+        {% for turtle in title %}
+          <h2>{{turtle[0]]}}<span>{{turtle[1]]}}</span></h2>
+        {% endfor %}
         <p>{{products.price | money }}</p>
 
         <div class="rf-button">
