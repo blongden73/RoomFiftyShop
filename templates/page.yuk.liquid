@@ -79,6 +79,7 @@
   <h1>The Winners</h1>
   <div class="winners-products flex">
     {% assign winnersProducts = collections.young-upstart-competition %}
+    {{winnersProducts}}
     {% for product in winnersProducts %}
       <div class="winner-product">
         <img src="{{ product | img_url: '1024x' }}">
