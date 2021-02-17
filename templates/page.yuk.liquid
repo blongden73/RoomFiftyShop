@@ -78,7 +78,7 @@
 <div class="rf-wrapper intro-yuk products-wrapper winners">
   <h1>The Winners</h1>
   <div class="winners-products flex">
-    {% assign winnersProducts = collections.['young-upstart-competition'] %}
+    {% assign winnersProducts = collections.young-upstart-competition.products %}
     {% for products in winnersProducts %}
       <div class="winner-product">
         <img src="{{ products | img_url: '1024x' }}">
