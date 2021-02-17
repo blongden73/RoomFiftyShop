@@ -3052,6 +3052,7 @@ $redyuk: #f97372;
 .winners-products.flex {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   @include media-query($medium-up){
     flex-direction: row;
@@ -3068,6 +3069,7 @@ $redyuk: #f97372;
 
     h2 {
       font-size: 30px;
+      line-height: 1.2 !important;
     }
 
     p {
@@ -3076,12 +3078,20 @@ $redyuk: #f97372;
     }
 
     .rf-button {
-      border: $redyuk;
+      border: 1px solid $redyuk;
       color: $redyuk;
+
+      a {
+        color: $redyuk;
+      }
 
       &:hover {
         background-color: $redyuk;
         color: #fff;
+
+        a {
+          color: $redyuk;
+        }
       }
     }
   }
