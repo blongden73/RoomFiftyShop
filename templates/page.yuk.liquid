@@ -98,7 +98,7 @@
 </div>
 <div class="rf-wrapper gallery products-wrapper intro-yuk">
   <h1>Entries</h1>
-
+  <div class="gallery-placeholder"></div>
 </div>
 <script>
   var data = [
@@ -391,15 +391,16 @@
     }
   ];
   console.log(data);
-  var galleryWrapper = document.querySelector('.rf-wrapper.gallery');
+  var galleryWrapper = document.querySelector('.gallery-placeholder');
   var fileBase = 'https://cdn.shopify.com/s/files/1/2567/2510/files/';
   var gallery = [];
   for(i=0; i<data.length; i++) {
     var dataStringFileName = fileBase + data[i].Filename;
-    var dataStringArtistName = fileBase + data[i].name;
-    var dataStringArtName = fileBase + data[i].artName;
+    var dataStringArtistName = data[i].name;
+    var dataStringArtName = data[i].artName;
     var fullString = '<div class="gallery-wrapper-box"><img src="'+ dataStringFileName + '"><h2>'+ dataStringArtistName + '</h2><p>'+ dataStringArtName +'</p></div>'
     gallery.push(fullString);
     console.log(gallery.join(''));
+    galleryWrapper.innerHTML = gallery.join('');
   }
 </script>
