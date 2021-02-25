@@ -3097,9 +3097,16 @@ $redyuk: #f97372;
 
 .gallery-placeholder {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
 
   @include media-query($medium-up){
-    flex-direction: column;
+    flex-direction: row;
+  }
+
+  & > * {
+    @include media-query($medium-up){
+      width: 30%;
+      margin-right: 10px;
+    }
   }
 }
