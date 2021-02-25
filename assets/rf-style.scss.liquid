@@ -3094,3 +3094,12 @@ $redyuk: #f97372;
     }
   }
 }
+
+.gallery-placeholder {
+  display: flex;
+  flex-direction: row;
+
+  @include media-query($medium-up){
+    flex-direction: column;
+  }
+}
