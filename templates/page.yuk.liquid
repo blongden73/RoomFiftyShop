@@ -325,7 +325,7 @@
   var fileBase = 'https://cdn.shopify.com/s/files/1/2567/2510/files/';
   var gallery = [];
   for(i=0; i<data.length; i++) {
-    var dataStringFileName = fileBase + data[i].Filename;
+    var dataStringFileName = data[i].Filename;
     var dataStringArtistName = data[i].name;
     var dataStringArtName = data[i].artName;
     var fullString = '<div class="gallery-wrapper-box"><img src="'+ dataStringFileName + '"><h2>'+ dataStringArtistName + '</h2><p>'+ dataStringArtName +'</p></div>'
