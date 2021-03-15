@@ -111,10 +111,10 @@
         "settings": {
           "logo": "shopify:\/\/shop_images\/room_fifty_logo.png",
           "logo_max_width": "150",
-          "show_announcement": true,
+          "show_announcement": false,
           "home_page_only": false,
-          "announcement_text": "Check Our Christmas Delivery Dates",
-          "announcement_link": "shopify:\/\/pages\/christmas-delivery",
+          "announcement_text": "The winners of the Young Upstart Competition have been chosen - shop their prints now!",
+          "announcement_link": "shopify:\/\/pages\/yuc",
           "tagline": "<p>Curated Art for Everybody<\/p>"
         }
       },
@@ -170,12 +170,6 @@
             "type": "collection",
             "settings": {
               "collection": "allison-filice"
-            }
-          },
-          "e849b824-6859-45f9-8879-aa79f90d9958": {
-            "type": "collection",
-            "settings": {
-              "collection": "alva-skog"
             }
           },
           "62746c54-a71c-4779-b5f3-da0e4f00769e": {
@@ -700,6 +694,12 @@
               "collection": "melanie-johnsson"
             }
           },
+          "846d32fd-924a-4800-99fb-610cf9bec0eb": {
+            "type": "collection",
+            "settings": {
+              "collection": "melanie-lambrick"
+            }
+          },
           "04a751d7-9cff-418a-ae38-9fe1c4f0ea00": {
             "type": "collection",
             "settings": {
@@ -948,7 +948,6 @@
           "186a212c-5471-4f42-b079-8a661f320197",
           "dbba7b5b-dead-447d-85cf-1bc52bea7c25",
           "ed5da497-7390-418e-81cd-4d8416599931",
-          "e849b824-6859-45f9-8879-aa79f90d9958",
           "62746c54-a71c-4779-b5f3-da0e4f00769e",
           "ca6de937-f0b1-469c-87c6-02c9fb4929e6",
           "ab933c98-ecc9-44c7-92c0-30fa147aeb41",
@@ -1036,6 +1035,7 @@
           "312ebe00-22dd-47ea-9218-4c1082183e82",
           "4d386ee4-71bc-4c4b-9e86-95039b4483c2",
           "b4c59e7e-3b0b-4ee2-9e8a-a003cead4cd5",
+          "846d32fd-924a-4800-99fb-610cf9bec0eb",
           "04a751d7-9cff-418a-ae38-9fe1c4f0ea00",
           "e12c4549-b252-4bef-ac40-8e338148171d",
           "01f9753c-5439-4dfc-b07f-4ff85cd10b95",
@@ -1108,6 +1108,32 @@
       "1564138757180": {
         "type": "slideshow",
         "blocks": {
+          "5a6a944c-2c5c-4b27-8546-47ca98fbf2f3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screenshot_2021-03-08_at_13.28.38.png",
+              "alignment": "center center",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "Celebrate International Women's Day 2021",
+              "button_label": "10% of profits to Women's Aid",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          },
+          "e164fce9-c423-420d-a9a0-4b11196d065c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screenshot_2021-02-26_at_17.55.26.png",
+              "alignment": "right top",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "Mother's Day is 14th March - send a print that's full of love",
+              "button_label": "Shop our love prints",
+              "button_link": "https:\/\/roomfifty.com\/collections\/all\/love"
+            }
+          },
           "8ae8742a-1f9b-40b0-afba-aec41eca7b9c": {
             "type": "image",
             "settings": {
@@ -1116,14 +1142,30 @@
               "overlay_opacity": 30,
               "color_text": "#ffffff",
               "text_alignment": "left",
-              "slide_heading": "The new season is here!",
-              "button_label": "Shop exclusive season 8 prints",
+              "slide_heading": "Our latest collection: Season 8",
+              "button_label": "Shop exclusive prints",
               "button_link": "shopify:\/\/collections\/season-8"
+            }
+          },
+          "946febec-e765-48bd-90be-f1202c96ca11": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Artboard_15.png",
+              "alignment": "center center",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "The Winners have been chosen!",
+              "button_label": "Buy the winning prints",
+              "button_link": "shopify:\/\/pages\/yuc"
             }
           }
         },
         "block_order": [
-          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c"
+          "5a6a944c-2c5c-4b27-8546-47ca98fbf2f3",
+          "e164fce9-c423-420d-a9a0-4b11196d065c",
+          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c",
+          "946febec-e765-48bd-90be-f1202c96ca11"
         ],
         "settings": {
           "slider_height": "large",
@@ -1314,6 +1356,15 @@
           "home_page_featured_products": "season-8",
           "home_featured_products_row_num": 3
         }
+      },
+      "161426355581233b6c": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "helvetica_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": ""
+        }
       }
     },
     "content_for_index": [
@@ -1329,7 +1380,8 @@
       "1564140336829",
       "1607335746e882f637",
       "1564135843653",
-      "1564505903027"
+      "1564505903027",
+      "161426355581233b6c"
     ]
   },
   "presets": {

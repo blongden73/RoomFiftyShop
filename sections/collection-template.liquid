@@ -160,11 +160,11 @@
  </div>
  {% endif %}
 
-{% endpaginate %}
+{% assign dm_paginate_by = paginate.page_size %}{% endpaginate %}
 
 
 
-{% schema %}
+{% if dm_paginate_by %}{% render 'spurit_dmr_collection_template_snippet', paginate_by: dm_paginate_by %}{% endif %}{% schema %}
 {
   "name": {
     "de": "Kategorie-Seiten",

@@ -4,8 +4,8 @@ Spurit.Discountmanager.settings = {
     enabled: true,
     badge: {},
     enabledCollection: false,
-    collectionPageSelector: ".product__image",
-    productPageSelector: ".product-single__photo",
+    collectionPageSelector: "",
+    productPageSelector: "",
     productIds: [],
     variantIds: []
 };
