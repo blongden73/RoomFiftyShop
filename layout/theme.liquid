@@ -32,17 +32,18 @@
         addressQueryLimit: {{ 'homepage.map.address_query_limit_html' | t | json }},
         authError: {{ 'homepage.map.auth_error_html' | t | json }}
       }
-    }
+    } 
   </script>
 
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
   {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }}
-
+  {{ 'app.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
 
   {{ 'jquery-1.11.0.min.js' | asset_url | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
+  {{ 'infinite-scroll.pkgd.min.js' | asset_url | script_tag }}
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
@@ -192,6 +193,7 @@
 
   {{ 'theme.js' | asset_url | script_tag }}
   {{ 'rf-script.js' | asset_url | script_tag }}
+  {{ 'app.js' | | asset_url | script_tag }}
 
 
 
