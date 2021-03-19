@@ -20,17 +20,12 @@ $(document).ready(function () {
     });
 
     $(collectionGridInner).on( 'request.infiniteScroll', function() {
-        $(pagHide).hide();
-        // $(gridProduct).removeClass('slide-up-animation')
-        // $(gridProduct).removeClass('animated')
+        $(pagHide).hide()
         console.log('threshold')
     });
 
     $(collectionGridInner).on( 'append.infiniteScroll', function (items) {
-        console.log('append');
-        console.log(items)
-        // $(gridProduct).addClass('slide-up-animation');
-        // $(gridProduct).addClass('animated');
+        console.log('append');s
     });
     
 });
