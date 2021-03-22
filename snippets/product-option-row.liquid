@@ -1,0 +1,47 @@
+<div class="product-option-row">
+
+    <label for="{% if type == 'select' %}select-{{ option_name }} {% else %} radio-{{ option_name }} {% endif %}" class="{% if type == 'select' %}select{%endif%}">
+        {{ option.name }}
+    </label>
+
+    <div class="option-values {{ type }}">
+    
+        {% if type == 'select' %}
+
+          
+
+            <select name="{{ option_name }}" id="select-{{ option_name }}">
+            
+            <option value="placeholder" disabled {% if selected == false %} selected {% endif %}>
+                Select {{ option.name }}
+            </option>
+            
+                {% for value in option.values %}
+
+                    <option value="{{ value }}" {% if value == selected %} selected {% endif %}> {{ value }}</option>
+            
+                {% endfor%}
+
+            </select>
+
+
+                {% include 'inline-icon' with svg: 'icon-darr.svg', alt: 'Click to view links', class: 'nav-darr' %}
+            
+            
+        {% else %}
+
+            {% for value in option.values %}
+
+                {% assign radio_id = 'option-' | append: option_name | append: '-' | append: value | handleize %}
+                
+                <input id="{{radio_id}}" type="radio" value="{{ value }}" name="{{ option_name }}" 
+                {% if value == selected %} checked {% endif %}>
+                <label for="{{radio_id}}">{{value}}</label>
+            
+            {% endfor %}
+        
+        {% endif %}
+
+    </div>
+
+</div>

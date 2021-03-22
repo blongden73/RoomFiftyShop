@@ -1,0 +1,23 @@
+<div class="product-varient-row">
+    <div class="varient-values">
+
+
+        <label for="{{ option_name | handleize }}" >
+            Select {{ option_name }}
+        </label>
+
+        
+
+        <select name="{{ option_name | handleize }}" id="print-selector">
+                
+            {% for varient in varientArray %}
+
+                <option value="{{ varient.id }}" class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
+                    {{ varient.title }}
+                </option>
+        
+            {% endfor%} 
+
+        </select>
+    </div>
+</div> 
