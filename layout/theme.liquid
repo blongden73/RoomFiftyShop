@@ -60,13 +60,14 @@
 
   {% section "mobileNav" %}
   {% section "header" %}
+  
 
     {% comment %}
     <hr class="small--hide hr--small">
     {% endcomment %}
 
 
-  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
+  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %} {% if template contains 'about' %} about {% endif %}">{% endunless %}
 
     <div class="grid">
 
@@ -105,6 +106,7 @@
 
   {%- if template.name == 'collection' -%}
     {% section 'filters' %}
+    {% section 'collection-header' %}
   {%- endif -%}
 
   {%- if template.name == 'index' -%}

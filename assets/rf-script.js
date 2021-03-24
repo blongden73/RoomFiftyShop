@@ -2,12 +2,26 @@ var filtersSelector = document.querySelector('.filters');
 var filtersWrapper = document.querySelector('.rf-filters-wrapper');
 var mobileNav = document.querySelector('.mobile-menu');
 var mobileLinks = document.querySelector('.mobile-nav-links');
+var collHeader = document.querySelector('.collection-header');
+var collHeaderWrap = document.querySelector('.coll-header-wrapper');
+var collHeaderFilters = document.querySelector('.head-filters');
 
-function filters(){
-  if(filtersSelector) {
-    filtersWrapper.addEventListener('click', function(){
+// function filters(){
+//   if(filtersSelector) {
+//     filtersWrapper.addEventListener('click', function(){
+//       this.classList.toggle('clicked');
+//       filtersSelector.classList.toggle('clicked');
+//     });
+//   }
+// }
+
+function headerFilter(){
+  if(collHeader) {
+    
+    collHeaderWrap.addEventListener('click', function(){
+      
       this.classList.toggle('clicked');
-      filtersSelector.classList.toggle('clicked');
+      collHeaderFilters.classList.toggle('clicked');
     });
   }
 }
@@ -59,7 +73,7 @@ function swinger(){
 }
 
 function init(){
-  filters();
   menu();
+  headerFilter();
   swinger()
 } init();

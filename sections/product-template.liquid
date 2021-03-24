@@ -188,13 +188,27 @@
             </select>
             </div> {% endcomment %}
 
+            {% assign has_selected_variant = false %}
+              {% if product.selected_variant != nil %}
+                {% assign has_selected_variant = true %}
+              {% endif %}
+
+
             <div class="varient-sizes framed">
+
               {% assign varientIDS = product.variants %}
-              {% include 'product-varient-row' with option: varient.name , option_name: 'size & frame style' , selected: selected, varientArray: varientIDS %}        
-
-            
+           
+              {% if product.options.size <= 1 %}
+                 {% include 'product-varient-row' with option: varient.name , option_name: 'size & frame style' , selected: selected, varientArray: varientIDS %}        
+              {% else %}
+                {% for option in product.options_with_values %}
+                  {% assign option_name = 'option' | append: option.position %}
+                  {% include 'product-option-row' with option: option, option_name: option_name, class: 'varient-size-title'%}        
+                {% endfor %}
+                 <input class="js-variant-id" type="hidden" name="id" value="{% if has_selected_variant %}{{ product.selected_variant.id}}{% elsif has_multiple_variants != true %}{{ product.variants.first.id }}{% endif %}">
+              {% endif %}           
             </div>
-
+ 
 
             {% comment %} <div class="varient-sizes print display">
               <!-- Needs dynamic handle -->
@@ -274,75 +288,9 @@
     </div>
   </div>
 
-  <div class="rf-colours">
-    <div class="rf-wrapper">
-      <h1>Match these colours</h1>
-      <div class="rf-colours-wrapper">
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-      </div>
-    </div>
-  </div>
-  {{ 'color-thief.min.js' | asset_url | script_tag }}
-  <script>
-    const colorThief = new ColorThief();
-      const img = document.querySelector('.product-single__photo');
-      const colours = document.querySelector('.rf-colours-wrapper');
-      const color = document.querySelectorAll('.rf-colour');
 
-      console.log('getting colours', img);
-      // Make sure image is finished loading
-      if (img.complete) {
-        colorThief.getPalette(img);
-      } else {
-        img.addEventListener('load', function() {
-          var ct = colorThief.getPalette(img);
-          console.log(ct);
 
-          for(i=0; i < ct.length; i++) {
-            console.log(ct[i].toString());
-            color[i].style.backgroundColor = "rgb(" + ct[i].toString() + ")";
-            console.log(color);
-          }
-          console.log('loading colours');
-          console.log(colorThief.getPalette(img));
-        });
-      }
-  </script>
-  <div class="rf-lifestyle">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product | img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_1.jpg?v=1588369323">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Museum-quality giclée print on premium, heavyweight art paper. Choose from unframed or framed in black and white.</p>
-      </div>
-    </div>
-  </div>
-  <div class="rf-lifestyle rf-lifestyle-two">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product.images[1] | product_img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_2.jpg?v=1588370564">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Our frames are handmade from high-quality ash, milled with simple, clean lines and presented with a satin finish.</p>
-      </div>
-    </div>
-  </div>
+    
 
   {% if section.settings.product_description_position == 'below' %}
     {%- assign position = 'below' -%}

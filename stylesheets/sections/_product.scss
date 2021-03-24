@@ -7,6 +7,32 @@
         min-width: 196px;
     }
 
+
     margin-bottom: 20px;
 
+}
+
+.product-option-row {
+    margin: 10px 0 20px 0;
+
+}
+
+.product-form__item .btn {
+    min-width: 196px;
+}
+
+.template-product .product-single {
+    border-bottom: none;
+
+    &.grid {
+        display: flex;
+    }
+
+    .medium-up--one-half.testing {
+        border-left: 1px solid $grey;
+    }
+}
+
+.jdgm-rev-widg__title {
+    margin-bottom: 20px !important;
 }

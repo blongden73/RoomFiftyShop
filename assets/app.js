@@ -57,7 +57,111 @@ $(document).ready(function () {
 
     })
        
+    if (isCollection) {
+
+        var header = '.template-collection #shopify-section-header';
+        var collectionMain = '.template-collection main';
+
+            console.log('fix header')
+            $(header).addClass('on-scroll')
+            $(collectionMain).addClass('on-scroll')
+
+    } else {
+        $(header).removeClass('on-scroll')
+        $(collectionMain).removeClass('on-scroll')
+        console.log('unfix header')
+    }
+
+
+    let mainNav = '.site-header nav ul',
+        mainNavWidth = $(mainNav).width(),
+        subMenu = '.sub-menu',
+        subMenuInner = $(subMenu + ' .sub-menu-inner'),
+        subMenuWrap = subMenu + ' .child-wrap',
+        collHeader = 'section.collection-header .coll-header-wrapper'
+        $link = $(mainNav + ' li a')
+        $mainNavlink = $(mainNav + ' li a.has-child'),
+        childList = subMenuWrap;
+
+
+        subMenuInner.width(mainNavWidth);
+
+        $(window).resize(function () {
+            subMenuInner.width(mainNavWidth); 
+            console.log('resize to' + mainNavWidth)
+        })
+
+
+    $link.hover(function () {
+        
+        var linkCheck = $(this).hasClass('has-child');
+
+        if (linkCheck) {
+            $(subMenu).addClass('active')
+        
+            if (isCollection) {
+                $(collHeader).addClass('coll-move');
+                $(collHeader).css('z-index', '-1');
+                $(collHeader).css('opacity', '0');
+            }
+        } else {
+      
+            $(subMenu).removeClass('active')
+
+            if (isCollection) {
+                $(collHeader).removeClass('coll-move');
+                $(collHeader).css('z-index', '10000');
+                $(collHeader).css('opacity', '1');
+            }
+        }
+       
+    })
+
+    $(subMenu).on('mouseleave', function() {
+
+        $(subMenu).removeClass('active')
+
+        if (isCollection) {
+            $(collHeader).removeClass('coll-move');
+            $(collHeader).css('z-index', '10000');
+            $(collHeader).css('opacity', '1');
+        }
+    })
+
     
+    $mainNavlink.hover(function(event) {
+
+        event.preventDefault();
+
+        var filter = $(this).data('filter')
+        var filterClass = '.' + filter;
+
+        console.log(filter)
+
+        let filterMatch = $(childList).hasClass(filter),
+            $filterMatch = $(childList + filterClass),
+            $filterFalse = $(childList).not(filterClass),
+            $tabFalse = $mainNavlink.not(filterClass);
+
+
+        if (filterMatch) {
+            $(this).addClass('active-visible');
+            $filterMatch.addClass('active-visible');
+            $filterFalse.removeClass('active-visible');
+            $tabFalse.removeClass('active-visible');
+        }
+
+    })
+
+   
+
+    // if (isCollection && subActiveCheck) {
+    //     $(collHeader).addClass('coll-move');
+    // } else {
+    //     $(collHeader).removeClass('coll-move');
+    // }
+
+  
 
     
 });
