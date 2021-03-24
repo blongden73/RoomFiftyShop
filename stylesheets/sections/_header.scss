@@ -12,7 +12,7 @@ nav ul li {
         height: auto;
     }
 
-    background-color: #fff;
+    background-color: $rams;
     min-height: 135px;
     padding-bottom: 10px;
     border-bottom: 1px solid $black;
@@ -73,7 +73,7 @@ nav ul li {
         grid-row: span 1;
         
         a {
-            color: $black;
+            color: $blue;
         }
 
       
