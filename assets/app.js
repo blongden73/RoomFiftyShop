@@ -94,6 +94,9 @@ $(document).ready(function () {
 
     $link.hover(function () {
         
+        subMenuInner.width(mainNavWidth);
+        console.log('resize to' + mainNavWidth)
+
         var linkCheck = $(this).hasClass('has-child');
 
         if (linkCheck) {
@@ -136,7 +139,7 @@ $(document).ready(function () {
         var filter = $(this).data('filter')
         var filterClass = '.' + filter;
 
-        console.log(filter)
+        // console.log(filter)
 
         let filterMatch = $(childList).hasClass(filter),
             $filterMatch = $(childList + filterClass),
