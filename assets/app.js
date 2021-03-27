@@ -88,14 +88,14 @@ $(document).ready(function () {
 
         $(window).resize(function () {
             subMenuInner.width(mainNavWidth); 
-            console.log('resize to' + mainNavWidth)
+            // console.log('resize to' + mainNavWidth)
         })
 
 
     $link.hover(function () {
         
         subMenuInner.width(mainNavWidth);
-        console.log('resize to' + mainNavWidth)
+        // console.log('resize to' + mainNavWidth)
 
         var linkCheck = $(this).hasClass('has-child');
 
@@ -164,7 +164,48 @@ $(document).ready(function () {
     //     $(collHeader).removeClass('coll-move');
     // }
 
+    let modal = '#modal',
+        modalClose = modal + ' .close',
+        modalTiming = $(modal).data('timing'),
+        modalSubmit = modal + ' form'
+        // console.log('timing is ' + modalTiming);
+
+    if (sessionStorage.hasOwnProperty("modalHide")) {
+        console.log('modal previously hidden');
+    } else {
+
+        setTimeout(function(){ 
+            // console.log('this took ' + modalTiming);
+            $(modal).fadeIn();
+        }, modalTiming);
+    
+        $(modalClose).on('click', function(event) {
+
+            event.preventDefault;
+            
+            $(modal).fadeOut();
+    
+            window.sessionStorage.setItem("modalHide", "true");
+            window.sessionStorage.setItem("origin", "https://roomfifty.com/");
+    
+            console.log(sessionStorage);
+        })
+
+        $(modalSubmit).on('submit', function() {
+            
+            window.sessionStorage.setItem("modalHide", "true");
+            window.sessionStorage.setItem("origin", "https://roomfifty.com/");
+    
+        })
+    
+    
+    }
   
+    document.addEventListener("shopify:section:load", function(event) {
+        if (event.detail.sectionId === "modal") {
+            $(modal).fadeIn();
+        }
+      });
 
     
 });

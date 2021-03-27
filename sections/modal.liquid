@@ -1,0 +1,83 @@
+
+{% schema %}
+    {
+        "name": "Newsletter Modal",
+        "class": "rf-modal",
+        "settings": [
+            {
+                "type": "range",
+                "id": "timing",
+                "min": 1,
+                "max": 14,
+                "step": 1,
+                "unit": "s",
+                "label": "Delay before displaying Modal",
+                "default": 6
+            },
+            {
+                "type": "text",
+                "id": "headline",
+                "label": "Modal Headline",
+                "default": "Sign up to our Newsletter"
+            },
+            {
+                "type": "textarea",
+                "id": "copy",
+                "label": "Modal Body Copy",
+                "default": "The latest news and offers from Room Fifty"
+            },
+            {
+                "type": "color",
+                "id": "bgColor",
+                "label": "Background Colour",
+                "default": "#efefec"
+            }, 
+            {
+                "type": "color",
+                "id": "buttonColor",
+                "label": "Button Colour",
+                "default": "#0792d1"
+            }
+        ]
+    }
+{% endschema %}
+
+<style>
+
+    #modal {
+        background-color: {{ section.settings.bgColor }}
+    }
+
+    #modal button.btn {
+        background-color: {{ section.settings.buttonColor}}
+    }
+
+</style>
+
+{% assign timing = section.settings.timing | times: 1000 %}
+
+<div id="modal" data-timing="{{ timing }}">
+
+
+
+    <div class="modal-inner">
+        
+        <div class="close js-close">
+            <h2>×</h2>
+        </div>
+
+
+        {% if section.settings.headline %}
+         <h1>{{ section.settings.headline }}</h1>
+        {% endif %}
+
+        {% if section.settings.copy %}
+         <h2>{{ section.settings.copy }}</h2>
+        {% endif %}
+
+        {% include 'newsletter' %}
+    
+    </div>
+
+
+</div>
