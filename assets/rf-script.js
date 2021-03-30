@@ -22,6 +22,8 @@ function headerFilter(){
       
       this.classList.toggle('clicked');
       collHeaderFilters.classList.toggle('clicked');
+
+
     });
   }
 }

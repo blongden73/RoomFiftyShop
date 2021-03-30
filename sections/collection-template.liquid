@@ -54,7 +54,7 @@
 
     {% if section.settings.collection_sort_enable or section.settings.collection_tag_enable %}
       <div class="collection-sorting grid__item medium-up--two-thirds medium-up--text-right">
-        {% if section.settings.collection_tag_enable and collection.all_tags.size > 0 %}
+        {% comment %} {% if section.settings.collection_tag_enable and collection.all_tags.size > 0 %}
           <div class="collection-sorting__dropdown">
             <label for="BrowseBy" class="label--hidden">{{ 'collections.general.tags' | t }}</label>
             <select name="BrowseBy" id="BrowseBy">
@@ -74,7 +74,7 @@
               {% endfor %}
             </select>
           </div>
-        {% endif %}
+        {% endif %} {% endcomment %}
         {% if section.settings.collection_sort_enable and collection.products.size > 1 %}
           <div class="collection-sorting__dropdown">
             <label for="SortBy" class="label--hidden">{{ 'collections.sorting.title' | t }}</label>

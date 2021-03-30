@@ -10,7 +10,9 @@
         .rf-filters-header{
             position: relative;
         }
-
+        .head-filters {
+            display: none;
+        }
 
 
         a {
@@ -33,6 +35,9 @@
 
             .arrow {
                 transform: rotate(180deg)translateY(10%);
+            }
+            .head-filters {
+                display: flex;
             }
     
         } 

@@ -1222,7 +1222,7 @@ nav {
   }
 }
 
-#shopify-section-product-template {
+#shopify-section-product-template, #shopify-section-product-giftcard-template {
   border-top: 1px solid $grey;
   border-bottom: 1px solid $grey;
 
@@ -1232,6 +1232,13 @@ nav {
 }
 
 #shopify-section-product-template .shopify-payment-button .shopify-payment-button__more-options {
+  font-size: 18px !important;
+  color: $blue;
+  text-align: left !important;
+  padding: 0;
+}
+
+#shopify-section-product-giftcard-template .shopify-payment-button .shopify-payment-button__more-options {
   font-size: 18px !important;
   color: $blue;
   text-align: left !important;

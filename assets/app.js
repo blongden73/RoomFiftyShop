@@ -181,7 +181,7 @@ $(document).ready(function () {
     
         $(modalClose).on('click', function(event) {
 
-            event.preventDefault;
+            event.preventDefault();
             
             $(modal).fadeOut();
     

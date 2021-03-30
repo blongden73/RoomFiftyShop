@@ -5,6 +5,12 @@
         "class": "rf-modal",
         "settings": [
             {
+                "type": "checkbox",
+                "id": "display",
+                "label": "Display Modal",
+                "default": false
+            },
+            {
                 "type": "range",
                 "id": "timing",
                 "min": 1,
@@ -42,42 +48,48 @@
     }
 {% endschema %}
 
-<style>
+{% if section.settings.display == true %}
 
-    #modal {
-        background-color: {{ section.settings.bgColor }}
-    }
+    {% unless customer %}
+    <style>
 
-    #modal button.btn {
-        background-color: {{ section.settings.buttonColor}}
-    }
+        #modal {
+            background-color: {{ section.settings.bgColor }}
+        }
 
-</style>
+        #modal button.btn {
+            background-color: {{ section.settings.buttonColor}}
+        }
 
-{% assign timing = section.settings.timing | times: 1000 %}
+    </style>
 
-<div id="modal" data-timing="{{ timing }}">
+    {% assign timing = section.settings.timing | times: 1000 %}
+
+    <div id="modal" data-timing="{{ timing }}">
 
 
 
-    <div class="modal-inner">
+        <div class="modal-inner">
+            
+            <div class="close js-close">
+                <h2>×</h2>
+            </div>
+
+
+            {% if section.settings.headline %}
+            <h1>{{ section.settings.headline }}</h1>
+            {% endif %}
+
+            {% if section.settings.copy %}
+            <h2>{{ section.settings.copy }}</h2>
+            {% endif %}
+
+            {% include 'newsletter' %}
         
-        <div class="close js-close">
-            <h2>×</h2>
         </div>
 
 
-        {% if section.settings.headline %}
-         <h1>{{ section.settings.headline }}</h1>
-        {% endif %}
-
-        {% if section.settings.copy %}
-         <h2>{{ section.settings.copy }}</h2>
-        {% endif %}
-
-        {% include 'newsletter' %}
-    
     </div>
 
-
-</div>
+    {% endunless %}
+{% endif %}
