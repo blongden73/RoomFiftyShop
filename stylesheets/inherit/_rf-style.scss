@@ -116,11 +116,11 @@ $grid-breakpoint-has-push: ($medium-up);
     src: url('CircularStd-Bold.woff2') format('woff2'),
         url('CircularStd-Bold.woff') format('woff');
     font-weight: bold;
-    font-style: normal;
-}
+    font-style: normal; 
+} 
 
-$rf-sans: 'circular';
-$rf-sans-book: 'circular-book';
+$rf-sans: 'circular', arial, sans-serif;
+$rf-sans-book: 'circular-book', arial, sans-serif;
 
 body {
   font-family: $rf-sans !important;
