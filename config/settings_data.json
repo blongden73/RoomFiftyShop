@@ -103,7 +103,8 @@
           "1564136510237"
         ],
         "settings": {
-          "show_payment_icons": true
+          "show_payment_icons": true,
+          "footerMenu": "sub-footer"
         }
       },
       "header": {
@@ -1328,7 +1329,9 @@
       },
       "filters": {
         "type": "filters",
-        "settings": {}
+        "settings": {
+          "display": false
+        }
       },
       "1604006995af9f27ae": {
         "type": "advanced-content",
@@ -1364,6 +1367,96 @@
           "heading_size": 20,
           "feed_width": 100,
           "html_area": ""
+        }
+      },
+      "about-page": {
+        "type": "about-page",
+        "blocks": {
+          "c281e198-ae00-4cd8-b40b-331e96207964": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Leon Edler",
+              "profileBio": "<p>is an award winning conceptual illustrator and regularly contributes to newspapers and magazines including the New York Times, Vanity Fair and Die Zeit. He has exhibited his work in the UK and US. He lives in Brighton with his wife, twin daughters and dog (see Mabel Edler).<\/p>"
+            }
+          },
+          "66ab017e-bd6a-4d1c-a15a-d56c09254415": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Chris Clarke",
+              "profileBio": "<p>is a global creative director at The Guardian and a design consultant. Chris&#x27; work spans across countless facets of the design industry and has been noted on numerous occasions by award bodies and his peers.<\/p>"
+            }
+          },
+          "85573f7b-1ced-4856-8e37-ac595397db8c": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Ben Longden",
+              "profileBio": "<p>is a multi-disciplinary designer, part time teacher and digital design director at The Guardian. Alongside his work in design, Ben also competes in trialathons and smells like wheaty biscuits<\/p>"
+            }
+          },
+          "cd1c9de1-6c63-468f-9a23-859f69441610": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Ellie Davey",
+              "profileBio": "<p>is from London and is now based in Berlin, Germany where she has a Gallery called Kuratiert, a combined illustration gallery, shop, and studio. Her life in Berlin consists of non-competitive ping-pong, beer, and finding a reliable source of good tea.<\/p>"
+            }
+          },
+          "2f4f9773-fb7e-46d6-ba1e-e0af6c9ca67a": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Mabel Edler",
+              "profileBio": "<p>is a cross between a Staffordshire Bull Terrier and a Jack Russell. As well as sleeping, she also likes to sunbathe, chase squirrels and spoon. She is 8 years old and used to be a stray but now lives with her loving family in Brighton. She smells like a wheaty biscuit.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "c281e198-ae00-4cd8-b40b-331e96207964",
+          "66ab017e-bd6a-4d1c-a15a-d56c09254415",
+          "85573f7b-1ced-4856-8e37-ac595397db8c",
+          "cd1c9de1-6c63-468f-9a23-859f69441610",
+          "2f4f9773-fb7e-46d6-ba1e-e0af6c9ca67a"
+        ],
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/Screenshot_2021-03-08_at_13.28.38.png",
+          "textarea1": "<p>We launched RoomFifty in 2017 as a place to make the best contemporary art accessible to everyone. As a group of professional illustrators and art directors, we love using images to tell stories – reducing complex ideas into simple, beautiful images. We wanted to start a company that would connect amazing artists, producing the best commercial work, with an art-loving audience.<\/p>",
+          "textarea2": "<p>We want to become the first place you think of when buying high-quality prints at an affordable price. Curated by award-winning illustrators and art directors, we have unique access to the best commercial artists working today, and we want their work to reach an art buying audience all over the world – whether you’re an art lover or simply looking for a fantastic print for your home.<\/p><p><br\/>We’d love to hear from you. <br\/><br\/>If you have any feedback about our site, the work or have pics of our prints in your home, we’d love to hear from you. Please <a href=\"mailto:info@roomfifty.com\">email us<\/a>.<\/p>"
+        }
+      },
+      "collection-header": {
+        "type": "collection-header",
+        "settings": {
+          "linklist01": "theme",
+          "linklist02": "seasons",
+          "linklist03": "colour",
+          "linklist04": "space"
+        }
+      },
+      "modal": {
+        "type": "modal",
+        "settings": {
+          "timing": 3,
+          "headline": "Sign up to our Newsletter Here",
+          "copy": "The latest news and offers from Room Fifty More here",
+          "bgColor": "#eb5d42",
+          "buttonColor": "#333333"
+        }
+      },
+      "product-giftcard-template": {
+        "type": "product-giftcard-template",
+        "settings": {
+          "product_quantity_enable": false,
+          "vendor_show": false,
+          "social_sharing_products": true,
+          "product_description_position": "right",
+          "show_extra_tab": false,
+          "extra_tab_content": "",
+          "product_image_zoom_type": "lightbox",
+          "enable_payment_button": true,
+          "add_to_cart_width": "regular"
         }
       }
     },

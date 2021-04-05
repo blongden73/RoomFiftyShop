@@ -1,0 +1,9 @@
+ button.wk-button-collection {
+    color: $blue !important;   
+ } 
+
+ .template-product {
+    .wk-link {
+        @include visually-hidden;
+    }
+ }

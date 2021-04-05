@@ -41,6 +41,7 @@
   {{ 'app.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
+  {% render 'app_wishlist-king' %}
 
   {{ 'jquery-1.11.0.min.js' | asset_url | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}

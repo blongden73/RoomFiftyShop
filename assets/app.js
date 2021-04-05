@@ -73,30 +73,43 @@ $(document).ready(function () {
     }
 
 
-    let mainNav = '.site-header nav ul',
-        mainNavWidth = $(mainNav).width(),
+    let mainNav = '.site-header .js-nav',
+        wishlistLink = '.wishlist-link-li',
         subMenu = '.sub-menu',
-        subMenuInner = $(subMenu + ' .sub-menu-inner'),
         subMenuWrap = subMenu + ' .child-wrap',
+        subMenuInner = $(subMenu + ' .sub-menu-inner'),
+        mainNavWidth = $(mainNav).width();
+
+
+
+        $(wishlistLink).ready(function() {
+            console.log('wishlist link loaded')
+
+            subMenuInner.width(mainNavWidth);
+
+            console.log('resize to' + mainNavWidth)
+        })
+
+
+        let 
         collHeader = 'section.collection-header .coll-header-wrapper'
         $link = $(mainNav + ' li a')
         $mainNavlink = $(mainNav + ' li a.has-child'),
         childList = subMenuWrap;
 
-
-        subMenuInner.width(mainNavWidth);
-
         $(window).resize(function () {
             subMenuInner.width(mainNavWidth); 
-            // console.log('resize to' + mainNavWidth)
+            console.log('resize to' + mainNavWidth)
         })
-
+  
+    
 
     $link.hover(function () {
         
-        subMenuInner.width(mainNavWidth);
+   
         // console.log('resize to' + mainNavWidth)
 
+        subMenuInner.width(mainNavWidth);
         var linkCheck = $(this).hasClass('has-child');
 
         if (linkCheck) {
@@ -136,6 +149,7 @@ $(document).ready(function () {
 
         event.preventDefault();
 
+
         var filter = $(this).data('filter')
         var filterClass = '.' + filter;
 
@@ -155,7 +169,7 @@ $(document).ready(function () {
         }
 
     })
-
+ 
    
 
     // if (isCollection && subActiveCheck) {

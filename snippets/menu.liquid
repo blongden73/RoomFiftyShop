@@ -1,5 +1,5 @@
 <nav role="navigation">
-  <ul>
+  <ul class="js-nav">
     {%- for link in linklists.main-menu.links -%}
       <li>
         <a href="{{ link.url }}"  {% if link.active %}aria-current="page"{% endif %} class="{{ link.title | handleize }} {% if link.levels > 0 %} has-child {%endif%}" data-filter="{{ link.title | handleize }}">
@@ -39,6 +39,7 @@
     <li>
       {{ 'layout.customer.log_in' | t | customer_login_link }}
     </a></li>
+    <!-- include 'wishlist-link-li' -->
     <li><a href="/cart" class="site-header__cart cart">
       {% include 'icon-cart' %}
       <span class="small--hide">
@@ -62,6 +63,7 @@
     </li>
   </ul>
   <div class="mobile-cart-nav-wrapper">
+    <!-- include 'wishlist-link' -->
     <div class="mobile-cart">
       <a href="/cart" class="site-header__cart cart">
         {% include 'icon-cart' %}
