@@ -26,7 +26,7 @@
                     
                       {% if item.product.tags contains 'unframed' %}
 
-                        {% assign masterProduct = item.product.handle | remove: 'fine-art-print' | append: 'framed-print' %}
+                        {% assign masterProduct = item.product.handle | replace: 'fine-art-print', 'framed-print' %}
                         {% assign masterProduct = all_products[masterProduct] %}
                         {% assign masterUrl = masterProduct.url %}
                         {% assign masterUrl = masterUrl | within: collections.all %}

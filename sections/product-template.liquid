@@ -175,19 +175,18 @@
               {% endfor %}
             </div> {% endcomment %}
 
-            {% comment %} <div class="varient-sizes framed">
+           <div class="varient-sizes framed">
              {% assign varientIDS = product.variants %}
             <label for="variants" class="varient-size-title">Select size & frame style</label> 
             <select name="variants" id="print-selector">
               {% for varient in varientIDS %}
                 <option class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
                   {{varient.title}}
-                </option>
-                 {% include 'product-option-row' with option: varient.name , option_name: 'size & frame style' , selected: selected %}        
+                </option>      
                {% endfor %}
             </select>
-            </div> {% endcomment %}
-
+            </div> 
+{% comment %} 
             {% assign has_selected_variant = false %}
               {% if product.selected_variant != nil %}
                 {% assign has_selected_variant = true %}
@@ -208,7 +207,7 @@
                  <input class="js-variant-id" type="hidden" name="id" value="{% if has_selected_variant %}{{ product.selected_variant.id}}{% elsif has_multiple_variants != true %}{{ product.variants.first.id }}{% endif %}">
               {% endif %}           
             </div>
- 
+  {% endcomment %}
 
             {% comment %} <div class="varient-sizes print display">
               <!-- Needs dynamic handle -->

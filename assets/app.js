@@ -73,8 +73,8 @@ $(document).ready(function () {
     }
 
 
-    let mainNav = '.site-header .js-nav',
-        wishlistLink = '.wishlist-link-li',
+    let mainNav = '.js-nav',
+        wishlistLink = '.wishlist-link-li', 
         subMenu = '.sub-menu',
         subMenuWrap = subMenu + ' .child-wrap',
         subMenuInner = $(subMenu + ' .sub-menu-inner'),
@@ -82,13 +82,13 @@ $(document).ready(function () {
 
 
 
-        $(wishlistLink).ready(function() {
-            console.log('wishlist link loaded')
+        // $(wishlistLink).ready(function() {
+        //     console.log('wishlist link loaded')
 
-            subMenuInner.width(mainNavWidth);
+        //     // subMenuInner.width(mainNavWidth);
 
-            console.log('resize to' + mainNavWidth)
-        })
+        //     console.log('resize to' + mainNavWidth)
+        // })
 
 
         let 
@@ -97,10 +97,13 @@ $(document).ready(function () {
         $mainNavlink = $(mainNav + ' li a.has-child'),
         childList = subMenuWrap;
 
-        $(window).resize(function () {
-            subMenuInner.width(mainNavWidth); 
-            console.log('resize to' + mainNavWidth)
-        })
+        // $(window).resize(function () {
+
+        //     if ($(wishlistLink).ready()) {
+        //         subMenuInner.width(mainNavWidth); 
+        //         console.log('resize to' + mainNavWidth)
+        //     }
+        // })
   
     
 
@@ -109,7 +112,11 @@ $(document).ready(function () {
    
         // console.log('resize to' + mainNavWidth)
 
-        subMenuInner.width(mainNavWidth);
+        // if ($(wishlistLink).ready()) {
+        //     // subMenuInner.width(mainNavWidth); 
+        //     console.log('resize to' + mainNavWidth)
+        // }
+
         var linkCheck = $(this).hasClass('has-child');
 
         if (linkCheck) {
