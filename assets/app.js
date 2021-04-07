@@ -19,19 +19,28 @@ $(document).ready(function () {
             // options
             path: pagNext,
             append: gridProduct,
-            hideNav: pagHide,
+            // hideNav: pagHide,
             scrollThreshold: 600,
             status: pagStatus
         });
     
         $(collectionGridInner).on( 'request.infiniteScroll', function() {
-            $(pagHide).hide()
+            $(pagHide).addClass('visually-hidden')
             console.log('threshold')
         });
+
+        $(collectionGridInner).on( 'load.infiniteScroll', function( event, body, path, response ) {
+            console.log('Loaded: ' +  path);
+          });
+          
     
-        $(collectionGridInner).on( 'append.infiniteScroll', function (items) {
-            console.log('append');s
-        });
+        $(collectionGridInner).on( 'append.infiniteScroll', function (items, path, response) {
+            console.log('append ' + response)
+        }); 
+
+        $(collectionGridInner).on( 'error.infiniteScroll', function( event, error, path, response ) {
+            console.error(`Could not load: ${path}. ${error}`);
+        })
     } else {
         console.log('not a collection')
     }
