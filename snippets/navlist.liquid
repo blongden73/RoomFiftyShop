@@ -1,0 +1,23 @@
+{% assign navList = linklists[handle] %}
+
+  
+  <ul class="{{ class }} {{ navList.handle }}">
+    {% for link in navList.links %}
+
+      {% assign child_list_handle = link.title | handleize %}
+      <li class="{{ child_list_handle }} " >
+        {% if linklists[child_list_handle].links != blank %}
+          <a class="parent-link js-parent-link {{ navList.handle }}-{{ child_list_handle }}-parent {{ navList.handle }}-{{ child_list_handle }}
+         " href="{{ link.url }}" data-link-title="{{ navList.handle }}-{{ child_list_handle }}">{{ link.title }}</a>
+          
+          {% for childlink in linklists[child_list_handle].links %}
+            <a class="child-link js-child-link {{ navList.handle }}-{{ child_list_handle }}-child {{ navList.handle }}-{{ child_list_handle }}  {% if childlink.handle contains 'sale' %} sale {% endif %}
+           " href="{{ childlink.url }}" data-link-title="{{ navList.handle }}-{{ child_list_handle }}">{{ childlink.title | escape }}</a>
+          {% endfor %}
+        
+        {% else %}
+          <a href="{{ link.url }}">{{ link.title }}</a>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>

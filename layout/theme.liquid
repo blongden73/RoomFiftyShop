@@ -32,17 +32,20 @@
         addressQueryLimit: {{ 'homepage.map.address_query_limit_html' | t | json }},
         authError: {{ 'homepage.map.auth_error_html' | t | json }}
       }
-    }
+    } 
   </script>
 
+  {{ 'appmate-wishlist-king.scss' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
   {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }}
-
+  {{ 'app.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
+  {% render 'app_wishlist-king' %}
 
   {{ 'jquery-1.11.0.min.js' | asset_url | script_tag }}
   {{ 'modernizr.min.js' | asset_url | script_tag }}
+  {{ 'infinite-scroll.pkgd.min.js' | asset_url | script_tag }}
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
@@ -57,15 +60,17 @@
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
 
+  {% section 'modal' %}
   {% section "mobileNav" %}
   {% section "header" %}
+  
 
     {% comment %}
     <hr class="small--hide hr--small">
     {% endcomment %}
 
 
-  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
+  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %} {% if template contains 'about' %} about {% endif %}">{% endunless %}
 
     <div class="grid">
 
@@ -104,6 +109,7 @@
 
   {%- if template.name == 'collection' -%}
     {% section 'filters' %}
+    {% section 'collection-header' %}
   {%- endif -%}
 
   {%- if template.name == 'index' -%}
@@ -192,6 +198,7 @@
 
   {{ 'theme.js' | asset_url | script_tag }}
   {{ 'rf-script.js' | asset_url | script_tag }}
+  {{ 'app.js' | | asset_url | script_tag }}
 
 
 
@@ -202,6 +209,7 @@
 <!-- spurit_uev-added -->
 {% render 'spurit_uev-theme-snippet' %}
 <!-- /spurit_uev-added -->
+
 
 </body>
 </html>

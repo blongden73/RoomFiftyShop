@@ -103,7 +103,8 @@
           "1564136510237"
         ],
         "settings": {
-          "show_payment_icons": true
+          "show_payment_icons": true,
+          "footerMenu": "sub-footer"
         }
       },
       "header": {
@@ -111,10 +112,10 @@
         "settings": {
           "logo": "shopify:\/\/shop_images\/room_fifty_logo.png",
           "logo_max_width": "150",
-          "show_announcement": true,
+          "show_announcement": false,
           "home_page_only": false,
-          "announcement_text": "Check Our Christmas Delivery Dates",
-          "announcement_link": "shopify:\/\/pages\/christmas-delivery",
+          "announcement_text": "The winners of the Young Upstart Competition have been chosen - shop their prints now!",
+          "announcement_link": "shopify:\/\/pages\/yuc",
           "tagline": "<p>Curated Art for Everybody<\/p>"
         }
       },
@@ -170,12 +171,6 @@
             "type": "collection",
             "settings": {
               "collection": "allison-filice"
-            }
-          },
-          "e849b824-6859-45f9-8879-aa79f90d9958": {
-            "type": "collection",
-            "settings": {
-              "collection": "alva-skog"
             }
           },
           "62746c54-a71c-4779-b5f3-da0e4f00769e": {
@@ -700,6 +695,12 @@
               "collection": "melanie-johnsson"
             }
           },
+          "846d32fd-924a-4800-99fb-610cf9bec0eb": {
+            "type": "collection",
+            "settings": {
+              "collection": "melanie-lambrick"
+            }
+          },
           "04a751d7-9cff-418a-ae38-9fe1c4f0ea00": {
             "type": "collection",
             "settings": {
@@ -948,7 +949,6 @@
           "186a212c-5471-4f42-b079-8a661f320197",
           "dbba7b5b-dead-447d-85cf-1bc52bea7c25",
           "ed5da497-7390-418e-81cd-4d8416599931",
-          "e849b824-6859-45f9-8879-aa79f90d9958",
           "62746c54-a71c-4779-b5f3-da0e4f00769e",
           "ca6de937-f0b1-469c-87c6-02c9fb4929e6",
           "ab933c98-ecc9-44c7-92c0-30fa147aeb41",
@@ -1036,6 +1036,7 @@
           "312ebe00-22dd-47ea-9218-4c1082183e82",
           "4d386ee4-71bc-4c4b-9e86-95039b4483c2",
           "b4c59e7e-3b0b-4ee2-9e8a-a003cead4cd5",
+          "846d32fd-924a-4800-99fb-610cf9bec0eb",
           "04a751d7-9cff-418a-ae38-9fe1c4f0ea00",
           "e12c4549-b252-4bef-ac40-8e338148171d",
           "01f9753c-5439-4dfc-b07f-4ff85cd10b95",
@@ -1108,6 +1109,32 @@
       "1564138757180": {
         "type": "slideshow",
         "blocks": {
+          "5a6a944c-2c5c-4b27-8546-47ca98fbf2f3": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screenshot_2021-03-08_at_13.28.38.png",
+              "alignment": "center center",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "Celebrate International Women's Day 2021",
+              "button_label": "10% of profits to Women's Aid",
+              "button_link": "shopify:\/\/collections\/all"
+            }
+          },
+          "e164fce9-c423-420d-a9a0-4b11196d065c": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Screenshot_2021-02-26_at_17.55.26.png",
+              "alignment": "right top",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "Mother's Day is 14th March - send a print that's full of love",
+              "button_label": "Shop our love prints",
+              "button_link": "https:\/\/roomfifty.com\/collections\/all\/love"
+            }
+          },
           "8ae8742a-1f9b-40b0-afba-aec41eca7b9c": {
             "type": "image",
             "settings": {
@@ -1116,14 +1143,30 @@
               "overlay_opacity": 30,
               "color_text": "#ffffff",
               "text_alignment": "left",
-              "slide_heading": "The new season is here!",
-              "button_label": "Shop exclusive season 8 prints",
+              "slide_heading": "Our latest collection: Season 8",
+              "button_label": "Shop exclusive prints",
               "button_link": "shopify:\/\/collections\/season-8"
+            }
+          },
+          "946febec-e765-48bd-90be-f1202c96ca11": {
+            "type": "image",
+            "settings": {
+              "image": "shopify:\/\/shop_images\/Artboard_15.png",
+              "alignment": "center center",
+              "overlay_opacity": 30,
+              "color_text": "#ffffff",
+              "text_alignment": "left",
+              "slide_heading": "The Winners have been chosen!",
+              "button_label": "Buy the winning prints",
+              "button_link": "shopify:\/\/pages\/yuc"
             }
           }
         },
         "block_order": [
-          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c"
+          "5a6a944c-2c5c-4b27-8546-47ca98fbf2f3",
+          "e164fce9-c423-420d-a9a0-4b11196d065c",
+          "8ae8742a-1f9b-40b0-afba-aec41eca7b9c",
+          "946febec-e765-48bd-90be-f1202c96ca11"
         ],
         "settings": {
           "slider_height": "large",
@@ -1286,7 +1329,9 @@
       },
       "filters": {
         "type": "filters",
-        "settings": {}
+        "settings": {
+          "display": false
+        }
       },
       "1604006995af9f27ae": {
         "type": "advanced-content",
@@ -1314,6 +1359,105 @@
           "home_page_featured_products": "season-8",
           "home_featured_products_row_num": 3
         }
+      },
+      "161426355581233b6c": {
+        "type": "instafeed",
+        "settings": {
+          "heading_font": "helvetica_n4",
+          "heading_size": 20,
+          "feed_width": 100,
+          "html_area": ""
+        }
+      },
+      "about-page": {
+        "type": "about-page",
+        "blocks": {
+          "c281e198-ae00-4cd8-b40b-331e96207964": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Leon Edler",
+              "profileBio": "<p>is an award winning conceptual illustrator and regularly contributes to newspapers and magazines including the New York Times, Vanity Fair and Die Zeit. He has exhibited his work in the UK and US. He lives in Brighton with his wife, twin daughters and dog (see Mabel Edler).<\/p>"
+            }
+          },
+          "66ab017e-bd6a-4d1c-a15a-d56c09254415": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Chris Clarke",
+              "profileBio": "<p>is a global creative director at The Guardian and a design consultant. Chris&#x27; work spans across countless facets of the design industry and has been noted on numerous occasions by award bodies and his peers.<\/p>"
+            }
+          },
+          "85573f7b-1ced-4856-8e37-ac595397db8c": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Ben Longden",
+              "profileBio": "<p>is a multi-disciplinary designer, part time teacher and digital design director at The Guardian. Alongside his work in design, Ben also competes in trialathons and smells like wheaty biscuits<\/p>"
+            }
+          },
+          "cd1c9de1-6c63-468f-9a23-859f69441610": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Ellie Davey",
+              "profileBio": "<p>is from London and is now based in Berlin, Germany where she has a Gallery called Kuratiert, a combined illustration gallery, shop, and studio. Her life in Berlin consists of non-competitive ping-pong, beer, and finding a reliable source of good tea.<\/p>"
+            }
+          },
+          "2f4f9773-fb7e-46d6-ba1e-e0af6c9ca67a": {
+            "type": "profiles",
+            "settings": {
+              "profileImg": "shopify:\/\/shop_images\/RF-portrait-Leon_160x160_551c3efe-c7c6-465f-ac54-8adb025172e9.jpg",
+              "profileName": "Mabel Edler",
+              "profileBio": "<p>is a cross between a Staffordshire Bull Terrier and a Jack Russell. As well as sleeping, she also likes to sunbathe, chase squirrels and spoon. She is 8 years old and used to be a stray but now lives with her loving family in Brighton. She smells like a wheaty biscuit.<\/p>"
+            }
+          }
+        },
+        "block_order": [
+          "c281e198-ae00-4cd8-b40b-331e96207964",
+          "66ab017e-bd6a-4d1c-a15a-d56c09254415",
+          "85573f7b-1ced-4856-8e37-ac595397db8c",
+          "cd1c9de1-6c63-468f-9a23-859f69441610",
+          "2f4f9773-fb7e-46d6-ba1e-e0af6c9ca67a"
+        ],
+        "settings": {
+          "banner": "shopify:\/\/shop_images\/Screenshot_2021-03-08_at_13.28.38.png",
+          "textarea1": "<p>We launched RoomFifty in 2017 as a place to make the best contemporary art accessible to everyone. As a group of professional illustrators and art directors, we love using images to tell stories – reducing complex ideas into simple, beautiful images. We wanted to start a company that would connect amazing artists, producing the best commercial work, with an art-loving audience.<\/p>",
+          "textarea2": "<p>We want to become the first place you think of when buying high-quality prints at an affordable price. Curated by award-winning illustrators and art directors, we have unique access to the best commercial artists working today, and we want their work to reach an art buying audience all over the world – whether you’re an art lover or simply looking for a fantastic print for your home.<\/p><p><br\/>We’d love to hear from you. <br\/><br\/>If you have any feedback about our site, the work or have pics of our prints in your home, we’d love to hear from you. Please <a href=\"mailto:info@roomfifty.com\">email us<\/a>.<\/p>"
+        }
+      },
+      "collection-header": {
+        "type": "collection-header",
+        "settings": {
+          "linklist01": "theme",
+          "linklist02": "seasons",
+          "linklist03": "colour",
+          "linklist04": "space"
+        }
+      },
+      "modal": {
+        "type": "modal",
+        "settings": {
+          "timing": 3,
+          "headline": "Sign up to our Newsletter Here",
+          "copy": "The latest news and offers from Room Fifty More here",
+          "bgColor": "#eb5d42",
+          "buttonColor": "#333333"
+        }
+      },
+      "product-giftcard-template": {
+        "type": "product-giftcard-template",
+        "settings": {
+          "product_quantity_enable": false,
+          "vendor_show": false,
+          "social_sharing_products": true,
+          "product_description_position": "right",
+          "show_extra_tab": false,
+          "extra_tab_content": "",
+          "product_image_zoom_type": "lightbox",
+          "enable_payment_button": true,
+          "add_to_cart_width": "regular"
+        }
       }
     },
     "content_for_index": [
@@ -1329,7 +1473,8 @@
       "1564140336829",
       "1607335746e882f637",
       "1564135843653",
-      "1564505903027"
+      "1564505903027",
+      "161426355581233b6c"
     ]
   },
   "presets": {

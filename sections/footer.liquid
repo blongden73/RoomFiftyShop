@@ -18,7 +18,7 @@
         {% case block.type %}
           {% when 'menu' %}
             <div class="grid__item {{ column_width }}">
-              {% if block.settings.title %}
+              {% if block.settings.title != blank %}
                 <h3 class="site-footer__section-title">{{ block.settings.title | escape }}</h3>
               {% endif %}
               <ul class="site-footer__menu">
@@ -52,15 +52,26 @@
 
     {% if section.blocks.size > 0 %}
       <hr>
-    {% endif %}
+    {% endif %} 
 
     <div class="grid medium-up--grid--table sub-footer small--text-center">
-      <div class="grid__item medium-up--one-half">
-        <small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
+      <div class="grid__item medium-up--three-quarters copy">
+        <small>
+          {{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: '%Y' }}, {{ shop.name | link_to: '/' }}.
+        </small>
+
+        {% if section.settings.footerMenu %}
+          <ul class="site-legal-menu">
+            {% for link in linklists[section.settings.footerMenu].links %}
+              <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
       </div>
       {%- if section.settings.show_payment_icons -%}
         {%- unless shop.enabled_payment_types == empty -%}
-          <div class="grid__item medium-up--one-half medium-up--text-right">
+          <div class="grid__item medium-up--one-half medium-up--text-right payments">
             <span class="visually-hidden">{{ 'general.payment.method' | t }}</span>
             <ul class="list--inline payment-icons">
               {%- for type in shop.enabled_payment_types -%}
@@ -110,6 +121,12 @@
         "zh-TW": "顯示付款圖示"
       },
       "default": true
+    },
+    {
+      "type": "link_list",
+      "id": "footerMenu",
+      "label": "Legal Menu",
+      "info": "Menu to display alongside copywright & payment icons"
     }
   ],
   "blocks": [

@@ -1,0 +1,53 @@
+
+
+#modal {
+
+    z-index: 20000;
+    width: 33%;
+    margin-right: auto;
+    margin-left: auto;
+    
+    position: fixed;
+    top: 50vh;
+    left: 50%;
+    transform: translatex(-50%)translateY(-50%);
+
+    padding: 20px;
+    box-shadow: $box-shadow;
+
+    display: none;
+
+    .modal-inner {
+        
+        padding: 10px;
+
+        .close {
+            position: absolute;
+            right: 0;
+            top: 0;
+            // margin: 10px 15px;
+            padding: 10px 15px;
+            cursor: pointer;
+            h2 {
+                color: #fff;
+            }
+        }
+
+        form {
+            padding-top: 30px;
+            padding-bottom: 10px;
+        }
+
+        .newsletter-label {
+            display: none;
+        }
+    }
+
+}
+
+@include mq($break-m) {
+    #modal {
+        width: 93%;
+        top: 33vh;
+    }
+}

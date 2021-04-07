@@ -1,3 +1,24 @@
+
+
+{% schema %}
+  {
+    "name": "Bottom Filter",
+    "class": "filters",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "display",
+        "label": "display bottom filter",
+        "default": false
+      }
+    ]
+  }
+{% endschema %}
+
+{% if section.settings.display %}
+  
+
+
 <div class="rf-filters-wrapper">
   <div class="rf-columns-container">
     <div class="rf-wrapper products-wrapper">
@@ -66,3 +87,6 @@
     </div>
   </div>
 </div>
+
+
+{% endif %}

@@ -1,0 +1,15 @@
+ button.wk-button-collection {
+    color: $blue !important;   
+ } 
+
+ .template-product {
+    .wk-link {
+        @include visually-hidden;
+    }
+ }
+
+
+#wishlist.template-page h1.small--text-center {
+   background-color: $blue;
+   max-width: 100%;
+}

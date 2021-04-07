@@ -1,0 +1,27 @@
+<div class="product-option-row">
+
+    <label for="{{ option_name | handleize }}" class="{{ class }}">
+        Select {{ option.name }}
+    </label>
+
+    <div class="option-values">
+    
+        <select name="{{ option_name | handleize }}" id="option-selector">
+            
+            <option value="placeholder" disabled {% if selected == false %} selected {% endif %}>
+                Select {{ option.name }}
+            </option>
+            
+            {% for value in option.values %}
+
+                <option value="{{ value | handleize }}"> {{ value }}</option>
+        
+            {% endfor%}
+
+        </select>
+
+
+            
+    </div>
+
+</div> 

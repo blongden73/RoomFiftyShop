@@ -21,6 +21,7 @@
 {%- assign img_url = product.featured_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 
 <div class="product grid__item {{ grid_item_width }} slide-up-animation animated" role="listitem" data-product-card>
+  <!-- include 'wishlist-button-collection' with: '{{ product.id }}' -->
   {% unless product.featured_image == blank %}
     <div class="supports-js" style="max-width: {{ 600 | times: product.featured_image.aspect_ratio | round }}px; margin: 0 auto;">
       <a href="{{ product.url | within: collection }}" class="product__image-wrapper product__image-wrapper--loading" style="padding-top:{{ 1 | divided_by: product.featured_image.aspect_ratio | times: 100}}%;" title="{{ product.title | escape }}" data-image-link>

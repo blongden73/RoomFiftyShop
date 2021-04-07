@@ -1,6 +1,62 @@
 <!-- /templates/page.liquid -->
-<h1 class="small--text-center">{{ page.title }}</h1>
+
+
+
+
+{% assign content = page.content %}
+{% assign banner = '' %}
+{% assign color = '' %}
+
+{% if page.content contains '---'  %}
+  {% assign content = page.content | split: '---' | first %}
+  {% assign content_array = page.content | split: '---' %} 
+  {% assign contentKeys = 'banner|colour' | split: '|' %}
+
+    {% for key in contentKeys %}
+
+      {% assign split_key = key | prepend: '~*~' | append: '~*~' %}
+
+      {% if page.content contains split_key %}
+        {% if key == 'banner' %}
+          {% assign banner = page.content | split: split_key | last | split: '---' | first %}
+        {% elsif key == 'colour' %}
+            {% assign color = page.content | split: split_key | last | split: '---' | first %}
+        {% endif %}
+      {% endif %} 
+
+    {% endfor %} 
+{% endif %}
+
+<style>
+  .template-page h1.small--text-center.{{ page.title | handleize }} {
+    background-color: {{ color | strip_html | strip }}
+  }
+</style>
+
+{% if banner != '' %}
+  
+  <div class="feature-image">
+      <img src="{{ banner | strip_html }}">
+  </div>
+
+{% endif %}
+
+<div class="rte page-rte">
+  <div class="rf-wrapper products-wrapper">
+
+    <h1 class="small--text-center {{ page.title | handleize }} {% if banner != '' %} banner-position {% endif %}"> {{ page.title }}</h1>
+
+    <div class="inner-content-wrapper {% if banner != '' %} banner-position {% endif %}">
+      {{ content }}
+    </div>
+
+  </div>
+</div> 
+
+
+{% comment %} <h1 class="small--text-center">{{ page.title }}</h1>
 
 <div class="rte">
   {{ page.content }}
-</div>
+</div> {% endcomment %}
+
