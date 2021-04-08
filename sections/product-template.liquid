@@ -151,7 +151,8 @@
                 {{ form | payment_button }}
               {% endif %}
             </div>
-			<!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
+          <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
+          <!-- include 'wishlist-link'-->
           {% endform %}
 
           <!--Automation styles -->
@@ -289,7 +290,7 @@
 
 
 
-  <!-- include 'wishlist-link'-->
+  
 
   {% if section.settings.product_description_position == 'below' %}
     {%- assign position = 'below' -%}

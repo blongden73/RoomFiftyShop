@@ -56,9 +56,14 @@
             margin-top: $medium - 5;
         }
 
+        .grid .grid__item:nth-child(3) {
+            padding-top: 0;
+        }
+
         .site-footer__menu {
             margin-top: 0;
             margin-left: 0;
+            margin-bottom: 0;
         }
         
         .sub-footer {

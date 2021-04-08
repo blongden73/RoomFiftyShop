@@ -26,6 +26,10 @@
 
     &.grid {
         display: flex;
+
+        @include mq($break-m) {
+            display: block;
+        }
     }
 
     .medium-up--one-half.testing {
@@ -36,3 +40,4 @@
 .jdgm-rev-widg__title {
     margin-bottom: 20px !important;
 }
+

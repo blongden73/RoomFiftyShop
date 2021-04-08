@@ -82,3 +82,24 @@ nav ul li {
     }
     
 }
+
+.menu-extras ul {
+    margin-top: 0;
+}
+
+html.menu-open {
+    overflow-y: hidden;
+
+    #shopify-section-header {
+        z-index: 100000;
+    }
+
+    .mobile-cart {
+        padding-right: 44px;
+    }
+
+    main {
+        overflow-y: auto;
+        max-height: 100%;
+    }
+}

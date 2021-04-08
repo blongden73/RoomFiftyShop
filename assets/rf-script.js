@@ -5,6 +5,7 @@ var mobileLinks = document.querySelector('.mobile-nav-links');
 var collHeader = document.querySelector('.collection-header');
 var collHeaderWrap = document.querySelector('.coll-header-wrapper');
 var collHeaderFilters = document.querySelector('.head-filters');
+var html = document.querySelector('html');
 
 // function filters(){
 //   if(filtersSelector) {
@@ -23,7 +24,6 @@ function headerFilter(){
       this.classList.toggle('clicked');
       collHeaderFilters.classList.toggle('clicked');
 
-
     });
   }
 }
@@ -32,6 +32,7 @@ function menu() {
   mobileNav.addEventListener('click', function(){
     this.classList.toggle('clicked');
     mobileLinks.classList.toggle('clicked');
+    html.classList.toggle('menu-open');
   });
 }
 
