@@ -123,43 +123,163 @@
             </ul>
           {% endif %}
 
+          {% form 'product', product, class:'product-form' %}
+            <select name="id" id="ProductSelect-{{ section.id }}" class="product-single__variants {%if product.tags contains 'Testing'%} testing {% endif%}">
+              {% for variant in product.variants %}
+                {% if variant.available %}
+                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
+                {% else %}
+                  <option disabled="disabled">
+                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
+                  </option>
+                {% endif %}
+              {% endfor %}
+            </select>
 
+            {% if section.settings.product_quantity_enable %}
+              <div class="product-single__quantity">
+                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
+                <input type="number" id="Quantity" name="quantity" value="1" min="1">
+              </div>
+            {% endif %}
 
-          <div class="dyn-form">
+            <div class="product-single__cart-submit-wrapper{% if section.settings.enable_payment_button %} product-single__shopify-payment-btn{% endif %}{% if section.settings.add_to_cart_width == 'full_width' %} product-form--full{% endif %}">
+              <button type="submit" name="add" id="AddToCart"class="btn product-single__cart-submit{% if section.settings.add_to_cart_width == 'full_width' %} btn--full{% endif %}{% if section.settings.enable_payment_button %} shopify-payment-btn btn--secondary{% endif %}">
+                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
+              </button>
+              {% if section.settings.enable_payment_button %}
+                {{ form | payment_button }}
+              {% endif %}
+            </div>
+          <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
           
-             <div class="{%if product.tags contains 'Testing'%} testing {% endif%} new-buy-buttons" data-current="{{product.id}}">
-             
-              {% if product.handle contains 'fine-art-print' %}
-                {% assign masterHandle = product.handle | remove: 'fine-art-print' %}
-              {% elsif product.handle contains 'framed-print' %}
-                {% assign masterHandle = product.handle | remove: 'framed-print' %}
+          {% endform %}
+
+          <!--Automation styles -->
+          <div class="{%if product.tags contains 'Testing'%} testing {% endif%} new-buy-buttons">
+            {% assign FramedFriend = product.description | split: '||' %}
+            {% assign stripped = FramedFriend[1] | strip %}
+
+            <div class="varient-size-title">Select framing</div>
+            <div data-id="print" class="framed-varient selected print">No Frame</div>
+            <div data-id="framed" class="framed-varient framed" data-varients="{{ varientID[1] }}">Framed print</div>
+
+          
+
+            {% comment %} <div class="varient-sizes framed">
+              {% assign varientIDS = product.variants %}
+                <div class="varient-size-title">Select size & frame style</div>
+              {% for varient in varientIDS %}
+                <span class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
+                  {{varient.title}}
+                </span>
+              {% endfor %}
+            </div> {% endcomment %}
+
+           <div class="varient-sizes framed">
+             {% assign varientIDS = product.variants %}
+            <label for="variants" class="varient-size-title">Select size & frame style</label> 
+            <select name="variants" id="print-selector">
+              {% for varient in varientIDS %}
+                <option class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
+                  {{varient.title}}
+                </option>      
+               {% endfor %}
+            </select>
+            </div> 
+
+
+              {% comment %} 
+            {% assign has_selected_variant = false %}
+              {% if product.selected_variant != nil %}
+                {% assign has_selected_variant = true %}
               {% endif %}
 
 
-              {% assign print = masterHandle | append: 'fine-art-print'  %}
-              {% assign framed = masterHandle | append: 'framed-print' %}
+            <div class="varient-sizes framed">
 
-              {% assign printProd = all_products[print] %}
-              {% assign framedProd = all_products[framed] %}
+              {% assign varientIDS = product.variants %}
+           
+              {% if product.options.size <= 1 %}
+                 {% include 'product-varient-row' with option: varient.name , option_name: 'size & frame style' , selected: selected, varientArray: varientIDS %}        
+              {% else %}
+                {% for option in product.options_with_values %}
+                  {% assign option_name = 'option' | append: option.position %}
+                  {% include 'product-option-row' with option: option, option_name: option_name, class: 'varient-size-title'%}        
+                {% endfor %}
+                 <input class="js-variant-id" type="hidden" name="id" value="{% if has_selected_variant %}{{ product.selected_variant.id}}{% elsif has_multiple_variants != true %}{{ product.variants.first.id }}{% endif %}">
+              {% endif %}           
+            </div>
+  {% endcomment %}
+
+            {% comment %} <div class="varient-sizes print display">
+              <!-- Needs dynamic handle -->
+              {% assign Producthandle = product.description | split: '||' %}
+              {% assign useHandle = Producthandle[1] | strip %}
+              <div class="varient-size-title">Select size</div>
+              {% for handle in Producthandle %}
+                {% assign testHandle = handle | strip | strip_html | strip_newlines %}
+                {% assign varientFramedIDS = all_products[testHandle].variants %}
+                {% for varient in varientFramedIDS %}
+                  <span class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
+                    {{varient.title}}
+                  </span>
+                {% endfor %}
+
+              {% endfor %}
+            </div> {% endcomment %}
 
 
-              {% assign printID = all_products[print].id %}
-              {% assign framedID = all_products[framed].id %}
-              
+              <div class="varient-sizes print display">
+              <!-- Needs dynamic handle -->
+              {% assign Producthandle = product.description | split: '||' %}
+                {% assign useHandle = Producthandle[1] | strip %}
+                
+                {% for handle in Producthandle %}
+                  {% assign testHandle = handle | strip | strip_html | strip_newlines %}
+                  {% assign varientFramedIDS = all_products[testHandle].variants %}  
+                {% endfor %}
+                
+                {% include 'product-varient-row' with option: varient.name , option_name: 'Print Size' , selected: selected , varientArray: varientFramedIDS %}            
+                
+              </div>
 
-            <div class="varient-size-title">Select framing</div>
-            <button data-id="print" class="framed-varient print {{printID}} new-button" data-prod="{{printID}}">No Frame</button>
-            <button data-id="framed" class="framed-varient framed {{framedID}} new-button" data-varients="{{ varientID[1] }}" data-prod="{{ framedID }}">Framed print</button>
 
-          
-          </div>
-          {% include 'add-to-cart-form' with currentProduct: printProd %}
-
-          {% include 'add-to-cart-form' with currentProduct: framedProd %}
 
             
-          <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
-          
+
+            <div class="form-message error">
+              <h2>Select print style</h2>
+            </div>
+            <div class="form-message inprogress">
+              <h2>Adding print to basket please wait...</h2>
+            </div>
+            <div class="form-message done">
+              <h2>Added print to basket <a href="/cart">Go to basket</a></h2>
+            </div>
+            <form action="/cart/add" method="post" id="product-form-{{ product.id }}">
+                <div class="product-form__item">
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+                  <div>
+                    <div data-variant="32689948786828" data-product="{{ product.id }}" data-ajax-enabled="{{ settings.enable_ajax }}" id="add-to-cart-button" type="submit" name="add" aria-label="Add to cart" class="btn product-form__cart-submit btn--secondary-accent" data-add-to-cart="">
+                      <span data-add-to-cart-text="">
+                          Add print to basket
+                      </span>
+                      <span class="hide" data-loader="">
+                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg>
+                      </span>
+                    </div>
+                  </div>
+               </div>
+            </form>
+          </div>
+
+
+          {% if product.tags contains 'Testing'%}
+            {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
+            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/0.4.3/cart.min.js"></script>
+            {% include 'rf-auto' %} 
+          {% endif %}
         </div>
 
         {% if section.settings.product_description_position == 'right' %}
@@ -180,7 +300,11 @@
   {% endif %}
 </div>
 
-
+{% unless product == empty %}
+  <script type="application/json" id="ProductJson-{{ section.id }}">
+    {{ product | json }}
+  </script>
+{% endunless %}
 
 <script>
   // Override default values of shop.strings for each template.

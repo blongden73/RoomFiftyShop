@@ -1,0 +1,70 @@
+
+{% assign product = currentProduct %}
+
+{% assign variable = value %}
+
+
+{% assign has_multiple_variants = false %}
+  {% if product.variants.size > 1 %}
+    {% assign has_multiple_variants = true %}
+  {% endif %}
+
+{% assign has_multiple_options = false %}
+  {% if product.options.size > 1 %}
+    {% assign has_multiple_options = true %}
+  {% endif %}
+
+{% assign has_selected_variant = false %}
+  {% if product.selected_variant != nil %}
+    {% assign has_selected_variant = true %}
+  {% endif %}
+
+{% if has_multiple_variants %}
+    {% include 'get-variants-with-quantity-json' with product: product %}
+{% endif %}
+
+{% assign can_add_to_cart = false %}
+{% if has_selected_variant and product.selected_variant.available %}
+  {% assign can_add_to_cart = true %} 
+{% elsif has_multiple_variants == false and product.available %}
+  {% assign can_add_to_cart = true %}
+{% endif %}
+
+
+
+<form class="add-to-cart-form product-form {{currentProduct.id}}" id="add-to-cart-form-{{currentProduct.id}}" action="/cart/add" method="post" enctype="multipart/form-data" data-variants="{{ variants_with_quantity_json | url_param_escape }}" data-location="{{currentProduct.id}}">
+
+  
+        {% if has_multiple_variants or has_multiple_options %}
+            
+            {% for option in product.options_with_values %}
+                {% assign option_name = 'option' | append: option.position %}
+
+                {% assign selected = false %}
+
+                {% if has_selected_variant %}
+                    {% assign selected = product.selected_variant[option_name] %}
+                {% endif %}
+
+                {% include 'product-option-row' with option: option, option_name: option_name, type: 'select', selected: selected %}
+                
+            {% endfor %}
+
+        {% endif %}
+
+  <input class="js-variant-id" type="hidden" name="id" value="{% if has_selected_variant %}{{ product.selected_variant.id}}{% else %}{{ product.variants.first.id }}{% endif %}">
+  <input class="js-variant-qty" type="hidden" name="qty" value="{% if has_selected_variant %}{{ product.selected_variant.inventory_quantity}}{% else %}{{ product.variants.first.inventory_quantity }}{% endif %}">
+  <input class="js-policy" type="hidden" name="policy" value="{% if has_selected_variant %}{{ product.selected_variant.inventory_policy}}{% else %}{{ product.variants.first.inventory_policy }}{% endif %}">
+
+  <span class="js-price visually-hidden" data-default-price="{{ product.price | money }}">
+    {% comment %} {{ current_variant.price | money }}  {% endcomment %}
+    {% unless has_multiple_variants %} {{ product.variants.first.price | money }} {% endunless %}
+  </span>
+ 
+ 
+
+  <button id="add-to-cart-button-{{currentProduct.id}}" class="add-to-cart-button" type="submit" name="add" {% if can_add_to_cart != true %} disabled {% endif %}>
+     <span id="AddToCartText">Add print to basket</span>
+  </button>
+    
+</form>

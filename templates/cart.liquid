@@ -1,10 +1,14 @@
 <!-- /templates/cart.liquid -->
 
-<div class="grid">
+<div class="grid js-cart-page-contents">
+<span class="js-cart-item-count visually-hidden">{{ cart.item_count }}</span>
   <div class="grid__item">
     {% if cart.item_count > 0 %}
       <h1 class="h2 visually-hidden">{{ 'cart.general.title' | t }}</h1>
+      <fieldset id="cart-fieldset" class="js-cart-fieldset">
       <form action="/cart" method="post" novalidate class="cart">
+
+        
         <table class="cart-table responsive-table table--no-border">
           <thead class="cart__row cart__header-labels small--hide">
             <th class="text-left cart__table-cell--image">{{ 'cart.label.product' | t }}</th>
@@ -197,6 +201,7 @@
           </div>
         </footer>
       </form>
+      </fieldset>
     {% else %}
     {% comment %}
       The cart is empty
