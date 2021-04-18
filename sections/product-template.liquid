@@ -152,7 +152,7 @@
               {% endif %}
             </div>
           <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
-          <!-- include 'wishlist-link'-->
+          
           {% endform %}
 
           <!--Automation styles -->
@@ -164,7 +164,7 @@
             <div data-id="print" class="framed-varient selected print">No Frame</div>
             <div data-id="framed" class="framed-varient framed" data-varients="{{ varientID[1] }}">Framed print</div>
 
-         
+          
 
             {% comment %} <div class="varient-sizes framed">
               {% assign varientIDS = product.variants %}
@@ -187,7 +187,9 @@
                {% endfor %}
             </select>
             </div> 
-{% comment %} 
+
+
+              {% comment %} 
             {% assign has_selected_variant = false %}
               {% if product.selected_variant != nil %}
                 {% assign has_selected_variant = true %}

@@ -67,9 +67,22 @@
 
 }
 
+@include mq(989px) {
+    .rf-filters-wrapper {
+        .rf-filters-header h1 {
+
+            width: auto;
+    
+        }
+    }
+ }
 
 @include mq($break-m) {
    .rf-filters-wrapper {
        height: 55px;
+
+       .rf-filters-header h1 {
+        width: 210px;
+        }
    }
 }

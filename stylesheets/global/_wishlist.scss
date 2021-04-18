@@ -4,7 +4,7 @@
 
  .template-product {
     .wk-link {
-        @include visually-hidden;
+      //   @include visually-hidden; 
     }
  }
 
@@ -15,7 +15,13 @@
 }
 
 #wishlist {
-  .wk-add-item-form {
+  .wk-add-item-form, .wk-purchase {
       display: none;
+   }
+}
+
+.js-nav {
+   .wk-icon svg {
+      padding-bottom: 1px;
    }
 }
