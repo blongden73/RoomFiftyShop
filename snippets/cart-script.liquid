@@ -31,7 +31,7 @@
 
   // initialize multi selector for product
   jQuery(function($) {
-    new Shopify.OptionSelectors('.product-select-'+currentProd, { product: {{ product | json }} , onVariantSelected: selectCallback });
+    new Shopify.OptionSelectors("product-select", { product: {{ product | json }} , onVariantSelected: selectCallback });
   });
   
   // ]]>
