@@ -1,0 +1,27 @@
+
+<form action="/cart/add" method="post" class="add-to-cart-form {{currentProduct.id}}" id="add-to-cart-form-{{currentProduct.id}}" data-current="{{currentProduct.id}}" data-handle="{{currentProduct.handle}}">
+  
+  <div id="product-variants">
+  
+    <div id="price-field"></div> 
+  
+
+     <select id="product-select" name="id" class="product-select-{{currentProduct.id}}">
+      {% for variant in currentProduct.variants %}
+      <option value="{{ variant.id }}">
+        {{ variant.title }} - {{ variant.price | money }}
+        </option>
+      {% endfor %}
+    </select>
+
+
+  </div>
+  
+
+
+  <button id="purchase-{{currentProduct.id}}" class="add-to-cart-button add-to-cart-button-{{currentProduct.id}}" type="submit" name="add"  value="Purchase" >
+     <span id="AddToCartText">Add print to basket</span>
+  </button>
+
+
+</form> 

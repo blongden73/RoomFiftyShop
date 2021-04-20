@@ -63,7 +63,7 @@
  
  
 
-  <button id="add-to-cart-button-{{currentProduct.id}}" class="add-to-cart-button" type="submit" name="add" {% if can_add_to_cart != true %} disabled {% endif %}>
+  <button id="add-to-cart-button-{{currentProduct.id}}" class="add-to-cart-button" type="submit" name="add" {% if can_add_to_cart != true %} disabled data-msg="liquid-disabled"{% endif %}>
      <span id="AddToCartText">Add print to basket</span>
   </button>
     

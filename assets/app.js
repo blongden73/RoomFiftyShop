@@ -2,276 +2,276 @@ $(document).ready(function () {
 
         // Add to Cart Form –––––––––––––––––––––––––––
     
-        let
-            addToCartFormSelector = '.add-to-cart-form',
-            productOptionSelector = addToCartFormSelector + ' [name*=option]';
+//         let
+//             addToCartFormSelector = '.add-to-cart-form',
+//             productOptionSelector = addToCartFormSelector + ' [name*=option]';
             
-        let productForm = {
-        onProductOptionChanged: function(event) {
-            let
-                $form = $(this).closest(addToCartFormSelector),
-                selectedVariant = productForm.getActiveVariant($form);
+//         let productForm = {
+//         onProductOptionChanged: function(event) {
+//             let
+//                 $form = $(this).closest(addToCartFormSelector),
+//                 selectedVariant = productForm.getActiveVariant($form);
 
-            $form.trigger('form:change', [selectedVariant])
+//             $form.trigger('form:change', [selectedVariant])
             
-            // console.log($form)
-                // console.log($form.attr('data-variants'))
-        },
-        getActiveVariant: function($form) {
-            let
-                variants = JSON.parse(decodeURIComponent($form.attr('data-variants'))),
-                formData = $form.serializeArray(),
-                formOptions = {
-                    option1: null,
-                    option2: null,
-                    option3: null
-                },
-                selectedVariant = null;
+//             console.log($form)
+//             // console.log($form.attr('data-variants'))
+//         },
+//         getActiveVariant: function($form) {
+//             let
+//                 variants = JSON.parse(decodeURIComponent($form.attr('data-variants'))),
+//                 formData = $form.serializeArray(),
+//                 formOptions = {
+//                     option1: null,
+//                     option2: null,
+//                     option3: null
+//                 },
+//                 selectedVariant = null;
 
 
-            $.each(formData, function(index, item) {
-                if (item.name.indexOf('option') !== -1) {
-                    formOptions[item.name] = item.value;
-                }
-            });
+//             $.each(formData, function(index, item) {
+//                 if (item.name.indexOf('option') !== -1) {
+//                     formOptions[item.name] = item.value;
+//                 }
+//             });
 
-            $.each(variants, function(index, variant) {
-                if (variant.option1 === formOptions.option1 && variant.option2 === formOptions.option2 && variant.option3 === formOptions.option3) {
-                  selectedVariant = variant;
-                  return false;
-                }
-              });
+//             $.each(variants, function(index, variant) {
+//                 if (variant.option1 === formOptions.option1 && variant.option2 === formOptions.option2 && variant.option3 === formOptions.option3) {
+//                   selectedVariant = variant;
+//                   return false;
+//                 }
+//               });
 
-            console.log(variants)
-            console.log(formOptions)
+//             console.log(variants)
+//             console.log(formOptions)
 
-            return selectedVariant;
-        },
-        validate: function(event, selectedVariant) {
-            console.log('form validate');
-            console.log(selectedVariant);
+//             return selectedVariant;
+//         },
+//         validate: function(event, selectedVariant) {
+//             console.log(selectedVariant);
+         
 
-            let
-                $form = $(this).closest(addToCartFormSelector),
-                hasVariant = selectedVariant !== null,
-                canAddToCart = hasVariant,
-                $id = $form.find('.js-variant-id'),
-                $addToCartButton = $form.find('.add-to-cart-button'),
-                $price = $form.find('.js-price'),
-                formattedVariantPrice = null,
-                priceHtml = null,
-                addMsg = '.add-to-cart-button .add-msg',
-                priceWrap = '.add-to-cart-button h3 .price-wrap',
-                formID = $form.attr('id'),
-                localAddMsg = '#' + formID + ' ' + addMsg,
-                localPriceWrap =  '#' + formID + ' ' + priceWrap,
-                localButton =  '#' + formID + ' .add-to-cart-button';
+//             let
+//                 $form = $(this).closest(addToCartFormSelector),
+//                 hasVariant = selectedVariant !== null,
+//                 canAddToCart = hasVariant,
+//                 $id = $form.find('.js-variant-id'),
+//                 $addToCartButton = $form.find('.add-to-cart-button'),
+//                 $price = $form.find('.js-price'),
+//                 formattedVariantPrice = null,
+//                 priceHtml = null,
+//                 addMsg = '.add-to-cart-button .add-msg',
+//                 priceWrap = '.add-to-cart-button h3 .price-wrap',
+//                 formID = $form.attr('id'),
+//                 localAddMsg = '#' + formID + ' ' + addMsg,
+//                 localPriceWrap =  '#' + formID + ' ' + priceWrap,
+//                 localButton =  '#' + formID + ' .add-to-cart-button';
 
-                if (hasVariant) {
-                    formattedVariantPrice = '£' + (selectedVariant.price/100).toFixed(2);
-                    priceHtml = '<span class="money">' + formattedVariantPrice + '</span>';
-                    window.history.replaceState(null, null, '?variant=' + selectedVariant.id);
-                    // $(addMsg).html('Add to Bag');
-                } else {
-                    priceHtml = $price.attr('data-default-price');
-                }
+//                 if (hasVariant) {
+//                     formattedVariantPrice = '£' + (selectedVariant.price/100).toFixed(2);
+//                     priceHtml = '<span class="money">' + formattedVariantPrice + '</span>';
+//                     window.history.replaceState(null, null, '?variant=' + selectedVariant.id);
+//                     // $(addMsg).html('Add to Bag');
+//                 } else {
+//                     priceHtml = $price.attr('data-default-price');
+//                 }
 
                 
 
-                if (canAddToCart) {
+//                 if (canAddToCart) {
 
-                    console.log(formID)
-                    $id.val(selectedVariant.id);
-                    $(localButton).prop('disabled', false);
-                    $addToCartButton.removeClass('unavailable');
+//                     console.log(formID)
+//                     $id.val(selectedVariant.id);
+//                     $(localButton).prop('disabled', false);
+//                     $addToCartButton.removeClass('unavailable');
                     
-                    $(localAddMsg).html('Add to Bag')
-                    $(localPriceWrap).removeClass('visually-hidden')
+//                     $(localAddMsg).html('Add to Bag')
+//                     $(localPriceWrap).removeClass('visually-hidden')
                     
+//                     console.log('can add to cart ' + selectedVariant.id)
                     
-                    
-                } else if (!canAddToCart) {
+//                 } else {
 
-                    console.log('disabled')
+//                     console.log('disabled')
 
-                    $id.val('');
-                    $(localButton).prop('disabled', true);
-                    $addToCartButton.addClass('unavailable');
-                    $(localPriceWrap).addClass('visually-hidden')
+//                     $id.val('');
+//                     $(localButton).prop('disabled', true);
+//                     $addToCartButton.addClass('unavailable');
+//                     $(localPriceWrap).addClass('visually-hidden')
                     
-                    $(localAddMsg).html('Select Coffee')
+//                     $(localAddMsg).html('Select Coffee')
                     
-                    // $(addMsg).html('Out of Stock')
-                }
+//                     // $(addMsg).html('Out of Stock')
+//                 }
 
-                $price.html(priceHtml);
+//                 $price.html(priceHtml);
                 
-                console.log(canAddToCart);
+//                 console.log(canAddToCart);
 
-        },
-        init: function () { 
-            $(document).on('change', productOptionSelector, productForm.onProductOptionChanged);
-            $(document).on('form:change', addToCartFormSelector, productForm.validate);
-        }
-    };
+//         },
+//         init: function () { 
+//             $(document).on('change', productOptionSelector, productForm.onProductOptionChanged);
+//             $(document).on('form:change', addToCartFormSelector, productForm.validate);
+//         }
+//     };
     
-    productForm.init();
+//     productForm.init();
 
 
 
-// Ajax Cart –––––––––––––––––––––––––––––––––
+// // Ajax Cart –––––––––––––––––––––––––––––––––
 
-let 
-    miniCartContentSelector = '.js-mini-cart-contents';
+// let 
+//     miniCartContentSelector = '.js-mini-cart-contents';
 
-let ajaxify = {
-    onAddToCart: function (event) {
-        event.preventDefault();
+// let ajaxify = {
+//     onAddToCart: function (event) {
+//         event.preventDefault();
     
-        $.ajax({
-        type: 'POST',
-        url: '/cart/add.js',
-        data: $(this).serialize(),
-        dataType: 'json',
-        success: ajaxify.onCartUpdated,
-        error: ajaxify.onError
-        });
-    },
-    onCartUpdated: function() {
+//         $.ajax({
+//         type: 'POST',
+//         url: '/cart/add.js',
+//         data: $(this).serialize(),
+//         dataType: 'json',
+//         success: ajaxify.onCartUpdated,
+//         error: ajaxify.onError
+//         });
+//     },
+//     onCartUpdated: function() {
         
-    let
-        $miniCartFieldset = $(miniCartContentSelector + '.js-cart-fieldset');
+//     let
+//         $miniCartFieldset = $(miniCartContentSelector + '.js-cart-fieldset');
         
-        $miniCartFieldset.prop('disabled', true);
+//         $miniCartFieldset.prop('disabled', true);
 
 
-    $.ajax({
-        type: 'GET',
-        url: '/cart',
-        context: document.body,
-        success: function(context) {
-        let
-            $dataCartContents = $(context).find('.js-cart-page-contents'),
-            dataCartHtml = $dataCartContents.html(),
-            dataCartItemCount = $dataCartContents.attr('data-cart-item-count'),
-            $miniCartContents = $(miniCartContentSelector),
-            $cartItemCount = $('.js-cart-item-count');
+//     $.ajax({
+//         type: 'GET',
+//         url: '/cart',
+//         context: document.body,
+//         success: function(context) {
+//         let
+//             $dataCartContents = $(context).find('.js-cart-page-contents'),
+//             dataCartHtml = $dataCartContents.html(),
+//             dataCartItemCount = $dataCartContents.attr('data-cart-item-count'),
+//             $miniCartContents = $(miniCartContentSelector),
+//             $cartItemCount = $('.js-cart-item-count');
 
-        $cartItemCount.text(dataCartItemCount);
-        $miniCartContents.html(dataCartHtml);
-        // currencyPicker.onMoneySpanAdded();
+//         $cartItemCount.text(dataCartItemCount);
+//         $miniCartContents.html(dataCartHtml);
+//         // currencyPicker.onMoneySpanAdded();
 
-        console.log('added')
+//         console.log('added')
 
-        if (parseInt(dataCartItemCount) > 0) {
-            ajaxify.openCart(); 
-        }
-        else {
-            ajaxify.closeCart();
-        }
-        }
-    });
-    },
-    onError: function(XMLHttpRequest, textStatus) {
-    let data = XMLHttpRequest.responseJSON;
-    alert(data.status + ' - ' + data.message + ': ' + data.description);
-    console.log('error')
-    },
-    onCartButtonClick: function(event) {
-        event.preventDefault();
+//         if (parseInt(dataCartItemCount) > 0) {
+//             ajaxify.openCart(); 
+//         }
+//         else {
+//             ajaxify.closeCart();
+//         }
+//         }
+//     });
+//     },
+//     onError: function(XMLHttpRequest, textStatus) {
+//     let data = XMLHttpRequest.responseJSON;
+//     alert(data.status + ' - ' + data.message + ': ' + data.description);
+//     console.log('error')
+//     },
+//     onCartButtonClick: function(event) {
+//         event.preventDefault();
     
-        let isCartOpen = $('html').hasClass('mini-cart-open');
+//         let isCartOpen = $('html').hasClass('mini-cart-open');
     
-        if (!isCartOpen) {
-            ajaxify.openCart();
-        }
-        else {
-            ajaxify.closeCart();
-        }
-    },
-    openCart: function() {
-        $('html').addClass('mini-cart-open'); 
-        // $('#mini-cart').removeClass('visually-hidden');
-        // $('#mini-cart').removeClass('mini-cart-close');
-    },
-    closeCart: function() {
-        $('html').removeClass('mini-cart-open');
-        // $('#mini-cart').addClass('visually-hidden');
-        // $('html').addClass('mini-cart-close');
-    }, 
-    init: function() {
-        $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
-        $(document).on('click', '.cart-close', ajaxify.closeCart);
-        $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
+//         if (!isCartOpen) {
+//             ajaxify.openCart();
+//         }
+//         else {
+//             ajaxify.closeCart();
+//         }
+//     },
+//     openCart: function() {
+//         $('html').addClass('mini-cart-open'); 
+//         // $('#mini-cart').removeClass('visually-hidden');
+//         // $('#mini-cart').removeClass('mini-cart-close');
+//     },
+//     closeCart: function() {
+//         $('html').removeClass('mini-cart-open');
+//         // $('#mini-cart').addClass('visually-hidden');
+//         // $('html').addClass('mini-cart-close');
+//     }, 
+//     init: function() {
+//         $(document).on('submit', addToCartFormSelector, ajaxify.onAddToCart);
+//         $(document).on('click', '.cart-close', ajaxify.closeCart);
+//         $(document).on('click', '.js-cart-link', ajaxify.onCartButtonClick);
         
-    }
-}
+//     }
+// }
 
-ajaxify.init();
-
-
-// Line Item –––––––––––––––
+// ajaxify.init();
 
 
-let 
-    removeLineSelector = '.js-remove-line',
-    lineQuantitySelector = '.js-line-quantity';
+// // Line Item –––––––––––––––
 
-let lineItem = {
-    isInMiniCart: function(element) {
-        let
-            $element = $(element),
-            $miniCart = $element.closest(miniCartContentSelector),
-            isInMiniCart = $miniCart.length !== 0;
 
-        return isInMiniCart;
+// let 
+//     removeLineSelector = '.js-remove-line',
+//     lineQuantitySelector = '.js-line-quantity';
 
-    },
-    onLineQuantityChanged: function () {
-        let 
-            quantity = this.value, 
-            id = $(this).attr('id').replace('updates_', '');
-            changes = {
-                quantity: quantity,
-                id: id
-            },
-            isInMiniCart = lineItem.isInMiniCart(this);
+// let lineItem = {
+//     isInMiniCart: function(element) {
+//         let
+//             $element = $(element),
+//             $miniCart = $element.closest(miniCartContentSelector),
+//             isInMiniCart = $miniCart.length !== 0;
+
+//         return isInMiniCart;
+
+//     },
+//     onLineQuantityChanged: function () {
+//         let 
+//             quantity = this.value, 
+//             id = $(this).attr('id').replace('updates_', '');
+//             changes = {
+//                 quantity: quantity,
+//                 id: id
+//             },
+//             isInMiniCart = lineItem.isInMiniCart(this);
             
-            console.log(changes)
+//             console.log(changes)
 
-            if (isInMiniCart) {
-                $.post('/cart/change.js', changes, ajaxify.onCartUpdated, 'json');
-            }
-    },
-    onLineRemoved: function(event) {
+//             if (isInMiniCart) {
+//                 $.post('/cart/change.js', changes, ajaxify.onCartUpdated, 'json');
+//             }
+//     },
+//     onLineRemoved: function(event) {
 
-        let 
-            isInMiniCart = lineItem.isInMiniCart(this);
+//         let 
+//             isInMiniCart = lineItem.isInMiniCart(this);
 
-        if (isInMiniCart) {
+//         if (isInMiniCart) {
 
-            event.preventDefault();
+//             event.preventDefault();
             
-            let
-                $removeLink = $(this),
-                removeQuery = $removeLink.attr('href').split('change?')[1];
+//             let
+//                 $removeLink = $(this),
+//                 removeQuery = $removeLink.attr('href').split('change?')[1];
 
-            $.post('/cart/change.js', removeQuery, ajaxify.onCartUpdated, 'json');
-        }
-    },
-    init: function() {
-        $(document).on('click', removeLineSelector, lineItem.onLineRemoved);
-        $(document).on('change', lineQuantitySelector, lineItem.onLineQuantityChanged)
-    }
-};
+//             $.post('/cart/change.js', removeQuery, ajaxify.onCartUpdated, 'json');
+//         }
+//     },
+//     init: function() {
+//         $(document).on('click', removeLineSelector, lineItem.onLineRemoved);
+//         $(document).on('change', lineQuantitySelector, lineItem.onLineQuantityChanged)
+//     }
+// };
 
-lineItem.init();
+// lineItem.init(); 
    
 
 
 
     let productSelector = '.new-buy-buttons',
-        productButton = productSelector + ' .new-button'
+        productButton = productSelector + ' .new-button',
         printSelector = productSelector + ' .print',
         frameSelector = productSelector + ' .framed',
         printId = $(printSelector).data('prod'),
@@ -284,8 +284,8 @@ lineItem.init();
         currentButton = $(productButton).hasClass(current);
 
         
-        $(atcForm+currentClass).show();
-        $(atcForm).not(currentClass).hide()
+        $(atcForm+currentClass).show().addClass('selected');
+        $(atcForm).not(currentClass).hide().removeClass('selected');
 
         $(productButton + '.' + current).addClass('selected');
 
@@ -306,8 +306,8 @@ lineItem.init();
 
         if (match) {
             console.log(atcForm+idClass)
-            $(atcForm+idClass).show();
-            $(atcForm).not(idClass).hide()
+            $(atcForm+idClass).show().addClass('selected') 
+            $(atcForm).not(idClass).hide().removeClass('selected')
         }
             
     })
@@ -316,12 +316,7 @@ lineItem.init();
 
 
 
-
-
-
-
-
-
+    
 
 
 

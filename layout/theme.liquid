@@ -37,7 +37,7 @@
 
   {{ 'appmate-wishlist-king.scss' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }}
+  {% comment %} {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
   {{ 'app.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
@@ -203,13 +203,6 @@
 
 
 
-{% include 'swymSnippet' %}
-
-{% render 'spurit_dmr_theme_snippet' %}
-
-<!-- spurit_uev-added -->
-{% render 'spurit_uev-theme-snippet' %}
-<!-- /spurit_uev-added -->
 
 
 </body>

@@ -5,7 +5,7 @@
     </label>
 
     <div class="option-values">
-        <select name="{{ option_name | handleize }}" id="option-selector">
+        <select name="{{ option_name | handleize }}" id="option-selector-{{currentProduct.id}}">
             
             <option value="placeholder" disabled {% if selected == false %} selected {% endif %}>
                 Select {{ option.name }}
