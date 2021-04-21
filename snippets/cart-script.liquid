@@ -12,7 +12,7 @@
         $('#purchase-' + currentProd).removeClass('disabled').removeAttr('disabled').val('Add to Cart').fadeTo(200,1);
       } else {
         // Variant is sold out.
-        $('#purchase-' + currentProd).val('Sold Out').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+        $('#purchase-' + currentProd).addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
       }
       // Whether the variant is in stock or not, we can update the price and compare at price.
       if ( variant.compare_at_price > variant.price ) {
@@ -21,18 +21,20 @@
         $('#price-field').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "") + '</span>' );
       }
     } else {
-      // variant doesn't exist.
-      $('#purchase-' + currentProd).val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+      // variant doesn't exist. 
+      $('#purchase-' + currentProd).addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
     }
   }
 
 
-
-
+   
   // initialize multi selector for product
   jQuery(function($) {
-    new Shopify.OptionSelectors("product-select", { product: {{ product | json }} , onVariantSelected: selectCallback });
+    new Shopify.OptionSelectors("#product-select", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
+    new Shopify.OptionSelectors("#product-select-size", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
+    new Shopify.OptionSelectors("#product-select-frame-style", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
+
   });
   
   // ]]>
-</script>  
+</script>    

@@ -121,7 +121,7 @@
               {% endfor %}
 
             </ul>
-          {% endif %}
+          {% endif %}  
 
 
  
@@ -160,9 +160,6 @@
           <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
           </div>
 
-          {% include 'cart-script' %} 
-
-
  
 
 
@@ -187,6 +184,9 @@
 </div>
 
 
+
+
+{% include 'cart-script' %} 
 
 <script>
   // Override default values of shop.strings for each template.

@@ -5,15 +5,25 @@
   
     <div id="price-field"></div> 
   
-
+{% comment %} 
      <select id="product-select" name="id" class="product-select-{{currentProduct.id}}">
       {% for variant in currentProduct.variants %}
       <option value="{{ variant.id }}">
         {{ variant.title }} - {{ variant.price | money }}
         </option>
       {% endfor %}
-    </select>
+    </select> {% endcomment %}
 
+      {% for option in currentProduct.options_with_values %}
+
+      {% assign option_name = option.name | handleize %}
+
+      <select id="product-select-{{option_name}}" name="id" class="product-select-{{option_name}}">
+        {% for value in option.values %}
+                <option value="{{ value | handleize }}"> {{ value }}</option>
+            {% endfor%}
+      </select> 
+      {% endfor %}
 
   </div>
   
@@ -25,3 +35,4 @@
 
 
 </form> 
+
