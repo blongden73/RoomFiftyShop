@@ -1,5 +1,5 @@
 
-<form action="/cart/add" method="post" class="add-to-cart-form {{currentProduct.id}}" id="add-to-cart-form-{{currentProduct.id}}" data-current="{{currentProduct.id}}" data-handle="{{currentProduct.handle}}">
+<form action="/cart/add" method="post" class="add-to-cart-form {{currentProduct.id}}" id="add-to-cart-form" data-current="{{currentProduct.id}}" data-handle="{{currentProduct.handle}}">
   
   <div id="product-variants">
   
@@ -18,14 +18,14 @@
 
       {% assign option_name = option.name | handleize %}
 
-      <select id="product-select-{{option_name}}" name="id" class="product-select-{{option_name}}">
+      <select id="product-select" name="id" class="product-select  {{currentProduct.id}} ">
         {% for value in option.values %}
-                <option value="{{ value | handleize }}"> {{ value }}</option>
-            {% endfor%}
+           <option value="{{ value | handleize }}"> {{ value }}</option>
+        {% endfor%}
       </select> 
       {% endfor %}
 
-  </div>
+  </div>  
   
 
 

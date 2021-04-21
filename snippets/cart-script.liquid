@@ -28,13 +28,10 @@
 
 
    
-  // initialize multi selector for product
+  // initialize multi selector for product 
   jQuery(function($) {
-    new Shopify.OptionSelectors("#product-select", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
-    new Shopify.OptionSelectors("#product-select-size", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
-    new Shopify.OptionSelectors("#product-select-frame-style", { product: {{ currentProduct.json }} , onVariantSelected: selectCallback });
-
-  });
+    new Shopify.OptionSelectors("#product-select", { product: {{ currentProduct | json }} , onVariantSelected: selectCallback });
+    });
   
   // ]]>
-</script>    
+</script>      
