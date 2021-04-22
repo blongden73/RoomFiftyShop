@@ -153,9 +153,9 @@
 
           
 
-          {% include 'add-to-cart-option-form' with currentProduct: printProd %}
+          {% include 'add-to-cart-option-form' with product: printProd %}
 
-          {% include 'add-to-cart-option-form' with currentProduct: framedProd %}
+          {% include 'add-to-cart-option-form' with product: framedProd %}
 
           <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
           </div>
@@ -186,7 +186,7 @@
 
 
 
-{% include 'cart-script' %} 
+{% comment %} {% include 'cart-script' %}  {% endcomment %}
 
 <script>
   // Override default values of shop.strings for each template.

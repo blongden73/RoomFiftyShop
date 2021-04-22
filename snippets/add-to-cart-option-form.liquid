@@ -1,38 +1,51 @@
 
-<form action="/cart/add" method="post" class="add-to-cart-form {{currentProduct.id}}" id="add-to-cart-form" data-current="{{currentProduct.id}}" data-handle="{{currentProduct.handle}}">
-  
-  <div id="product-variants">
-  
-    <div id="price-field"></div> 
-  
-{% comment %} 
-     <select id="product-select" name="id" class="product-select-{{currentProduct.id}}">
-      {% for variant in currentProduct.variants %}
-      <option value="{{ variant.id }}">
-        {{ variant.title }} - {{ variant.price | money }}
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm-{{product.id}}"  class="add-to-cart-form {{product.id}}" data-current="{{product.id}}" data-handle="{{product.handle}}">
+  <select name="id" id="productSelect">
+
+    {% for variant in product.variants %}
+      {% if variant.available %}
+        <option value="{{ variant.id }}">
+          {{ variant.title }} - {{ variant.price | money_with_currency }}
         </option>
-      {% endfor %}
-    </select> {% endcomment %}
+      {% else %}
+        <option disabled="disabled">
+          {{ variant.title }} - sold out
+        </option>
+      {% endif %}
+    {% endfor %}
+  </select>
 
-      {% for option in currentProduct.options_with_values %}
-
-      {% assign option_name = option.name | handleize %}
-
-      <select id="product-select" name="id" class="product-select  {{currentProduct.id}} ">
-        {% for value in option.values %}
-           <option value="{{ value | handleize }}"> {{ value }}</option>
-        {% endfor%}
-      </select> 
-      {% endfor %}
-
-  </div>  
+  {{ current_variant.price | money }}
   
+  <button type="submit" name="add" id="AddToCart" class="add-to-cart-button-{{product.id}}">Add to cart</button>
+</form>
 
-
-  <button id="purchase-{{currentProduct.id}}" class="add-to-cart-button add-to-cart-button-{{currentProduct.id}}" type="submit" name="add"  value="Purchase" >
-     <span id="AddToCartText">Add print to basket</span>
-  </button>
-
-
-</form> 
-
+<script>
+  // <![CDATA[
+  var selectCallback = function(variant, selector) {
+    if (variant) {
+      if (variant.available) {
+        // Selected a valid variant that is available.
+        $('#add').removeClass('disabled').removeAttr('disabled').val('Add to Cart').fadeTo(200,1);
+      } else {
+        // Variant is sold out.
+        $('#add').val('Sold Out').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+      }
+      // Whether the variant is in stock or not, we can update the price and compare at price.
+      if ( variant.compare_at_price > variant.price ) {
+        $('#price-field').html('<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "") +'</span>'+'&nbsp;<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "")+ '</s>');
+      } else {
+        $('#price-field').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "") + '</span>' );
+      }
+    } else {
+      // variant doesn't exist.
+      $('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
+    }
+  }
+  // initialize multi selector for product
+  jQuery(function($) {
+    new Shopify.OptionSelectors("productSelect", { product: {{ product | json }}, onVariantSelected: selectCallback });
+  });
+  // ]]>
+</script>
