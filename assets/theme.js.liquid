@@ -1027,14 +1027,14 @@ theme.Product = (function() {
         });
       };
 
-      this.optionSelector = new Shopify.OptionSelectors(
+      {% comment %} this.optionSelector = new Shopify.OptionSelectors(
         'ProductSelect-' + this.sectionId,
         {
           product: product,
           onVariantSelected: selectCallback,
           enableHistoryState: this.enableHistoryState
         }
-      );
+      ); {% endcomment %}
 
       // Clean up variant labels if the Shopify-defined
       // defaults are the only ones left

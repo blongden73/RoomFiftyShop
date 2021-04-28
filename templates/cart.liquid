@@ -28,8 +28,9 @@
                     {% include 'image-style' with image: item.image, width: 720, height: 600, small_style: false, wrapper_id: wrapper_id, img_id: img_id %}
                     <div id="{{ wrapper_id }}" class="cart__image-wrapper supports-js">
                     
-                      {% if item.product.tags contains 'unframed' %}
+                      {% if item.product.handle contains 'fine-art-print'  %}
 
+      
                         {% assign masterProduct = item.product.handle | replace: 'fine-art-print', 'framed-print' %}
                         {% assign masterProduct = all_products[masterProduct] %}
                         {% assign masterUrl = masterProduct.url %}
@@ -75,7 +76,7 @@
                 <td class="cart__table-cell--meta text-center large-up--text-left">
                   <p>
 
-                    {% if item.product.tags contains 'unframed' %}
+                    {% if item.product.handle contains 'fine-art-print'  %}
                       <a href="{{ masterUrl }}">{{ item.product.title }}</a>
                     {% else %}
                       <a href="{{ item.url }}">{{ item.product.title }}</a>

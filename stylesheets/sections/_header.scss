@@ -12,6 +12,7 @@ nav ul li {
         height: auto;
     }
 
+    display: none;
     background-color: $rams;
     min-height: 135px;
     padding-bottom: 10px;
@@ -35,6 +36,8 @@ nav ul li {
 
         width: 564px;
     }
+
+
 
     &.active {
         opacity: 1;

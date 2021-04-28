@@ -194,10 +194,10 @@
               <h2>Select print style</h2>
             </div>
             <div class="form-message inprogress">
-              <h2>🖼Adding print to basket please wait...</h2>
+              <h2>Adding print to basket please wait...</h2>
             </div>
             <div class="form-message done">
-              <h2> Added print to basket <a href="/cart">Go to basket</a></h2>
+              <h2>Added print to basket <a href="/cart">Go to basket</a></h2>
             </div>
             <form action="/cart/add" method="post" id="product-form-{{ product.id }}">
                 <div class="product-form__item">
@@ -222,6 +222,7 @@
           {% endif %}
         </div>
 
+          <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
         {% if section.settings.product_description_position == 'right' %}
           {%- assign position = 'right' -%}
           {% include 'product-description' %}
@@ -230,74 +231,8 @@
     </div>
   </div>
 
-  <div class="rf-colours">
-    <div class="rf-wrapper">
-      <h1>Match these colours</h1>
-      <div class="rf-colours-wrapper">
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-      </div>
-    </div>
-  </div>
-  {{ 'color-thief.min.js' | asset_url | script_tag }}
-  <script>
-    const colorThief = new ColorThief();
-      const img = document.querySelector('.product-single__photo');
-      const colours = document.querySelector('.rf-colours-wrapper');
-      const color = document.querySelectorAll('.rf-colour');
-      console.log('getting colours', img);
-      // Make sure image is finished loading
-      if (img.complete) {
-        colorThief.getPalette(img);
-      } else {
-        img.addEventListener('load', function() {
-          var ct = colorThief.getPalette(img);
-          console.log(ct);
-          for(i=0; i < ct.length; i++) {
-            console.log(ct[i].toString());
-            color[i].style.backgroundColor = "rgb(" + ct[i].toString() + ")";
-            console.log(color);
-          }
-          console.log('loading colours');
-          console.log(colorThief.getPalette(img));
-        });
-      }
-  </script>
-  <div class="rf-lifestyle">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product | img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_1.jpg?v=1588369323">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Museum-quality giclée print on premium, heavyweight art paper. Choose from unframed or framed in black and white.</p>
-      </div>
-    </div>
-  </div>
-  <div class="rf-lifestyle rf-lifestyle-two">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product.images[1] | product_img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_2.jpg?v=1588370564">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Our frames are handmade from high-quality ash, milled with simple, clean lines and presented with a satin finish.</p>
-      </div>
-    </div>
-  </div>
-
+  
+ 
   {% if section.settings.product_description_position == 'below' %}
     {%- assign position = 'below' -%}
     {% include 'product-description' %}

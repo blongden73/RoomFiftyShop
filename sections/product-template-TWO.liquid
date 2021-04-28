@@ -151,15 +151,14 @@
             <button data-id="print" class="framed-varient print {{printID}} new-button" data-prod="{{printID}}">No Frame</button>
             <button data-id="framed" class="framed-varient framed {{framedID}} new-button" data-varients="{{ varientID[1] }}" data-prod="{{ framedID }}">Framed print</button>
 
-          
 
-          {% include 'add-to-cart-option-form' %}  
+            {% include 'add-to-cart-option-form' %}  
  
 
-          {% comment %} {% include 'add-to-cart-option-form' with product: framedProd %} {% endcomment %}
+            {% comment %} {% include 'add-to-cart-option-form' with product: framedProd %} {% endcomment %}
 
-{% comment %} 
-          {% include 'cart-script' %}
+            {% comment %} 
+            {% include 'cart-script' %}
            {% endcomment %}
 
           <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->

@@ -1,8 +1,11 @@
 
- <form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm-{{product.id}}"  class="add-to-cart-form {{product.id}}" data-current="{{product.id}}" data-handle="{{ product.handle }}">
+
+
+
+<form action="/cart/add" method="post" enctype="multipart/form-data" id="AddToCartForm-{{framedProd.id}}"  class="add-to-cart-form {{framedProd.id}}" data-current="{{framedProd.id}}" data-handle="{{framedProd.handle}}">
  
-  <select name="id" id="productSelect">
-    {% for variant in product.variants %}
+  <select name="id" id="framedProdSelect">
+    {% for variant in framedProd.variants %}
       {% if variant.available %}
         <option value="{{ variant.id }}">
           {{ variant.title }} - {{ variant.price | money_with_currency }}
@@ -17,13 +20,10 @@
  
   {{ current_variant.price | money }}
   
-  <button type="submit" name="add" id="AddToCart" class="add-to-cart-button-{{product.id}}">
-    Add to cart
+  <button type="submit" name="add" id="AddToCart" class="add-to-cart-button-{{framedProd.id}}">
+  Add to cart
   </button>
-
 </form>
- 
-
 
 <script>
   // <![CDATA[
@@ -38,18 +38,18 @@
       }
       // Whether the variant is in stock or not, we can update the price and compare at price.
       if ( variant.compare_at_price > variant.price ) {
-        $('#price-field').html('<span class="product-price on-sale">'+ Shopify.formatMoney(variant.price, "") +'</span>'+'&nbsp;<s class="product-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "")+ '</s>');
+        $('#price-field').html('<span class="framedProd-price on-sale">'+ Shopify.formatMoney(variant.price, "") +'</span>'+'&nbsp;<s class="framedProd-compare-price">'+Shopify.formatMoney(variant.compare_at_price, "")+ '</s>');
       } else {
-        $('#price-field').html('<span class="product-price">'+ Shopify.formatMoney(variant.price, "") + '</span>' );
+        $('#price-field').html('<span class="framedProd-price">'+ Shopify.formatMoney(variant.price, "") + '</span>' );
       }
     } else {
       // variant doesn't exist.
       $('#add').val('Unavailable').addClass('disabled').attr('disabled', 'disabled').fadeTo(200,0.5);
     }
   }
-  // initialize multi selector for product
+  // initialize multi selector for framedProd
   jQuery(function($) {
-    new Shopify.OptionSelectors("productSelect", { product: {{ product | json }}, onVariantSelected: selectCallback });
+    new Shopify.OptionSelectors("framedProdSelect", { product: {{ framedProd | json }}, onVariantSelected: selectCallback });
   });
   // ]]>
 

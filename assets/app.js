@@ -468,6 +468,8 @@ $(document).ready(function () {
 
         if (linkCheck) {
             $(subMenu).addClass('active')
+            $(subMenu).show()
+            
         
             if (isCollection) {
                 $(collHeader).addClass('coll-move');
@@ -475,8 +477,10 @@ $(document).ready(function () {
                 $(collHeader).css('opacity', '0');
             }
         } else {
-      
-            $(subMenu).removeClass('active')
+            $(subMenu).removeClass('active', function(){
+                $(subMenu).fadeOut(300)
+            })
+    
 
             if (isCollection) {
                 $(collHeader).removeClass('coll-move');
@@ -488,8 +492,9 @@ $(document).ready(function () {
     })
 
     $(subMenu).on('mouseleave', function() {
-
-        $(subMenu).removeClass('active')
+        $(subMenu).removeClass('active', function(){
+            $(subMenu).fadeOut(300)
+        })
 
         if (isCollection) {
             $(collHeader).removeClass('coll-move');
