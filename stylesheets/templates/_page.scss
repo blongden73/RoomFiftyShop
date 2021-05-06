@@ -1,0 +1,119 @@
+.template-page {
+
+    .feature-image {
+        max-height: 400px;
+        width: 100%;
+        height: 400px;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+    }
+
+    .rf-wrapper.breadcrumb-wrapper {
+        width: 100%;
+    }
+
+    // .rf-wrapper  {
+    //     margin-right: 20px;
+    //     margin-left: 20px;
+    //     width: auto;
+    // }
+
+    h1.small--text-center {
+        
+
+        &.banner-position {
+            position: absolute;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        width: 100%;
+      
+        min-height: 140px;
+        max-width: 60%;
+
+        margin-left: auto;
+        margin-right: auto;
+
+        &::after {
+            display: none;
+        }
+    }
+
+    .inner-content-wrapper {
+        font-size: $medium;
+        
+        padding-left: 20%;
+        padding-right: 20%;
+
+        &.banner-position {
+            padding-top: 90px;
+        }
+
+        * {
+            max-width: 900px;
+
+            img {
+                width: 100%;
+                margin-bottom: 15px;
+            }
+        }
+
+    }
+
+    .rte {
+        max-width: 100%;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    @include mq(1400px) {
+
+        .breadcrumb-wrapper .breadcrumb-nav {
+            padding-left: 0;
+        }
+
+        h1.small--text-center {
+            left: 0; 
+            transform: none;
+            max-width: 100%;
+            &.banner-position {
+                // padding-top: 90px;
+            }
+        }
+      
+        .inner-content-wrapper {
+            padding-left: 0;
+            padding-right: 0;
+        }
+
+    }
+
+    @include mq(740px) {
+        h1.small--text-center {
+            
+            line-height: 1 !important;
+            padding-bottom: 20px;
+
+            min-height: 100px;
+            max-height: none;
+
+            &.banner-position {
+                max-height: 140px;
+                min-height: 140px;
+                padding-top: 0;
+            }
+        }
+
+        .page-rte .rf-wrapper {
+            margin-left: 0;
+        }
+
+    }
+
+}

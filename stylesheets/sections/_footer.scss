@@ -1,0 +1,105 @@
+.site-footer {
+
+    .site-footer__section-title{
+        margin-top: $medium;
+    }
+
+    .site-footer__menu {
+        margin-top: $medium;
+        margin-left: $medium;
+    }
+
+    .sub-footer {
+
+        display: flex;
+
+        .grid__item {
+            display: flex;
+            flex-wrap: wrap;
+            &.copy {
+                width: 70%;
+            }
+
+            &.payments {
+                justify-content: flex-end;
+            }
+
+            small {
+                display: block;
+                padding-right: $medium;
+            }
+
+            .site-legal-menu {
+                font-size: 80%;
+
+                padding-left: 0;
+                margin-left: 0;
+                margin-top: 0;
+
+                display: flex;
+
+                li {
+                    padding-right: $medium;
+                }
+            }
+        }
+    }
+
+    @include mq($break-m) {
+
+
+        .rte {
+            margin-bottom: $medium;
+        }
+
+        .site-footer__section-title{
+            margin-top: $medium - 5;
+        }
+
+        .grid .grid__item:nth-child(3) {
+            padding-top: 0;
+        }
+
+        .site-footer__menu {
+            margin-top: 0;
+            margin-left: 0;
+            margin-bottom: 0;
+        }
+        
+        .sub-footer {
+            flex-wrap: wrap;
+            flex-direction: column-reverse;
+        
+            .grid__item {
+                width: 100%;
+
+                &.copy {
+                    width: 100%;
+                    flex-direction: column-reverse;
+                }
+
+                &.payments {
+                    justify-content: flex-start;
+                }
+
+                small {
+                    width: 100%;
+                    padding: 5px 0;
+                }
+
+                .site-legal-menu {
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                    padding: 5px 0;
+                    margin-bottom: 0;
+
+                    li {
+                        padding-right: $medium - 5;
+                    }
+
+                }
+            }
+        }
+    }
+    
+}

@@ -1,0 +1,69 @@
+{% schema %}
+  {
+    "name": "New Collection Menus",
+    "class": "new-collection-header",
+    "settings": [
+        {
+          "type": "link_list",
+          "id": "linklist01",
+          "label": "Link List 1"
+        },
+         {
+          "type": "link_list",
+          "id": "linklist02",
+          "label": "Link List 2"
+        },
+       {
+          "type": "link_list",
+          "id": "linklist03",
+          "label": "Link List 3"
+        },
+        {
+          "type": "link_list",
+          "id": "linklist04",
+          "label": "Link List 4"
+        }
+    ]
+  }
+{% endschema %}
+
+{{ section.settings.linklist.title }}
+
+<section class="collection-header">
+
+  <div class="rf-filters-wrapper coll-header-wrapper">
+    <div class="rf-columns-container">
+      <div class="rf-wrapper products-wrapper">
+        <div class="rf-filters-header">
+          <h1><svg width="55" height="45" viewBox="0 0 55 45" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><path d="M37.086 19.5c0 9.713-7.873 17.586-17.586 17.586-9.713 0-17.586-7.873-17.586-17.586 0-9.713 7.873-17.586 17.586-17.586 9.713 0 17.586 7.873 17.586 17.586" fill="#F4CD0C"/><path d="M37.086 19.5c0 9.713-7.873 17.586-17.586 17.586-9.713 0-17.586-7.873-17.586-17.586 0-9.713 7.873-17.586 17.586-17.586 9.713 0 17.586 7.873 17.586 17.586z" stroke="#1D1D1B" stroke-width="2"/><path d="M19.5 2.827c-9.193 0-16.673 7.48-16.673 16.673 0 9.193 7.48 16.673 16.673 16.673 9.193 0 16.673-7.48 16.673-16.673 0-9.194-7.48-16.673-16.673-16.673M19.5 38C9.299 38 1 29.701 1 19.5 1 9.3 9.299 1 19.5 1S38 9.3 38 19.5C38 29.701 29.701 38 19.5 38" fill="#000"/><path d="M19.5 2.827c-9.193 0-16.673 7.48-16.673 16.673 0 9.193 7.48 16.673 16.673 16.673 9.193 0 16.673-7.48 16.673-16.673 0-9.194-7.48-16.673-16.673-16.673zM19.5 38C9.299 38 1 29.701 1 19.5 1 9.3 9.299 1 19.5 1S38 9.3 38 19.5C38 29.701 29.701 38 19.5 38z" stroke="#1D1D1B" stroke-width="2"/><path d="M36 31l16 11" stroke="#1D1D1B" stroke-width="6" stroke-linecap="round"/></g></svg> Find the perfect print to match your style</h1>
+          <div class="arrow">
+            <svg width="38" height="18" viewBox="0 0 38 18" xmlns="http://www.w3.org/2000/svg"><path stroke="#1D1D1B" stroke-width="6" d="M35 3L19 14 3 3" fill="none" fill-rule="evenodd" stroke-linecap="round"/></svg>
+          </div>
+        </div>
+        <div class="rf-columns filters head-filters">
+          <div class="rf-col">
+              <h2 class="rf-theme-header">{{ section.settings.linklist01 | capitalize }}</h2>
+              {% include 'navlist' with handle: section.settings.linklist01, class: section.settings.linklist01.handle %}
+          </div>
+          <div class="rf-col">
+              <h2 class="rf-theme-header">{{ section.settings.linklist02  | capitalize }}</h2>
+              {% include 'navlist' with handle:section.settings.linklist02, class: section.settings.linklist02.handle %}
+        </div>
+          <div class="rf-col">
+              <h2 class="rf-theme-header">{{ section.settings.linklist03  | capitalize }}</h2>
+              {% include 'navlist' with handle: section.settings.linklist03, class: section.settings.linklist03.handle %}
+        </div>
+          <div class="rf-col">
+              <h2 class="rf-theme-header">{{ section.settings.linklist04  | capitalize}}</h2>
+              {% include 'navlist' with handle: section.settings.linklist04, class: section.settings.linklist04.handle %}
+     
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+
+
+</section>

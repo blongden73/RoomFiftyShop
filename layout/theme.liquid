@@ -32,17 +32,20 @@
         addressQueryLimit: {{ 'homepage.map.address_query_limit_html' | t | json }},
         authError: {{ 'homepage.map.auth_error_html' | t | json }}
       }
-    }
+    } 
   </script>
 
+  {{ 'appmate-wishlist-king.scss' | asset_url | stylesheet_tag }}
   {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
-  {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }}
-
+  {% comment %} {{ 'rf-style.scss.css' | asset_url | stylesheet_tag }} {% endcomment %}
+  {{ 'app.css' | asset_url | stylesheet_tag }}
 
   {{ content_for_header }}
+  {% render 'app_wishlist-king' %}
 
-  {{ 'jquery-1.11.0.min.js' | asset_url | script_tag }}
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   {{ 'modernizr.min.js' | asset_url | script_tag }}
+  <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.min.js"></script>
 
   <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
 
@@ -57,15 +60,17 @@
   <a class="in-page-link visually-hidden skip-link" href="#MainContent">{{ 'general.accessibility.skip_to_content' | t }}</a>
 
 
+  {% section 'modal' %}
   {% section "mobileNav" %}
   {% section "header" %}
+  
 
     {% comment %}
     <hr class="small--hide hr--small">
     {% endcomment %}
 
 
-  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %}">{% endunless %}
+  {% unless template.name == 'index' or page.template_suffix == 'yuk' %}<div class="rf-wrapper products-wrapper {% if page_title contains 'Edition' %} curated {% endif %} {% if template contains 'curated' %} curated {% endif %} {% if template contains 'about' %} about {% endif %}">{% endunless %}
 
     <div class="grid">
 
@@ -104,6 +109,7 @@
 
   {%- if template.name == 'collection' -%}
     {% section 'filters' %}
+    {% section 'collection-header' %}
   {%- endif -%}
 
   {%- if template.name == 'index' -%}
@@ -176,6 +182,12 @@
 
   {% section "footer" %}
 
+
+  <ul hidden>
+    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
+  </ul>
+ 
+
   {% if template.name == 'product' or template.name == 'index' %}
     {{ 'option_selection.js' | shopify_asset_url | script_tag }}
     <script>
@@ -186,22 +198,11 @@
     </script>
   {% endif %}
 
-  <ul hidden>
-    <li id="a11y-refresh-page-message">{{ 'general.accessibility.refresh_page' | t }}</li>
-  </ul>
-
   {{ 'theme.js' | asset_url | script_tag }}
   {{ 'rf-script.js' | asset_url | script_tag }}
+  {{ 'app.js' | | asset_url | script_tag }}
 
 
-
-{% include 'swymSnippet' %}
-
-{% render 'spurit_dmr_theme_snippet' %}
-
-<!-- spurit_uev-added -->
-{% render 'spurit_uev-theme-snippet' %}
-<!-- /spurit_uev-added -->
 
 </body>
 </html>

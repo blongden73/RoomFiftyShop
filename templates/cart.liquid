@@ -1,10 +1,14 @@
 <!-- /templates/cart.liquid -->
 
-<div class="grid">
+<div class="grid js-cart-page-contents">
+<span class="js-cart-item-count visually-hidden">{{ cart.item_count }}</span>
   <div class="grid__item">
     {% if cart.item_count > 0 %}
       <h1 class="h2 visually-hidden">{{ 'cart.general.title' | t }}</h1>
+
       <form action="/cart" method="post" novalidate class="cart">
+
+        
         <table class="cart-table responsive-table table--no-border">
           <thead class="cart__row cart__header-labels small--hide">
             <th class="text-left cart__table-cell--image">{{ 'cart.label.product' | t }}</th>
@@ -23,17 +27,39 @@
                     {%- capture img_id -%}CartImage--{{ item.image.id }}{%- endcapture -%}
                     {% include 'image-style' with image: item.image, width: 720, height: 600, small_style: false, wrapper_id: wrapper_id, img_id: img_id %}
                     <div id="{{ wrapper_id }}" class="cart__image-wrapper supports-js">
-                      <a class="cart__image-container" href="{{ item.url | within: collections.all }}" style="padding-top:{{ 1 | divided_by: item.image.aspect_ratio | times: 100}}%;">
-                        <img id="{{ img_id }}"
-                             class="cart__image lazyload"
-                             src="{{ item.image | img_url: '100x100' }}"
-                             data-src="{{ img_url }}"
-                             data-widths="[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
-                             data-aspectratio="{{ item.image.aspect_ratio }}"
-                             data-sizes="auto"
-                             alt="{{ item.title | escape }}"
-                             itemprop="image">
-                      </a>
+                    
+                      {% if item.product.handle contains 'fine-art-print'  %}
+
+      
+                        {% assign masterProduct = item.product.handle | replace: 'fine-art-print', 'framed-print' %}
+                        {% assign masterProduct = all_products[masterProduct] %}
+                        {% assign masterUrl = masterProduct.url %}
+                        {% assign masterUrl = masterUrl | within: collections.all %}
+                   
+                        <a class="cart__image-container unframed" href="{{ masterUrl }}" style="padding-top:{{ 1 | divided_by: item.image.aspect_ratio | times: 100}}%;">
+                          <img id="{{ img_id }}"
+                              class="cart__image lazyload"
+                              src="{{ item.image | img_url: '100x100' }}"
+                              data-src="{{ img_url }}"
+                              data-widths="[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                              data-aspectratio="{{ item.image.aspect_ratio }}"
+                              data-sizes="auto"
+                              alt="{{ item.title | escape }}"
+                              itemprop="image">
+                        </a>
+                      {% else %}
+                        <a class="cart__image-container framed" href="{{ item.url | within: collections.all }}" style="padding-top:{{ 1 | divided_by: item.image.aspect_ratio | times: 100}}%;">
+                          <img id="{{ img_id }}"
+                              class="cart__image lazyload"
+                              src="{{ item.image | img_url: '100x100' }}"
+                              data-src="{{ img_url }}"
+                              data-widths="[180, 230, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                              data-aspectratio="{{ item.image.aspect_ratio }}"
+                              data-sizes="auto"
+                              alt="{{ item.title | escape }}"
+                              itemprop="image">
+                        </a>
+                      {% endif %}
                     </div>
                   {% else %}
                     <a class="supports-js" href="{{ item.url | within: collections.all }}">
@@ -49,7 +75,12 @@
                 </td>
                 <td class="cart__table-cell--meta text-center large-up--text-left">
                   <p>
-                    <a href="{{ item.url }}">{{ item.product.title }}</a>
+
+                    {% if item.product.handle contains 'fine-art-print'  %}
+                      <a href="{{ masterUrl }}">{{ item.product.title }}</a>
+                    {% else %}
+                      <a href="{{ item.url }}">{{ item.product.title }}</a>
+                    {% endif %}
                     {% unless item.variant.title contains 'Default' %}
                       <br /><small>{{ item.variant.title }}</small>
                     {% endunless %}
@@ -80,7 +111,7 @@
                   <p class="txt--minor">
                     <a href="/cart/change?line={{ forloop.index }}&amp;quantity=0" class="cart__remove">{{ 'cart.general.remove' | t }}</a>
                   </p>
-                </td>
+                </td> 
                 <td class="cart__table-cell--price medium-up--text-right" data-label="{{ 'cart.label.price' | t }}">
                   {%- if item.original_price != item.final_price -%}
                     <span class="visually-hidden">{{ 'products.product.regular_price' | t }}</span>
@@ -123,8 +154,8 @@
         <footer class="cart__footer">
           <div class="grid">
             <div class="grid__item large-up--one-half">
-              <label for="CartSpecialInstructions" class="label--block">{{ 'cart.general.note' | t }}</label>
-              <textarea name="note" id="CartSpecialInstructions" class="input--block cart__note">{{ cart.note }}</textarea>
+              {% comment %} <label for="CartSpecialInstructions" class="label--block">{{ 'cart.general.note' | t }}</label>
+              <textarea name="note" id="CartSpecialInstructions" class="input--block cart__note">{{ cart.note }}</textarea> {% endcomment %}
     {% include 'donation' %}          </div>
             <div class="grid__item text-center large-up--one-half large-up--text-right">
 

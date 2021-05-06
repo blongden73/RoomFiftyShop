@@ -1,5 +1,9 @@
 {
   "general": {
+    "404": {
+      "title": "404 Page Not Found",
+      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
+    },
     "accessibility": {
       "skip_to_content": "Skip to content",
       "refresh_page": "choosing a selection results in a full page refresh"
@@ -7,10 +11,6 @@
     "meta": {
       "tags": "Tagged \"{{ tags }}\"",
       "page": "Page {{ page }}"
-    },
-    "404": {
-      "title": "404 Page Not Found",
-      "subtext_html": "The page you requested does not exist. Click <a href=\"\/collections\/all\">here<\/a> to continue shopping."
     },
     "password_page": {
       "login_form_heading": "Enter store using password",
@@ -310,6 +310,34 @@
       "print": "Print",
       "remaining_html": "{{ balance }} left",
       "add_to_apple_wallet": "Add to Apple Wallet"
+    }
+  },
+  "app_wishlist-king": {
+    "general": {
+      "wishlist": "Wishlist",
+      "wishlist_empty_note": "Your wishlist is empty!",
+      "add_to_wishlist": "Add to Wishlist",
+      "remove_from_wishlist": "Remove from Wishlist",
+      "clear_wishlist": "Clear Wishlist",
+      "in_wishlist": "In Wishlist",
+      "share_wishlist": "Share Wishlist",
+      "copy_share_link": "Copy Link",
+      "share_link_copied": "Link Copied",
+      "share_by_email_body": "Here is the link to my list:",
+      "share_list_title": "My Wishlist",
+      "share_list_description": "Check out some of my favorite things @ {{ shopName }}.",
+      "login_or_signup_note_html": "To save your wishlist please <a href='{{ login_url }}'>login<\/a> or <a href='{{ register_url }}'>sign up<\/a>.",
+      "add_to_cart": "Add to Cart",
+      "sold_out": "Sold Out",
+      "view_product": "View product",
+      "view_wishlist": "View Wishlist",
+      "share_on_facebook": "Share on Facebook",
+      "share_on_twitter": "Share on Twitter",
+      "share_on_pinterest": "Share on Pinterest",
+      "share_with_whatsapp": "Share with WhatsApp",
+      "share_by_email": "Share with Email",
+      "get_link": "Get link",
+      "send_to_customer_service": "Send to customer service"
     }
   }
 }

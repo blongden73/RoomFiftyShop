@@ -1,0 +1,31 @@
+ button.wk-button-collection,  button.wk-button-product {
+    color: $blue !important;   
+ } 
+
+ .template-product {
+    .wk-link {
+      //   @include visually-hidden; 
+    }
+ }
+
+
+#wishlist.template-page h1.small--text-center {
+   background-color: $blue;
+   max-width: 100%;
+}
+
+#wishlist {
+  .wk-add-item-form, .wk-purchase {
+      display: none;
+   }
+}
+
+.js-nav {
+   .wk-icon svg {
+      padding-bottom: 1px;
+   }
+}
+
+a.wk-link .wk-icon {
+   top: 1px !important;
+} 

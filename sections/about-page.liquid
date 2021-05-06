@@ -1,0 +1,97 @@
+{% schema %}
+    {
+        "name": "About Page",
+        "class": "about-page",
+        "max_blocks": 5,
+        "settings": [
+            {
+                "type": "text",
+                "id": "headline",
+                "label": "Page Headline",
+                "default": "About RoomFifty"
+            },
+            {
+                "type": "image_picker",
+                "id": "banner",
+                "label": "Banner Image"
+            },
+            {
+                "type": "richtext",
+                "id": "textarea1",
+                "label": "Text area 1",
+                "default": "<p></p>"
+            },
+            {
+                "type": "richtext",
+                "id": "textarea2",
+                "label": "Text Area 2",
+                "default": "<p></p>"
+            }
+        ],
+        "blocks":[
+            {
+                "type": "profiles",
+                "name": "Profile",
+                "settings":[
+                    {
+                        "type": "image_picker",
+                        "id": "profileImg",
+                        "label": "Profile Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "profileName",
+                        "label": "Name"
+                    },
+                   {
+                       "type": "richtext",
+                       "id": "profileBio",
+                       "label": "Description",
+                       "default": "<p></p>"
+                   }
+                ]
+             }
+         ]
+        
+    }
+{% endschema %}
+
+
+
+<div class="feature-image">
+    <img src="{{ section.settings.banner | img_url: '1300x' }}">
+</div>
+
+<div class="rte about-rte">
+  <div class="rf-wrapper products-wrapper">
+
+    <h3 class="about-new-title"> {{ section.settings.headline }}</h3>
+
+    <div class="inner-content-wrapper">
+      {{ section.settings.textarea1 }}
+    </div>
+  </div>
+</div>
+<div class="rf-wrapper products-wrapper">
+  <main class="main-content" id="MainContent" role="main">
+    <div class="rf-columns about-columns">
+
+        {% for block in section.blocks %}
+
+            <div class="rf-col">
+                <img src="{{ block.settings.profileImg | img_url: '1600x'  }}">
+                <h2>{{ block.settings.profileName }}</h2>
+                <p>{{ block.settings.profileBio }}</p>
+            </div>
+
+        {% endfor %}
+
+    </div>
+
+    <div class="about-extra">
+      <div class="inner-content-wrapper">
+         {{ section.settings.textarea2 }}
+      </div>
+    </div>
+  </main>
+</div>

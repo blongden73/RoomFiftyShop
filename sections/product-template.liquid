@@ -50,9 +50,9 @@
           {% endfor %}
         </ul>
       {% endif %}
-    </div>
+    </div> 
 
-    <div class="grid__item medium-up--one-half{% if product.images.size == 0%} medium-up--push-one-half{% endif %} {%if product.tags contains 'Testing'%} testing {% endif%}">
+    <div class="grid__item medium-up--one-half{% if product.images.size == 0%} medium-up--push-one-half{% endif %} {%if product.tags contains ''%}  {% endif%}">
       <div class="product-single__meta small--text-center">
         <h1 class="product-single__title" itemprop="name">{{ product.title }}</h1>
 
@@ -121,106 +121,54 @@
               {% endfor %}
 
             </ul>
-          {% endif %}
+          {% endif %}  
 
-          {% form 'product', product, class:'product-form' %}
-            <select name="id" id="ProductSelect-{{ section.id }}" class="product-single__variants {%if product.tags contains 'Testing'%} testing {% endif%}">
-              {% for variant in product.variants %}
-                {% if variant.available %}
-                  <option {% if variant == product.selected_or_first_available_variant %} selected="selected" {% endif %} data-sku="{{ variant.sku }}" value="{{ variant.id }}">{{ variant.title }} - {{ variant.price | money_with_currency }}</option>
-                {% else %}
-                  <option disabled="disabled">
-                    {{ variant.title }} - {{ 'products.product.sold_out' | t }}
-                  </option>
-                {% endif %}
-              {% endfor %}
-            </select>
 
-            {% if section.settings.product_quantity_enable %}
-              <div class="product-single__quantity">
-                <label for="Quantity">{{ 'products.product.quantity' | t }}</label>
-                <input type="number" id="Quantity" name="quantity" value="1" min="1">
-              </div>
-            {% endif %}
-
-            <div class="product-single__cart-submit-wrapper{% if section.settings.enable_payment_button %} product-single__shopify-payment-btn{% endif %}{% if section.settings.add_to_cart_width == 'full_width' %} product-form--full{% endif %}">
-              <button type="submit" name="add" id="AddToCart"class="btn product-single__cart-submit{% if section.settings.add_to_cart_width == 'full_width' %} btn--full{% endif %}{% if section.settings.enable_payment_button %} shopify-payment-btn btn--secondary{% endif %}">
-                <span id="AddToCartText">{{ 'products.product.add_to_cart' | t }}</span>
-              </button>
-              {% if section.settings.enable_payment_button %}
-                {{ form | payment_button }}
+ 
+          <div class="dyn-form">
+          
+             <div class="{%if product.tags contains 'Testing'%} testing {% endif%} new-buy-buttons" data-current="{{product.id}}">
+             
+              {% if product.handle contains 'fine-art-print' %}
+                {% assign masterHandle = product.handle | remove: 'fine-art-print' %}
+              {% elsif product.handle contains 'framed-print' %}
+                {% assign masterHandle = product.handle | remove: 'framed-print' %}
               {% endif %}
-            </div>
 
-          {% endform %}
 
-          <!--Automation styles -->
-          <div class="{%if product.tags contains 'Testing'%} testing {% endif%} new-buy-buttons">
-            {% assign FramedFriend = product.description | split: '||' %}
-            {% assign stripped = FramedFriend[1] | strip %}
+              {% assign print = masterHandle | append: 'fine-art-print'  %}
+              {% assign framed = masterHandle | append: 'framed-print' %}
+
+              {% assign printProd = all_products[print] %}
+              {% assign framedProd = all_products[framed] %}
+
+
+              {% assign printID = all_products[print].id %}
+              {% assign framedID = all_products[framed].id %}
+              
 
             <div class="varient-size-title">Select framing</div>
-            <div data-id="print" class="framed-varient selected print">No Frame</div>
-            <div data-id="framed" class="framed-varient framed" data-varients="{{ varientID[1] }}">Framed print</div>
+            <button data-id="print" class="framed-varient print {{printID}} new-button" data-prod="{{printID}}">No Frame</button>
+            <button data-id="framed" class="framed-varient framed {{framedID}} new-button" data-varients="{{ varientID[1] }}" data-prod="{{ framedID }}">Framed print</button>
 
-            <div class="varient-sizes framed">
-              {% assign varientIDS = product.variants %}
-                <div class="varient-size-title">Select size & frame style</div>
-              {% for varient in varientIDS %}
-                <span class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
-                  {{varient.title}}
-                </span>
-              {% endfor %}
-            </div>
+          
 
-            <div class="varient-sizes print display">
-              <!-- Needs dynamic handle -->
-              {% assign Producthandle = product.description | split: '||' %}
-              {% assign useHandle = Producthandle[1] | strip %}
-              <div class="varient-size-title">Select size</div>
-              {% for handle in Producthandle %}
-                {% assign testHandle = handle | strip | strip_html | strip_newlines %}
-                {% assign varientFramedIDS = all_products[testHandle].variants %}
-                {% for varient in varientFramedIDS %}
-                  <span class="print-selector" data-varients="{{varient.id}}" data-price="{{varient.price | money_with_currency}}" data-compare-price="{{varient.compare_at_price | money_with_currency}}">
-                    {{varient.title}}
-                  </span>
-                {% endfor %}
+          {% include 'add-to-cart-option-form' %}  
+ 
 
-              {% endfor %}
-            </div>
+          {% comment %} {% include 'add-to-cart-option-form' with product: framedProd %} {% endcomment %}
 
-            <div class="form-message error">
-              <h2>👆 Select print style</h2>
-            </div>
-            <div class="form-message inprogress">
-              <h2>🖼️ Adding print to basket please wait...</h2>
-            </div>
-            <div class="form-message done">
-              <h2>🖼️👍 Added print to basket <a href="/cart">Go to basket</a></h2>
-            </div>
-            <form action="/cart/add" method="post" id="product-form-{{ product.id }}">
-                <div class="product-form__item">
-                  <input type="hidden" name="id" value="{{ product.variants.first.id }}">
-                  <div>
-                    <div data-variant="32689948786828" data-product="{{ product.id }}" data-ajax-enabled="{{ settings.enable_ajax }}" id="add-to-cart-button" type="submit" name="add" aria-label="Add to cart" class="btn product-form__cart-submit btn--secondary-accent" data-add-to-cart="">
-                      <span data-add-to-cart-text="">
-                          Add print to basket
-                      </span>
-                      <span class="hide" data-loader="">
-                        <svg aria-hidden="true" focusable="false" role="presentation" class="icon icon-spinner" viewBox="0 0 20 20"><path d="M7.229 1.173a9.25 9.25 0 1 0 11.655 11.412 1.25 1.25 0 1 0-2.4-.698 6.75 6.75 0 1 1-8.506-8.329 1.25 1.25 0 1 0-.75-2.385z" fill="#919EAB"></path></svg>
-                      </span>
-                    </div>
-                  </div>
-               </div>
-            </form>
+{% comment %} 
+          {% include 'cart-script' %}
+           {% endcomment %}
+
+          <!-- include 'wishlist-button-product' with: '{{ product.id }}' -->
           </div>
-          {% if product.tags contains 'Testing'%}
-            {{ '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js' | script_tag }}
-            <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/shopify-cartjs/0.4.3/cart.min.js"></script>
-            {% include 'rf-auto' %}
-          {% endif %}
-        </div>
+
+ 
+
+
+
 
         {% if section.settings.product_description_position == 'right' %}
           {%- assign position = 'right' -%}
@@ -230,75 +178,9 @@
     </div>
   </div>
 
-  <div class="rf-colours">
-    <div class="rf-wrapper">
-      <h1>Match these colours</h1>
-      <div class="rf-colours-wrapper">
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-        <div class="rf-colour"></div>
-      </div>
-    </div>
-  </div>
-  {{ 'color-thief.min.js' | asset_url | script_tag }}
-  <script>
-    const colorThief = new ColorThief();
-      const img = document.querySelector('.product-single__photo');
-      const colours = document.querySelector('.rf-colours-wrapper');
-      const color = document.querySelectorAll('.rf-colour');
 
-      console.log('getting colours', img);
-      // Make sure image is finished loading
-      if (img.complete) {
-        colorThief.getPalette(img);
-      } else {
-        img.addEventListener('load', function() {
-          var ct = colorThief.getPalette(img);
-          console.log(ct);
-
-          for(i=0; i < ct.length; i++) {
-            console.log(ct[i].toString());
-            color[i].style.backgroundColor = "rgb(" + ct[i].toString() + ")";
-            console.log(color);
-          }
-          console.log('loading colours');
-          console.log(colorThief.getPalette(img));
-        });
-      }
-  </script>
-  <div class="rf-lifestyle">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product | img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_1.jpg?v=1588369323">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Museum-quality giclée print on premium, heavyweight art paper. Choose from unframed or framed in black and white.</p>
-      </div>
-    </div>
-  </div>
-  <div class="rf-lifestyle rf-lifestyle-two">
-    <div class="rf-wrapper">
-      <div class="rf-lifestyle-product">
-        <img src="{{ product.images[1] | product_img_url: '720x720' }}">
-      </div>
-      <div class="rf-lifestyle-image">
-        <img src="https://cdn.shopify.com/s/files/1/2567/2510/files/room_2.jpg?v=1588370564">
-      </div>
-      <div class="rf-lifestyle-text">
-        <p>Our frames are handmade from high-quality ash, milled with simple, clean lines and presented with a satin finish.</p>
-      </div>
-    </div>
-  </div>
+ 
+  
 
   {% if section.settings.product_description_position == 'below' %}
     {%- assign position = 'below' -%}
@@ -306,11 +188,10 @@
   {% endif %}
 </div>
 
-{% unless product == empty %}
-  <script type="application/json" id="ProductJson-{{ section.id }}">
-    {{ product | json }}
-  </script>
-{% endunless %}
+
+
+
+
 
 <script>
   // Override default values of shop.strings for each template.

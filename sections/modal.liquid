@@ -1,0 +1,127 @@
+
+{% schema %}
+    {
+        "name": "Newsletter Modal",
+        "class": "rf-modal",
+        "settings": [
+            {
+                "type": "checkbox",
+                "id": "display",
+                "label": "Display Modal",
+                "default": false
+            },
+            {
+                "type": "range",
+                "id": "timing",
+                "min": 1,
+                "max": 14,
+                "step": 1,
+                "unit": "s",
+                "label": "Delay before displaying Modal",
+                "default": 6
+            },
+            {
+                "type": "text",
+                "id": "headline",
+                "label": "Modal Headline",
+                "default": "Sign up to our Newsletter"
+            },
+            {
+                "type": "textarea",
+                "id": "copy",
+                "label": "Modal Body Copy",
+                "default": "The latest news and offers from Room Fifty"
+            },
+            {
+                "type": "textarea",
+                "id": "confirm",
+                "label": "Confirmation Message",
+                "default": "Thank you!"
+            },
+            {
+                "type": "color",
+                "id": "bgColor",
+                "label": "Background Colour",
+                "default": "#efefec"
+            }, 
+            {
+                "type": "color",
+                "id": "buttonColor",
+                "label": "Button Colour",
+                "default": "#0792d1"
+            }
+        ]
+    }
+{% endschema %}
+
+{% if section.settings.display == true %}
+
+    {% unless customer %}
+   {% style %}
+
+        #modal {
+            background-color: {{ section.settings.bgColor }}
+        }
+
+        #modal button.btn {
+            background-color: {{ section.settings.buttonColor}}
+        }
+
+    {% endstyle %}
+
+    {% assign timing = section.settings.timing | times: 1000 %}
+
+    <div id="modal" data-timing="{{ timing }}">
+
+
+
+        <div class="modal-inner">
+            
+            <div class="close js-close">
+                <h2>×</h2>
+            </div>
+
+
+            {% if section.settings.headline %}
+            <h1>{{ section.settings.headline }}</h1>
+            {% endif %}
+
+            {% if section.settings.copy %}
+            <h2>{{ section.settings.copy }}</h2>
+            {% endif %}
+
+            {% form 'customer' %}
+                {{ form.errors | default_errors }}
+                {% if form.posted_successfully? %}
+                    <p class="form--success">{{ section.settings.confirm }}</p>
+                {% else %}
+                    <input type="hidden" name="contact[tags]" value="newsletter">
+                    <label for="NewsletterEmail" class="newsletter-label">
+                    {% if label %}
+                        <div class="rte">{{ label }}</div>
+                    {% else %}
+                        {{ 'general.newsletter_form.newsletter_label' | t }}
+                    {% endif %}
+                    </label>
+                    <div class="input-group">
+                    <input type="email" value="{% if customer %}{{ customer.email }}{% endif %}" placeholder="{{ 'general.newsletter_form.newsletter_placeholder' | t }}" name="contact[email]" id="NewsletterEmail" class="input-group__field site-footer__newsletter-input" autocorrect="off" autocapitalize="off">
+                    <div class="input-group__btn">
+                        <button type="submit" class="btn" name="commit" id="Subscribe">
+                        <span {% if has_page_content %}class="medium-up--hide"{% endif %}>{{ 'general.newsletter_form.submit' | t }}</span>
+                        {% if has_page_content %}
+                            <span class="small--hide">{% include 'icon-arrow-right' %}</span>
+                        {% endif %}
+                        </button>
+                    </div>
+                    </div>
+                {% endif %}
+                {% endform %}
+
+        
+        </div>
+
+
+    </div>
+
+    {% endunless %}
+{% endif %}
