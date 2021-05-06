@@ -549,7 +549,7 @@ $(document).ready(function () {
         modalSubmit = modal + ' form'
         // console.log('timing is ' + modalTiming);
 
-    if (sessionStorage.hasOwnProperty("modalHide")) {
+    if (localStorage.hasOwnProperty("modalHide")) {
         console.log('modal previously hidden');
     } else {
 
@@ -564,16 +564,16 @@ $(document).ready(function () {
             
             $(modal).fadeOut();
     
-            window.sessionStorage.setItem("modalHide", "true");
-            window.sessionStorage.setItem("origin", "https://roomfifty.com/");
+            window.localStorage.setItem("modalHide", "true");
+            window.localStorage.setItem("origin", "https://roomfifty.com/");
     
-            console.log(sessionStorage);
+            console.log(localStorage);
         })
 
         $(modalSubmit).on('submit', function() {
             
-            window.sessionStorage.setItem("modalHide", "true");
-            window.sessionStorage.setItem("origin", "https://roomfifty.com/");
+            window.localStorage.setItem("modalHide", "true");
+            window.localStorage.setItem("origin", "https://roomfifty.com/");
     
         })
     
