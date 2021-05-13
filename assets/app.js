@@ -355,9 +355,10 @@ $(document).ready(function () {
         // console.log('is a collection')
 
         $(collectionGridInner).infiniteScroll({
-            // options
+            // options 
             path: pagNext,
             append: gridProduct,
+            history: false,
             // hideNav: pagHide,
             scrollThreshold: 600,
             status: pagStatus
